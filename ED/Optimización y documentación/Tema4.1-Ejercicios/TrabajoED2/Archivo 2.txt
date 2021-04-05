@@ -1,0 +1,2 @@
+Esta es una modificación al archivo2.txt.
+Esta es la segunda modificación al archivo.

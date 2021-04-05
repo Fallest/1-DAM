@@ -1,0 +1,51 @@
+DELTA
+SVNENDREP
+id: 1-2.0.r2/17
+type: file
+count: 0
+text: 2 0 4 0 d41d8cd98f00b204e9800998ecf8427e da39a3ee5e6b4b0d3255bfef95601890afd80709 1-1/_3
+cpath: /trunk/Archivo 2.txt
+copyroot: 0 /
+
+PLAIN
+K 13
+Archivo 2.txt
+V 16
+file 1-2.0.r2/17
+END
+ENDREP
+id: 3-1.0.r2/249
+type: dir
+pred: 3-1.0.r1/129
+count: 1
+text: 2 191 45 45 cb0e9697777d04f1cdb5d3c443eb7549
+cpath: /trunk
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 14
+dir 0-1.0.r1/0
+K 4
+tags
+V 15
+dir 2-1.0.r1/66
+K 5
+trunk
+V 16
+dir 3-1.0.r2/249
+END
+ENDREP
+id: 0.0.r2/496
+type: dir
+pred: 0.0.r1/306
+count: 2
+text: 2 384 99 99 aa9f5fa1af5223cc526ce735dcb6ce60
+cpath: /
+copyroot: 0 /
+
+_1.0.t1-1 add-file true false /trunk/Archivo 2.txt
+
+
+496 622
