@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pedido fecha="2020-08-20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:/C:/Users/David/Documents/1%C2%BA%20DAM/LM/XML/Schemas/Ejercicio8/ejercicio8.xsd">
+  <destino>
+    <nombre>María</nombre>
+    <direccion>Alcalá de Guadaíra</direccion>
+    <ciudad>Sevila</ciudad>
+    <codpostal>41006</codpostal>
+  </destino>
+  <ordenante>
+    <nombre>Manuel</nombre>
+    <direccion>Santiponce</direccion>
+    <ciudad>Sevilla</ciudad>
+    <codpostal>40909</codpostal>  
+  </ordenante>
+  <observaciones/>
+  <contenido>
+    <producto>
+      <nombre>NVidia GeForce GTX 1050 Ti 4GB DRAM GDDR5</nombre>
+      <cantidad>1</cantidad>
+      <precio>421.23</precio>
+      <observaciones>Cuidado, Frágil</observaciones>
+    </producto>
+  </contenido>
+</pedido>

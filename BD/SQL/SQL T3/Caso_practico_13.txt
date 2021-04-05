@@ -1,0 +1,10 @@
+select apellido, oficio, emp_no, dnombre, loc from emple, depart
+where emple.dept_no = depart.dept_no;
+
+select apenom, nombre, nota from alumnos, asignaturas, notas
+where (alumnos.dni = notas.dni) AND (asignaturas.cod = notas.cod);
+
+select apenom from alumnos, asignaturas, notas
+where (alumnos.dni = notas.dni) AND (notas.cod = asignaturas.cod)
+AND (asignaturas.nombre = 'FOL');
+

@@ -1,0 +1,3 @@
+select apellido, oficio, salario, fecha_alt from emple
+where (oficio = (select oficio from emple where apellido = 'JIMENEZ'))
+or (salario >= (select salario from emple where apellido = 'FERNANDEZ'));

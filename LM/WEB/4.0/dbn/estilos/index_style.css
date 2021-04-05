@@ -1,0 +1,8 @@
+/* Establecer el fondo de la página a un color oscuro verdoso. */
+* {background-color: #0e1a15;}
+/* Estilos para el índice */
+#index_index {font-family: sans-serif; color: white;font-size: 30px;line-height: 200%;margin: auto;}
+#index_index p {letter-spacing: 1px;}
+.title {font-size: 70px; font-family: sans-serif;color: #ffb01b; font-weight: initial;
+	font-style: italic; letter-spacing: -10px}
+.title span {color: red;letter-spacing: -10px}

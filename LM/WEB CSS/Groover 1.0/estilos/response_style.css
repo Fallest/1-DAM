@@ -1,0 +1,83 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+/* Color de fondo */
+body {
+	background-color: #452244;
+	height: 100%;
+  	width: 100%;
+	margin: 0;
+}
+
+/* Creación del grid para la página */
+.index_logo {grid-area: logo;}
+.index_element1 {grid-area: element1;}
+
+.page-grid {
+	display: grid;
+	grid-template-areas: 
+		'logo' 
+		'element1';
+}
+
+/* Estilo de los elementos de la página */
+.page-element {
+	text-align: center;
+	font-family: "Calibri";
+	font-size: 2vh;
+	color: white;
+}
+
+.index_element1 {
+	text-align: left;
+	margin-left: 10vw;
+}
+
+.index_element1 a {
+	color: #ffa907;
+}
+
+.index_logo {
+	height: 50vh;
+}
+/* Límite de tamaño para el logo */
+.index_logo img {
+	max-width: 50vh;
+}
+
+/* Footer */
+.footer {
+	display: flex;
+  	flex-direction: column;
+  	justify-content: flex-end;
+  	width: 100%;
+  	height: 50vh;
+  	margin: 0;
+}
+
+.footer .footer_container {
+	border-top: 1px solid black;
+  	width: 100%;
+   	height: 15vh;
+   	margin: 0;
+	background-color: #251125;
+
+	color: grey;
+}
+
+.footer_left {
+	font-size: 1.5vh;
+	position: absolute;
+	text-align: center;
+	width: 15vw;
+	left: 0;
+}
+.footer_right {
+	font-size: 1.5vh;
+	position: absolute;
+	text-align: center;
+	width: 30vw;
+	right: 0;
+}

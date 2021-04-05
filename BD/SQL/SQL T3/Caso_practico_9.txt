@@ -1,0 +1,2 @@
+select apellido from emple
+where salario not between 1500 and 2000;

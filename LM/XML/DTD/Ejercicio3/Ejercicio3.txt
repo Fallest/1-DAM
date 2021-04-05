@@ -1,0 +1,6 @@
+1.- La declaración correcta sería la c.
+2.- La afirmación verdadera es la d.
+3.- Sería tal que así:
+<!ELEMENT correo (para, cc?, cco?, asunto, cuerpo)>
+
+Es decir, cc y cco pueden aparecer o no, y se debe respetar ese orden en todo caso.

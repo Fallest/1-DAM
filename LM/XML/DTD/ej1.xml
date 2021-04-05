@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cursos>
+  <curso id="1">
+   <nombre>Metodologías ágiles</nombre>
+   <profesor>Ana</profesor>
+   <año/>
+  </curso>
+  <curso id="5">
+   <nombre>XML</nombre>
+   <profesor>Pepe</profesor>
+   <profesor>Rosa</profesor>
+   <año> 2011 </año>
+  </curso>
+  <curso id="2">
+   <nombre>Bases de Datos</nombre>
+  </curso>
+</cursos>

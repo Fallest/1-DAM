@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="alumno">
+    <xs:complexType>
+      <xs:sequence>
+      
+        <xs:element type="xs:string" name="nombre"/>
+        
+        <xs:element type="TipoDni" name="dni"/>
+        
+        <xs:element type="xs:string" name="direccion"/>
+                
+        <xs:element name="edad">
+          <xs:simpleType>
+            <xs:restriction base="xs:nonNegativeInteger">
+            
+              <xs:minExclusive value="16"/>
+              <xs:maxExclusive value="25"/>
+              
+            </xs:restriction>
+          </xs:simpleType>
+       </xs:element>
+       
+        <xs:element type="TipoTlfn" name="teléfono"/>
+        
+         <xs:element name="sexo" type="TipoSexo" />
+        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:simpleType name="TipoSexo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="M" />
+      <xs:enumeration value="H" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="TipoTlfn">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\(\d{3}\)\d{6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="TipoDni">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="8" />
+      <xs:maxLength value="9" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>
+
+

@@ -1,0 +1,2 @@
+insercion con select
+caso practico 2, 4, 5 y act propuesta 2, 4

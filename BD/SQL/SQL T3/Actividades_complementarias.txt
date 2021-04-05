@@ -1,0 +1,80 @@
+1.
+select apellido, oficio, loc from emple, depart
+where emple.oficio = 'ANALISTA';
+
+2.
+select * from emple
+where dir = (select dir from emple where (apellido = 'CEREZO'));
+
+3.
+select * from emple, depart
+where (emple.dept_no = depart.dept_no) AND (dnombre = 'VENTAS');
+
+4.
+select * from depart
+where depart.dept_no not in (select emple.dept_no from emple);
+
+5.
+select * from depart
+where depart.dept_no in (select emple.dept_no from emple);
+
+6.
+select apellido, salario from emple
+where salario > all(select salario from emple where dept_no = 20);
+
+7.
+select * from libreria 
+where ejemplares between 8 AND 15;
+
+8.
+select * from libreria
+where estante not between 'B' AND 'D';
+
+9.
+select tema from libreria 
+where ejemplares<(select ejemplares from libreria where tema='MEDICINA');
+
+10.
+select tema from libreria
+where (ejemplares not between 15 and 20) OR
+(ejemplares in(15,20));
+
+11.
+select asignaturas.cod, asignaturas.nombre from asignaturas, alumnos, notas
+where (notas.dni = alumnos.dni) and (asignaturas.cod = notas.cod) and
+(asignaturas.nombre like '%o%o%o%') and 
+(alumnos.pobla = 'MADRID');
+
+12.
+select apenom from alumnos, notas
+where (alumnos.dni = notas.dni) and 
+(notas.nota < 5);
+
+13.
+select apenom from alumnos, notas, asignaturas
+where (alumnos.dni = notas.dni) and (notas.cod = asignaturas.cod) and
+(notas.nota in (select nota from notas, alumnos , asignaturas
+		where (alumnos.dni = notas.dni) and (notas.cod = asignaturas.cod) and
+		(alumnos.apenom = 'Díaz Fernández, María') and
+		(asignaturas.nombre = 'FOL')))
+group by apenom;
+
+14.
+select * from asignaturas
+where asignaturas.nombre not in(select nombre from asignaturas, alumnos, notas 
+		where (asignaturas.cod = notas.cod) 
+		and (notas.dni = alumnos.dni));
+
+15.
+select apenom from alumnos
+where alumnos.apenom in (select apenom from notas, asignaturas, alumnos
+			where (notas.dni = alumnos.dni)
+			and (asignaturas.cod = notas.cod)
+			and (asignaturas.cod = 1));
+
+16.
+select apenom from alumnos
+where alumnos.apenom not in (select apenom from notas, asignaturas, alumnos
+			where (notas.dni = alumnos.dni)
+			and (asignaturas.cod = notas.cod)
+			and (asignaturas.cod = 1));

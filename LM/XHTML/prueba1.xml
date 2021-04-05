@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base>
+	<receta>
+		<tipo_receta>Receta médica privada</tipo_receta>
+		<medico>
+			<nombre>Carmen Delgado</nombre>
+			<num_colegiado>176629</num_colegiado>
+		</medico>
+		<fecha_prescripcion>17-06-2020</fecha_prescripcion>
+		<medicamento>
+			<nombre>Enantium</nombre>
+			<marca>Novartis</marca>
+			<presentacion>Pastillas de 600 mg</presentacion>
+		</medicamento>
+		<medicamentos_alter>
+	</receta>
+</base>

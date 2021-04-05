@@ -1,0 +1,39 @@
+Casos prácticos:
+
+1.
+insert into profesores (apellidos, especialidad, cod_centro)
+values ('Quiroga Martín, A.Isabel', 'INFORMATICA', 45);
+
+insert into profesores (apellidos, especialidad)
+values ('Seco Jiménez, Ernesto', 'LENGUA');
+
+insert into profesores (apellidos, cod_centro, dni, especialidad)
+values (22, 23444800, 'Gonzalez Sevilla, Miguel A.', 'HISTORIA');
+
+3.
+update centros
+set direccion = 'C/Pilón 13', num_plazas = 295
+where cod_centro = 22;
+
+Actividades propuestas:
+
+1.
+insert into profesores (apellidos, cod_centro, dni, especialidad)
+values ('Gonzalez Sevilla, Miguel A.', 22, 23444800, 'HISTORIA');
+
+insert into profesores (apellidos, cod_centro, dni, especialidad)
+values ('Gonzalez Sevilla, Miguel A.', 22, 23444800, 'Estudios intermedios de cómo perder el tiempo');
+
+3.
+update emple
+set salario = (salario + 100), comision = (comision + 10)
+where dept_no = 10;
+
+5.
+delete alum
+where alum.nombre in (select alum.nombre from antiguos, alum 
+		where antiguos.nombre = alum.nombre);
+
+delete from depart
+where dept_no not in(select depart.dept_no from depart, emple
+                      where (depart.dept_no = emple.dept_no));

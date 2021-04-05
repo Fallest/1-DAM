@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejemplo  de formulario</title>
+</head>
+	
+<body>
+	<h1>Formulario estructurado</h1>
+	<form action="respuesta.html" method="POST">
+		<fieldset name="1">
+			<legend>Datos personales</legend>
+			<label for="name">Nombre</label><br />
+			<input type="text" name="name"><br />
+			<label for="surname">Apellido</label><br />
+			<input type="text" name="surname"><br />
+			<label for="dni">DNI</label><br />
+			<input type="text" name="dni"><br />
+
+			<label for="descripcion">Comentarios</label><br />
+			<textarea id="descripcion" name="descripcion" cols="40" rows="5"></textarea><br />
+
+			<label for="coche">Elige un coche</label>
+			<br />
+			<select id="coche" name="coche">
+				<optgroup label="Grupo1">
+					<option value="volvo">Volvo</option>
+					<option value="saab">Saab</option>
+				</optgroup>
+				<optgroup label="Grupo2">
+					<option value="fiat">Fiat</option>
+					<option value="audi">Audi</option>
+				</optgroup>
+			</select>
+		</fieldset>
+		<fieldset name="3">
+			<legend>Datos de conexión</legend><br />
+			<label for="user">Nombre de usuario</label><br />
+			<input type="text" name="user"><br />
+			<label for="pass">Contraseña</label><br />
+			<input type="password" name="pass"><br />
+			<label for="pass-re">Repita la contraseña</label><br />
+			<input type="password" name="pass-re">
+		</fieldset>
+		<fieldset name="3">
+			<legend>Casillas de selección</legend>
+			<label for="opt1">Valor 1</label>
+			<input type="checkbox" id="opt1" name="opt1" value="val1">
+			<label for="opt2">Valor 2</label>
+			<input type="checkbox" id="opt2" name="opt2" value="val2">
+		</fieldset>
+		<fieldset name="4"> <!--Deben tener el mismo nombre, y los identificas con el for por el valor, no por el nombre. Para marcar uno por defecto, le ponemos checked -->
+			<legend>Casillas de selección</legend>
+			<label for="val1">Valor 1</label>
+			<input type="radio" id="opt1" name="opt1" value="val1" checked="checked">
+			<label for="val2">Valor 2</label>
+			<input type="radio" id="opt2" name="opt1" value="val2">
+		</fieldset>
+		<input type="submit" name="submit" value="Enviar">
+		<input type="reset" name="cancel" value="Cancelar">
+	</form>
+</body>
+</html>

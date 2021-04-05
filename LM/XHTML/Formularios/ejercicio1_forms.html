@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio1 de formularios</title>
+</head>
+	
+<body>
+	<form action="respuesta.html" method="POST">
+		<legend><b>Rellena tu CV</b></legend>
+		<br />
+		<label for="name">Nombre</label><br />
+		<input type="text" id="name" maxlength="30"><br />
+		<label for="surname">Apellido</label><br />
+		<input type="text" id="surname" maxlength="80" size="40"><br />
+		<label for="passw">Contraseña</label><br />
+		<input type="password" id="passw" maxlength="10"><br />
+		<label for="dni">DNI</label><br />
+		<input type="text" id="dni" maxlength="9" size="12"><br />
+
+		<label>Sexo</label><br />
+		<input type="radio" id="opt1" name="opt1" value="man">
+		<label for="man">Hombre</label><br />
+		<input type="radio" id="opt2" name="opt1" value="woman">
+		<label for="gender">Mujer</label><br />
+
+		<p>
+		<label for="selectpic">Incluir mi foto </label>
+		<input type="submit" name="selectpic" value="Browse...">
+		<label for="selectpic"> No file selected.</label></p>
+
+		<p>
+		<input type="checkbox" name="bolsub" checked="checked">
+		<label for="bolsub">Suscribirme al boletín de novedades</label>
+		</p>
+
+		<input type="submit" name="submit" value="Guardar cambios">
+		<input type="reset" name="cancel" value="Borrar los datos introducidos">
+	</form>
+</body>
+</html>

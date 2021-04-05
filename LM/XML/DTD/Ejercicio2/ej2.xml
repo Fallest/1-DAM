@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE listapedidos [
+<!ELEMENT listapedidos (pedido*)>
+<!ELEMENT pedido (numeroserie, cantidad, peso?)>
+<!ELEMENT numeroserie (#PCDATA)>
+<!ELEMENT cantidad (#PCDATA)>
+<!ELEMENT peso (#PCDATA)>
+]>
+
+<listapedidos>
+<pedido>
+<numeroserie>32213</numeroserie>
+<cantidad>3</cantidad>
+<peso>5 kg</peso>
+</pedido>
+</listapedidos>

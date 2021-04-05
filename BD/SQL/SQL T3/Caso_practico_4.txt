@@ -1,0 +1,2 @@
+select dept_no "Numero de departamento", dnombre "Departamento" from depart;
+

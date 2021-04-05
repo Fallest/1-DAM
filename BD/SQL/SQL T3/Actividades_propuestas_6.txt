@@ -1,0 +1,8 @@
+select apenom from alumnos, asignaturas, notas
+where ((alumnos.dni = notas.dni) AND (notas.cod = asignaturas.cod)) AND
+((notas.nota in (7, 8)) AND (asignaturas.nombre = 'FOL'));
+
+select nombre from notas, asignaturas
+where (notas.cod = asignaturas.cod) AND
+(asignaturas.cod not in (select notas.cod from notas where nota < 5))
+group by nombre;

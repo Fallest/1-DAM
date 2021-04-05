@@ -1,0 +1,64 @@
+* {
+	background-color: #c4c6b9
+}
+
+h1 {
+	font-family: "Georgia";
+	font-size: 2em;
+	color: #161669;
+}
+
+
+#bloque1 {
+	height: 25em;
+	background-color: inherit;
+}
+
+#bloque1 h2 {
+	background-color: #5d6336;
+	color: white;
+}
+
+#bloque1 img {
+	position: absolute;
+}
+
+#bloque1 img + p {
+	position: relative;
+	margin-left: 17em;
+	margin-right: 0;
+}
+
+#bloque1 p + p {
+	position: relative;
+	margin-left: 17em;
+}
+
+
+#bloque2 {
+	position: relative;
+	height: 25em;
+	background-color: inherit;
+}
+
+#bloque2 h2 {
+	background-color: #5d6336;
+	color: white;
+}
+
+#bloque2 img {
+	position: absolute;
+	margin-left: 72vw;
+}
+
+#bloque2 img + p {
+	position: relative;
+	margin-left: 0em;
+	margin-right: 25em;
+}
+
+#bloque2 p + p {
+	position: relative;
+	margin-left: 0em;
+	margin-right: 25em;
+}

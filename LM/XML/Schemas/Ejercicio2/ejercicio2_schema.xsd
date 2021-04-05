@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="alumnos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="alumno" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="nombre"/>
+              <xs:element name="direccion">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element type="xs:string" name="calle"/>
+                    <xs:element type="xs:byte" name="numero"/>
+                    <xs:element type="xs:string" name="ciudad"/>
+                    <xs:element type="xs:string" name="provincia"/>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="telefono">
+                <xs:complexType>
+                  <xs:choice>
+                    <xs:element type="xs:int" name="fijo"/>
+                    <xs:element type="xs:int" name="movil"/>
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:byte" name="dni"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

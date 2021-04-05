@@ -1,0 +1,8 @@
+select apellido, oficio from emple
+where oficio = (select oficio from emple
+		where apellido = 'FERNANDEZ');
+
+select apellido, oficio, salario from emple
+where (dept_no = (select dept_no from emple
+		where apellido = 'FERNANDEZ'))
+AND (salario = (select salario from emple where apellido = 'FERNANDEZ'));

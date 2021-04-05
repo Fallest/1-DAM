@@ -1,0 +1,22 @@
+Funciones de tipo:
+	-Numérica:
+		·Valores simples
+		·Grupos de valores (más importantes)
+		·Listas de valores
+	-Sobre cadenas:
+		·Devuelven una cadena
+		·Devuelven un número
+	-Sobre fechas
+	-Otras
+	-Transformación de un tipo a otro
+
+Para probar funciones, se puede hacer un select sobre la tabla dual:
+select upper('Hola') from dual;
+select length('aksjdhaksjdhaskdh') from dual;
+
+La función nvl(x, y) sustituye los valores nulos en la columna x por el valor y.
+
+Truncar es modificar el número de decimales de un número. Esto se hace con la
+función trunc().
+
+Al contar (count (oficio)) se puede usar la palabra distinct para que solo cuente los oficios distintos: select count(distinct oficio) from emple;

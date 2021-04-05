@@ -1,0 +1,4 @@
+net start OracleServiceORCL
+net start OracleHome81Agent
+net start OracleOraHome81DataGatherer
+net start OracleOraHome81TNSListener

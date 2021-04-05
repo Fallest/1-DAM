@@ -1,0 +1,11 @@
+select apellido from emple
+where dept_no in(10, 30);
+
+select apellido from emple
+where dept_no not in(10, 30);
+
+select apellido from emple
+where oficio in('VENDEDOR', 'ANALISTA', 'EMPLEADO');
+
+select apellido from emple
+where oficio not in('VENDEDOR', 'ANALISTA', 'EMPLEADO');

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejemplo selectores</title>
+<style type="text/css">
+	.importante{ font-size: 2em;color: white; background-color: blue;}
+	p.importante{color: red;}
+	h1 span {color: cyan;}
+	p > span {color: black;}
+	p * span {color: purple;}
+	h1 + p {text-align: center;}
+
+</style>
+</head>
+
+<body>
+	<!--Si se p.importante en vez de .importante, la clase solo le afectara a los parrafos
+	Si se usa p span {etc} se aplicará al span que hay dentro de los parrafos
+	p > span {etc} solo se alpica a los hijos directos de p.
+	Para que no salgan los hijos directos, se usará p * span{}
+	Que sea hijo directo significa que la etiqueta span está directamente dentro de la p.
+	Al usar h1 + p solo se aplicará a los hermanos (que están en el mismo nivel de indentacion) y que además sean contiguos, y en orden. Solo se aplicara a un p que esté justo antes y al lado de un h1.
+	[nombre_atributo = valor] {etc} hará que solo se aplique a las etiquetas que tengan dicho atributo con dicho valor.
+
+	Se pueden utilizar multiplicadores y porcentajes para aumentar el tamaño de la letra.
+-->
+
+	<h1 class="importante">Ejemplo de <span>css</span></h1>
+	<p class="importante">Párrafo <span>texto</span> 1</p>
+	<p class="importante">Párrafo <em><span>texto 2</span></em></p>
+	<p>Párrafo 3</p>
+	<p>Párrafo 4</p>
+</body>
+</html>
+ 

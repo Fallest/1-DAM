@@ -1,0 +1,12 @@
+select emp_no "Numero de empleado", apellido "Apellido", oficio "Oficio", dept_no "Numero de departamento" from emple
+where dept_no = 20
+order by apellido;
+
+select * from emple
+where job = 'ANALISTA'
+order by emp_no;
+
+select * from emple
+where ((dept_no = 10) and (oficio = 'ANALISTA'))
+order by apellido desc, emp_no desc;
+

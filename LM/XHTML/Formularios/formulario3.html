@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Formulario 3</title>
+</head>
+
+<body>
+	<h3><b>Rellena tu CV</b></h3>
+	<form>
+		<fieldset>
+			<legend>Datos personales</legend>
+			<label for="provincia">Provincia</label>
+			<br />
+			<select name="provincia" id="provincia">
+				<option value="opt0" selected="selected">- selecciona -</option>
+				<option value="opt1">Sevilla</option>
+				<option value="opt2">Huelva</option>
+				<option value="opt3">Cádiz</option>
+				<option value="opt4">Granada</option>
+				<option value="opt5">Jaén</option>
+				<option value="opt6">Almería</option>
+				<option value="opt7">Málaga</option>
+				<option value="opt7">Córdoba</option>
+			</select>
+			<br />
+			<p>
+				<label for="bornin">Fecha de nacimiento</label>
+				<br />
+				<input type="text" name="day" id="bornin" size="5">
+				<label for="month">de</label>
+				<select name="month" id="month">
+					<option value="opt1">Enero</option>
+					<option value="opt2">Febrero</option>
+					<option value="opt3">Marzo</option>
+					<option value="opt4">Abril</option>
+					<option value="opt5">Mayo</option>
+					<option value="opt6">Junio</option>
+					<option value="opt7">Julio</option>
+					<option value="opt8">Agosto</option>
+					<option value="opt9">Septiembre</option>
+					<option value="opt10">Octubre</option>
+					<option value="opt11">Noviembre</option>
+					<option value="opt12">Diciembre</option>
+				</select>
+				<label for="year">de</label>
+				<input type="text" name="year" id="year" size="8">
+			</p>
+
+			<p>
+				<label for="interests">Temas de interés</label>
+				<br />
+				<select id="interests" name="interests" size="5" multiple="multiple">
+				<option value="opt1">Administración de bases de datos</option>
+				<option value="opt2">Análisis y programación</option>
+				<option value="opt3">Arquitectura</option>
+				<option value="opt4">Calidad</option>
+				<option value="opt5">ERP, CRM, Business Intelligence</option>
+				<option value="opt6">Gestió de proyectos</option>
+				<option value="opt7">Hardware</option>
+				<option value="opt8">Redes y seguridad</option>
+				<option value="opt9">Helpdesk</option>
+				<option value="opt10">Sistemas</option>
+				<option value="opt11">Telecomuicacioes</option>
+				</select>
+			</p>
+
+		</fieldset>
+
+	</form>
+</body>
+</html>

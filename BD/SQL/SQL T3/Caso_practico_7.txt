@@ -1,0 +1,17 @@
+select apellido from emple
+where apellido like 'J%';
+
+select apellido from emple
+where apellido like '_R%';
+
+select apellido from emple
+where (apellido like 'A%') and (apellido like '%O%');
+
+select * from libreria
+where tema = 'LABORES';
+
+select * from libreria 
+where tema like 'LABORES';
+
+select * from libreria
+where tema like 'LABORES%';

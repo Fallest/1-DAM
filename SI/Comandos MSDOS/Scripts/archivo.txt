@@ -1,0 +1,4 @@
+La direccion de su ordenador es	...192.168.206.67
+La fecha de hoy es 19-03-2021.
+Hoy se esperan temperaturas altas, que calor!
+

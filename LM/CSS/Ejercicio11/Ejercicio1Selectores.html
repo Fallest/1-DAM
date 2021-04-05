@@ -1,0 +1,60 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio de selectores</title>
+<style type="text/css">
+/* Todos los elementos de la pagina */
+* { font: 1em/1.3 Arial, Helvetica, sans-serif; }
+
+/* Todos los parrafos de la pagina */
+p { color: #555; }
+
+/* Todos los párrafos contenidos en #primero */
+#primero p { color: #336699; }
+
+/* Todos los enlaces la pagina */
+a { color: #CC3300; }
+
+/* Los elementos "em" contenidos en #primero */
+#primero em { background: #FFFFCC; padding: .1em; }
+
+/* Todos los elementos "em" de clase "especial" en toda la pagina */
+em.especial { background: #FFCC99; border: 1px solid #FF9900; padding: .1em; }
+
+/* Elementos "span" contenidos en .normal */
+.normal span { font-weight: bold; }
+
+</style>
+</head>
+
+<body>
+
+<div id="primero">
+<p>HTML, siglas en inglés de HyperText Markup Language, <a href="#">HTML</a> hace referencia al lenguaje de marcado para la elaboración de <em>páginas web</em>.</p>
+</div>
+
+<div class="normal">
+<p>HTML se considera el lenguaje web más importante siendo su invención crucial en la aparición, desarrollo y expansión de la <span>la World Wide Web <a href="#">https://es.wikipedia.org/wiki/World_Wide_Web</a> WWW </span>.Es el estándar que se ha impuesto en la visualización de páginas web y es el que todos los <a href="#">navegadores actuales</a> han adoptado. </p>
+
+
+
+<p>Es un estándar que sirve de referencia del software que conecta con la elaboración de páginas web en sus diferentes versiones, define una estructura básica y un código (denominado código HTML) para la definición de contenido de una página web, como  <em class="especial">texto, imágenes, videos, juegos, entre otros.</em> </p>
+
+<p> Es un estándar a cargo del World Wide Web Consortium (W3C) o <em class="especial">Consorcio WWW</em> , organización dedicada a la estandarización de casi todas las tecnologías ligadas a la web, sobre todo en lo referente a su escritura e interpretación.  <a href="#"> https://www.w3.org/standards/</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

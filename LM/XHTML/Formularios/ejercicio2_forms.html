@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio2 de formularios</title>
+</head>
+	
+<body>
+	<form action="respuesta.html" method="POST">
+		<label for="user">Tu Usuario:</label>
+		<input type="text" name="user" id="user" size="40">
+		<label for="passw">Tu Constraseña:</label>
+		<input type="password" name="passw" id="passw" size="13">
+		<br />
+		<p>
+		<label>Información a recibir:</label><br />
+		<input type="checkbox" name="info1" id="info1">
+		<label for="info1">Manual de Html</label>
+		<input type="checkbox" name="info2" id="info2">
+		<label for="info2">Programa Editor</label>
+		<input type="checkbox" name="info3" id="info2">
+		<label for="info3">Archivo de Ejemplos</label>
+		</p>
+
+		<p>
+		<label>Tu Edad:</label>
+		<input type="radio" name="age" id="age1" value="age1">
+		<label for="age1">Menos de 20 años</label>
+		<input type="radio" name="age" id="age2" value="age2">
+		<label for="age2">Entre 20 y 40 años</label>
+		<input type="radio" name="age" id="age3" value="age3">
+		<label for="age1">Más de 40 años</label>
+		</p>
+
+		<p>
+		<label for="cause">Cómo encontraste mi página :</label>
+		<select name="cause" id="cause">
+			<option value="opt1">De casualidad</option>
+			<option value="opt2">Por el buscador Ole</option>
+			<option value="opt3">Por el buscadoor Yahoo</option>
+			<option value="opt4">Me la comentaron</option>
+		</select>
+		</p>
+
+		<label for="coments">Tus Comentarios:</label><br />
+		<textarea id="coments" name="coments" cols="30" rows="4"></textarea>
+		<br />
+
+		<input type="submit" name="submit" value="Enviar">
+		<input type="reset" name="cancel" value="Borrar">
+	</form>
+</body>
+</html>

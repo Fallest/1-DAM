@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="profesores">
+    <xs:complexType>
+      <xs:sequence>
+      
+        <xs:element name="departamento" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+            
+              <xs:element name="profesor" maxOccurs="unbounded" minOccurs="0">
+              
+                <xs:complexType>
+                  <xs:sequence>
+                  
+                    <xs:element name="nif" type="tipoNif"/>
+                    
+                    <xs:element type="xs:string" name="nombre"/>
+                    
+                    <xs:element type="xs:date" name="fechaalta"/>
+                    
+                    <xs:element type="xs:string" name="categoria"/>
+                    
+                    <xs:element name="asignaturas" type="tipoAsignatura" />
+                    
+                  </xs:sequence>
+                  
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            
+            <xs:attribute type="xs:short" name="cod" use="required"/>
+            <xs:attribute type="xs:string" name="nombre" use="required"/>
+            
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="tipoAsignatura">
+    <xs:sequence>
+      <xs:element type="xs:string" name="asignatura"/>
+      <xs:element type="xs:byte" name="curso"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="tipoNif">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{8}\w"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

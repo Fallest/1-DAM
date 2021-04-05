@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mensaje xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:/C:/Users/David/Documents/1%C2%BA%20DAM/LM/XML/Schemas/Ejercicio1/ej1_schema.xsd">
+<origen>
+<nombre>Ana Sanz Tin</nombre>
+<ciudad>Pamplona</ciudad>
+</origen>
+<destino>
+<nombre>Iker Rubio Mol</nombre>
+<ciudad>Huelva</ciudad>
+</destino>
+<asunto>¡Vuelve pronto!</asunto>
+</mensaje>

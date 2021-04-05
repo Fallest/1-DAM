@@ -1,0 +1,33 @@
+select * from emple
+where oficio = (select oficio from emple
+		where apellido = 'SANCHEZ' OR apellido = 'SALA');
+
+select * from emple
+where oficio in (select oficio from emple
+		where apellido = 'SANCHEZ' OR apellido = 'SALA');
+>Usar el in por si el = da error.
+
+select * from emple
+where salario > any(select salario from emple
+			where oficio = 'Vendedor');
+>El ' > any' se usará para seleccionar los salarios que sean superiores a cualquiera de los que tengan los vendedores.
+
+
+select * from emple
+where salario > all(select salario from emple
+			where oficio = 'Vendedor');
+>En este caso, con el all, solo seleccionara los salarios que sean superiores a todos los salarios de los vendedores.
+
+Mostrar el nombre de los departamentos que no tienen empleados:
+select dnombre from depart D
+where dept_no not exists (select dept_no from emple 
+		where dept_no = D.dept_no);
+>Aparentemente en vez de "not exists" tambien se puede usar "not in", pero in compara
+con la lista de resultados, que es lo que "no queremos". No lo entiendo lol.
+
+Mostrar el nombre del empleado y el nombre del dept al que pertenece:
+select apellido, dnombre from emple, depart
+where emple.dept_no = depart.dept_no;
+> cuando usas dos tablas separadas por comas, estas haciendo el producto cartesiano.
+>si en el where seleccionamos las filas que se compartan entre las dos tablas(la FK),
+>hacemos un JOIN.

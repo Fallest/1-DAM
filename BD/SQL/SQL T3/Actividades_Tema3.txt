@@ -1,0 +1,219 @@
+Casos prácticos:
+
+3.
+select emp_no "Numero de empleado", apellido "Apellido", oficio "Oficio", dept_no "Numero de departamento" from emple
+where dept_no = 20
+order by apellido;
+
+select * from emple
+where job = 'ANALISTA'
+order by emp_no;
+
+select * from emple
+where ((dept_no = 10) and (oficio = 'ANALISTA'))
+order by apellido desc, emp_no desc;
+
+4.
+select dept_no "Numero de departamento", dnombre "Departamento" from depart;
+
+5.
+select nombre_alumno "Nombre Alumno", ((nota1 + nota2 + nota3) / 3) "Nota media" 
+from notas_alumnos;
+
+6.
+select * from notas_alumnos
+where (nota1 = 7) and (((nota1 + nota2 + nota3) / 3) > 6);
+
+7.
+select apellido from emple
+where apellido like 'J%';
+
+select apellido from emple
+where apellido like '_R%';
+
+select apellido from emple
+where (apellido like 'A%') and (apellido like '%O%');
+
+select * from libreria
+where tema = 'LABORES';
+
+select * from libreria 
+where tema like 'LABORES';
+
+select * from libreria
+where tema like 'LABORES%';
+
+8.
+select apellido from emple
+where dept_no in(10, 30);
+
+select apellido from emple
+where dept_no not in(10, 30);
+
+select apellido from emple
+where oficio in('VENDEDOR', 'ANALISTA', 'EMPLEADO');
+
+select apellido from emple
+where oficio not in('VENDEDOR', 'ANALISTA', 'EMPLEADO');
+
+9.
+select apellido from emple
+where salario not between 1500 and 2000;
+
+10.
+select apellido, salario, dept_no from emple
+where (salario > 2000) and (dept_no in(10, 20));
+
+11.
+select oficio from emple
+where apellido = 'GIL';
+
+select apellido from emple
+where oficio = 'ANALISTA';
+
+select apellido from emple
+where oficio = (select oficio from emple where apellido = 'GIL');
+
+12.
+select * from emple, depart
+where (emple.dept_no = depart.dept_no) AND emple.dept_no in (select depart.dept_no from depart
+							where depart.loc = 'MADRID' OR depart.loc = 'BARCELONA');
+
+13.
+select apellido, oficio, emp_no, dnombre, loc from emple, depart
+where emple.dept_no = depart.dept_no;
+
+select apenom, nombre, nota from alumnos, asignaturas, notas
+where (alumnos.dni = notas.dni) AND (asignaturas.cod = notas.cod);
+
+select apenom from alumnos, asignaturas, notas
+where (alumnos.dni = notas.dni) AND (notas.cod = asignaturas.cod)
+AND (asignaturas.nombre = 'FOL');
+
+
+Actividades propuestas:
+
+3.
+select * from alum0405;
+
+select dni, nombre, apellidos, curso, nivel, clase from alum0405;
+
+select * from alum0405
+where poblacion = 'GUADALAJARA';
+
+select nombre, apellidos from alum0405
+where poblacion = 'GUADALAJARA';
+
+select dni, nombre, apellidos, curso, nivel, clase from alum0405
+order by apellidos, nombre;
+
+4.
+select apellido, oficio, salario, fecha_alt from emple
+where (oficio = (select oficio from emple where apellido = 'JIMENEZ'))
+or (salario >= (select salario from emple where apellido = 'FERNANDEZ'));
+
+5.
+select apellido, oficio from emple
+where oficio = (select oficio from emple
+		where apellido = 'FERNANDEZ');
+
+select apellido, oficio, salario from emple
+where (dept_no = (select dept_no from emple
+		where apellido = 'FERNANDEZ'))
+AND (salario = (select salario from emple where apellido = 'FERNANDEZ'));
+
+6.
+select apenom from alumnos, asignaturas, notas
+where ((alumnos.dni = notas.dni) AND (notas.cod = asignaturas.cod)) AND
+((notas.nota in (7, 8)) AND (asignaturas.nombre = 'FOL'));
+
+select nombre from notas, asignaturas
+where (notas.cod = asignaturas.cod) AND
+(asignaturas.cod not in (select notas.cod from notas where nota < 5))
+group by nombre;
+
+
+Actividades complementarias:
+
+1.
+select apellido, oficio, loc from emple, depart
+where emple.oficio = 'ANALISTA';
+
+2.
+select * from emple
+where dir = (select dir from emple where (apellido = 'CEREZO'));
+
+3.
+select * from emple, depart
+where (emple.dept_no = depart.dept_no) AND (dnombre = 'VENTAS');
+
+4.
+select * from depart
+where depart.dept_no not in (select emple.dept_no from emple);
+
+5.
+select * from depart
+where depart.dept_no in (select emple.dept_no from emple);
+
+6.
+select apellido, salario from emple
+where salario > all(select salario from emple where dept_no = 20);
+
+7.
+select * from libreria 
+where ejemplares between 8 AND 15;
+
+8.
+select * from libreria
+where estante not between 'B' AND 'D';
+
+9.
+select tema from libreria 
+where ejemplares<(select ejemplares from libreria where tema='MEDICINA');
+
+10.
+select tema from libreria
+where (ejemplares not between 15 and 20) OR
+(ejemplares in(15,20));
+
+11.
+select asignaturas.cod, asignaturas.nombre from asignaturas, alumnos, notas
+where (notas.dni = alumnos.dni) and (asignaturas.cod = notas.cod) and
+(asignaturas.nombre like '%o%o%o%') and 
+(alumnos.pobla = 'MADRID');
+
+12.
+select apenom from alumnos, notas
+where (alumnos.dni = notas.dni) and 
+(notas.nota < 5);
+
+13.
+select apenom from alumnos, notas, asignaturas
+where (alumnos.dni = notas.dni) and (notas.cod = asignaturas.cod) and
+(notas.nota in (select nota from notas, alumnos , asignaturas
+		where (alumnos.dni = notas.dni) and (notas.cod = asignaturas.cod) and
+		(alumnos.apenom = 'Díaz Fernández, María') and
+		(asignaturas.nombre = 'FOL')))
+group by apenom;
+
+14.
+select * from asignaturas
+where asignaturas.nombre not in(select nombre from asignaturas, alumnos, notas 
+		where (asignaturas.cod = notas.cod) 
+		and (notas.dni = alumnos.dni));
+
+15.
+select apenom from alumnos
+where alumnos.apenom in (select apenom from notas, asignaturas, alumnos
+			where (notas.dni = alumnos.dni)
+			and (asignaturas.cod = notas.cod)
+			and (asignaturas.cod = 1));
+
+16.
+select apenom from alumnos
+where alumnos.apenom not in (select apenom from notas, asignaturas, alumnos
+			where (notas.dni = alumnos.dni)
+			and (asignaturas.cod = notas.cod)
+			and (asignaturas.cod = 1));
+
+

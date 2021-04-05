@@ -1,0 +1,2 @@
+select apellido, salario, dept_no from emple
+where (salario > 2000) and (dept_no in(10, 20));

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es" >
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ejercicio con hoja de estilo interna</title>
+<style type="text/css">
+h3 {
+	border: medium solid #360;
+	color: #FF0;
+	background-color: #0C0;
+}
+.clase {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 14px;
+	font-style: italic;
+	font-weight: bold;
+	color: #C30;
+	border-top-width: thin;
+	border-right-width: thin;
+	border-bottom-width: thin;
+	border-left-width: thin;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: dotted;
+	border-left-style: none;
+	border-top-color: #9C0;
+	border-right-color: #9C0;
+	border-bottom-color: #9C0;
+	border-left-color: #9C0;
+}
+#idparaestilo {
+	background-color: #C9F;
+	letter-spacing: 5px;
+	color: #FFF;
+	word-spacing: 10px;
+}
+#consejo {
+	font-family: Tahoma, Geneva, sans-serif;
+	background-color: #FF6;
+	font-weight: bold;
+	color: #00F;
+	text-align: justify;
+}
+</style>
+</head>
+<body>
+	<h2>Estilos: Trabajando con textos.</h2>
+	<p><strong><em>
+		Párrafo sin estilos (no hacemos uso de ninguna CSS): ese párrafo esta en negrita y cursiva.
+		También ha sido indentado para que no llegue a los bordes. Todo esta
+		realizado desde el panel de propiedades en las opciones HTML.	
+	</em></strong></p>
+
+	<p id="consejo">
+		Se aconseja el uso de estilos para el diseño de la
+		página, aunque el HTML permite añadir atributos y otras posibilidades
+		para el diseño la tendencia es que acabe utilizandose exclusivamente
+		para los contenidos.
+	</p>
+
+	<p style="background-color: cyan;font-variant-caps: petite-caps;color: blue;text-transform: capitalize;">
+		Estilo en linea (afecta unicamEnte a este elemento, va incorporado en la etiqueta HTML)
+	</p>
+
+	<h3>
+		Estilo para las etiquetas &lt;h3&gt; (afecta a todas las etiquetas &lt;h3&gt;)
+	</h3>
+
+	<p class="clase">
+		Estilo para la clase .clase (se aplica a cualquier etiqueta cuya clase sea establecida a este tipo). Siempre 
+		empieza por un punto.
+	</p>
+
+	<h4 class="clase">
+		Esto es un texto en una etiqueta h4 pero le aplicamos la misma clase que al parrafo anterior-&gt;.clase
+	</h4>
+
+	<p id="idparaestilo">
+		Estilo a un id (se aplica al elemento que esteidentificado con ese id). En una página cada id debe ser exclusivo de
+		una sola etiqueta (lo que hemos hecho en esta página con un id repetido
+		sería incorrecto)
+	</p>
+
+	<table style="padding: 1px;border: 1px solid grey; width: 100vw"> 
+		<tr>
+			<td style="border: 1px solid grey"><h3>Texto en h3</h3></td>
+			<td class="clase">Texto con .clase</td>
+			<td id="idparaestilo">Misma id</td>
+		</tr>
+	</table>
+
+	
+	
+
+</body>
+</html>

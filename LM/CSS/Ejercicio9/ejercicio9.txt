@@ -1,0 +1,13 @@
+
+Al anidar etiquetas, no se pueden cruzar. Así, se ha empezado por la etiqueta de inicio de párrafo, pero a continuación hay otra etiqueta de inicio para énfasis, por lo que antes de cerrar la etiqueta de párrafo hay que cerrar la etiqueta de énfasis.
+Los párrafos creados con HTML son elementos de bloque, por lo que siempre ocupan toda la anchura de la ventana del navegador.
+Strong es una etiqueta en línea 
+Al anidar etiquetas, no se pueden cruzar. Así, se ha empezado por la etiqueta de inicio de párrafo, pero a continuación hay otra etiqueta de inicio para énfasis, por lo que antes de cerrar la etiqueta de párrafo hay que cerrar la etiqueta de énfasis.
+Los párrafos creados con HTML son elementos de bloque, por lo que 
+siempre ocupan toda la anchura de la ventana del navegador.
+Strong es una etiqueta en línea.
+
+
+
+
+

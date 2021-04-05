@@ -1,0 +1,3 @@
+select * from emple, depart
+where (emple.dept_no = depart.dept_no) AND emple.dept_no in (select depart.dept_no from depart
+							where depart.loc = 'MADRID' OR depart.loc = 'BARCELONA');

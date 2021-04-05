@@ -1,0 +1,2 @@
+select * from notas_alumnos
+where (nota1 = 7) and (((nota1 + nota2 + nota3) / 3) > 6);

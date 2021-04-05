@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<persona xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" dni="12345678-L" xsi:noNamespaceSchemaLocation="file:/C:/Users/David/Documents/1%C2%BA%20DAM/LM/XML/Schemas/Ejercicio7/ejercicio7.xsd">
+<nombre> Juan Antonio</nombre>
+<apellido> Abascal</apellido>
+<estadoCivil>Soltero</estadoCivil>
+<edad>60</edad>
+<enActivo/>
+</persona>

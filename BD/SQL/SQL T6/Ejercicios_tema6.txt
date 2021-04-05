@@ -1,0 +1,77 @@
+1.
+insert into asignaturas
+values (9, 'Matemáticas');
+insert into asignaturas
+values (10, 'Inglés');
+insert into asignaturas
+values (11, 'Mecanografía');
+
+2.
+insert into alumnos (apenom, dni)
+values ('Cantón, David', 12888888);
+
+3.
+update alumnos set pobla= 'ARANJUEZ'
+where pobla= 'MADRID';
+
+4.
+update alumnos set pobla = 'SEVILLA', direc = 'c/Sol, nº4'
+where nombre = 'Cantón, David';
+
+5.
+update libreria set estante = 'F'
+where estante = 'E';
+update asignaturas set nombre = 'F. y Orient. Lab.'
+where nombre = 'FOL';
+
+6.
+update libreria set ejemplares = (ejemplares + 2)
+where (tema like 'D%' and tema like '%P%') 
+or (tema like 'D%' and tema like '%B%');
+
+7.
+update libreria set ejemplares = (ejemplares + (ejemplares*0.1))
+where (estante = 'B') or (estante = 'C');
+
+8.
+insert into notas(dni, cod,nota)
+values(56882942, 1,8);
+insert into notas(dni, cod,nota)
+values(56882942, 2,3);
+
+9.
+update notas set nota = (nota + 1)
+where (cod = 3) and (dni = (select dni from notas
+			 where (cod = 2) and (nota = 5)));
+
+10.
+update notas_alumnos set nota3 = (nota3 + 3)
+where ((nota1 + nota2 + nota3) / 3) > 6;
+
+11.
+update emple set salario = (select salario from emple where apellido = 'MARTIN'),
+comision = 2*(select comision from emple where apellido = 'ARROYO')
+where dept_no = (select dept_no from depart where dnombre = 'VENTAS')
+and oficio != ('VENDEDOR');
+
+12.
+update emple set salario = 1.1*(select salario from emple where apellido = 'SALA'),
+comision = 1.1*(select salario from emple where apellido = 'SALA')
+where dept_no = (select dept_no from depart where dnombre = 'VENTAS')
+and oficio = ('VENDEDOR');
+
+13.
+delete alumnos where pobla = 'SEVILLA';
+
+14.
+delete asignaturas 
+where (cod = 3 and nombre like 'A%') or (cod = 6 nombre like 'A%');
+
+15.
+delete asignarutas 
+where (cod = 2 or cod = 5)
+or nombre like 'P%';
+
+16.
+delete emple where oficio = 'ANALISTA' 
+and dept_no = (select dept_no from depart where loc = 'MADRID');

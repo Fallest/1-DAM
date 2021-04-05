@@ -1,0 +1,8 @@
+select oficio from emple
+where apellido = 'GIL';
+
+select apellido from emple
+where oficio = 'ANALISTA';
+
+select apellido from emple
+where oficio = (select oficio from emple where apellido = 'GIL');

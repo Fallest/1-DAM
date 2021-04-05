@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Ejemplo de tablas anidadas</title>
+</head>
+<body>
+
+	<table border="3"><caption>Ejemplo de tablas anidadas</caption>
+		<tr>
+			<td>Tabla principal</td>
+			<th>Columna 1</th>
+			<th>Columna 2</th>
+		</tr>
+
+		<tr>
+			<th>Fila 1</th>
+			<td>
+				<table border="1" ><caption>Tabla 1</caption>
+					<tr>
+						<td>Celda 1</td>
+						<td>Celda 2</td>
+					</tr>
+					<tr>
+						<td>Celda 3</td>
+						<td>Celda 4</td>
+					</tr>
+				</table>
+			</td>
+
+			<td>
+				<table border="1"><caption>Tabla 2</caption>
+					<tr>
+						<td colspan="2">Celda 1</td>
+					</tr>
+					<tr>
+						<td>Celda 3</td>
+						<td>Celda 4</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		<tr>
+			<th>Fila 2</th>
+			<td>
+				<table border="1"><caption>Tabla 3</caption>
+					<tr>
+						<td rowspan="2">Celda 1</td>
+						<td>Celda 2</td>
+					</tr>
+					<tr>
+						<td>Celda 3</td>
+					</tr>
+				</table>
+			</td>
+
+			<td>
+				<table border="1"><caption>Tabla 4</caption>
+					<tr>
+				[Gasping]
+
+						<td>Celda 1</td>
+						<td>Celda 2</td>
+					</tr>
+					<tr>
+						<td colspan="2">Celda 3</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+	</table>
+</body>
+</html>

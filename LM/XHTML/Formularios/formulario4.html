@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Formulario 4</title>
+</head>
+
+<body>
+	<h3><b>Información sobre el producto</b></h3>
+	<form action="" method="POST">
+		<fieldset>
+			<legend>Datos básicos</legend>
+			<label for="name">Nombre</label>
+			<br />
+			<input type="text" name="name" id="name" size="40">
+			<br />
+
+			<p>
+				<label for="description">Descripción</label>
+				<br />
+				<textarea id="description" name="description" cols="40" rows="5"></textarea>
+			</p>
+
+			<p>
+				<label for="picture">Foto</label>
+				<input type="text" name="picame" id="picture" readonly="readonly" value="" size="10">
+				<input type="submit" name="picselect" id="picselect" value="Elegir...">
+			</p>
+
+			<p>
+				<input type="checkbox" name="counter" id="counter"> 
+				<label for="counter">Añadir contador de visitas</label>
+			</p>
+		</fieldset>
+
+		<fieldset>
+			<legend>Datos económicos</legend>
+			<label for="price">Precio</label>
+			<input type="text" name="precio" id="precio" size="3">
+			<label for="price">€</label>
+			<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<label for="taxes">Impuestos</label>
+			<select id="taxes" name="taxes">
+				<option value="opt1" selected="selected">4%</option>
+				<option value="opt2">7%</option>
+				<option value="opt3">16%</option>
+				<option value="opt4">25%</option>
+			</select>
+			<br />
+			<label for="promotion">Promoción</label>
+			<br /> 
+			<input type="radio" name="promo" id="none" value="val1" checked="checked">
+			<label for="none">Ninguno</label>
+			<br />
+			<input type="radio" name="promo" id="free_transport" value="val2">
+			<label for="free_transport">Transporte gratuito</label>
+			<br />
+			<input type="radio" name="promo" id="discount" value="val3">
+			<label for="discount">Descuento 5%</label>
+		</fieldset>
+
+	</form>
+</body>
+</html>

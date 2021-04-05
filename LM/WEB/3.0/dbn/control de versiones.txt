@@ -1,0 +1,15 @@
+Versión 1.0: 12/10/2020
+	-Creado index.html, pincipal.html, y los días concretos de entradas.
+	-Organizado general de los días en los que se ha hecho una entrada.
+
+Versión 2.0: 2/11/2020
+	-Añadido de imágenes a la web.
+	-Añadido tabla de menú para moverse por la página.
+	-Creado control de versiones.txt.
+	-Añadido color de fondo a todos los archivos menos a index.html.
+	-Eliminados los días de julio por falta de espacio (el limite de moodle de 4MB no ayuda mucho con las fotos de DSLR).
+
+Versión 3.0: 16/11/2020
+	-Añadido un favicon.
+	-Añadido link a mi shutterstock en la foto principal.
+	-Añadidos links al LinkedIn de David Barrero en sus fotos.

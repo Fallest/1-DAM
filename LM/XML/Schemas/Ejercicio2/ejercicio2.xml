@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<alumnos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:/C:/Users/David/Documents/1%C2%BA%20DAM/LM/XML/Schemas/Ejercicio2/ejercicio2_schema.xsd">
+  <alumno dni="111">
+    <nombre>Antonio Pérez</nombre>
+    <direccion>
+      <calle>Calle Fuente</calle>
+      <numero>4</numero>
+      <ciudad>Jabugo</ciudad>
+      <provincia>Huelva</provincia>
+    </direccion>
+    <telefono>
+      <fijo>959222324</fijo>
+    </telefono>
+  </alumno> 
+  <alumno dni="111">
+    <nombre>Antonio Pérez</nombre>
+    <direccion>
+      <calle>Calle Fuente</calle>
+      <numero>4</numero>
+      <ciudad>Jabugo</ciudad>
+      <provincia>Huelva</provincia>
+    </direccion>
+    <telefono>
+      <fijo>959222324</fijo>
+    </telefono>
+  </alumno> 
+</alumnos>

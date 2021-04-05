@@ -1,0 +1,161 @@
+Sesion de evaluacion - Viernes 24 Marzo
+Practica de comandos/scripts - Viernes 5 Marzo / Lunes 8 Marzo
+Examen final - Viernes 19 Marzo
+------------------------------------------------------------------
+1. Lenguaje máquina
+2. Lenguaje ensamblador
+3. Lenguaje estructurado
+
+Indentar: Tabular para mantener estructurado el código según sus jerarquías.
+
+Ruta relativa: Va a tener '.' y '..' . El '.' hace referencia al directorio
+	actual. Los '..' hacen referencia al directorio padre.
+Ruta absoluta: Es la dirección completa a un directorio o archivo. Esto incluye
+	el disco en el que se encuentra el directorio, y todas las carpetas por
+	las que se tiene que pasar para llegar al directorio. El disco puede ser
+	la unidad raíz (que es C:\) o unidad activa (D:\, E:\, ...)
+
+* C:\ Se llama unidad raíz. Es la unidad que contiene al SO.
+* Para cambiar de unidades se usa cd <Ud>. Ej: cd W:\
+* Al hacer scripts, siempre usar rutas absolutas.
+
+Dos tipos de archivos: Directorio y archivos regulares.
+
+Cuatro tipos de comandos: Comandos referentes a procesos por lotes 
+	(goto, rem, pause, ...); comandos específicos para los archivos regulares;
+	comandos para la gestión de ficheros; comandos específicos para el sistema.
+
+Comodines: Solo hay dos tipos: '?' y '*'. '?' equivale a cualquier caracter 
+	alfanumérico (' ' también es un char). '*' equivale a caracter o
+	conjunto de caracteres, sin importar su longitud y orden.
+
+Nombres de la consola de comandos:
+	-Linux: Terminal o consola
+	-Windows: Terminal (solo con powershell o la terminal conjunta con linux).
+		Símbolo del sistema, consola de comandos, MS-DOS.
+
+Comandos:
+	-prompt: cambia la forma en la que se ve el prompt de la consola.
+		Se puede usar para mostrar la ruta activa, etc. Si se usa
+		>prompt
+		se pone el prompt que estaba por defecto.
+
+* Códigos de comandos: Se almacenan en la variable ERRORLEVEL
+	- 0: Comando ejecutado correctamente
+	- 1: Error en la ejecución del comando
+	- != 0: Error en la ejecución del comando
+
+* Para acceder al contenido de las variables se usa %nombrevariable%.
+* Se puede mostrar por pantalla con el comando echo.
+* En la programación por lotes se tiene % y números hasta el 128. Estos son
+parámetros o argumentos. Acompañan a la ejecución del programa. Se verian asi
+	> %76
+Eso es un argumento, no una variable. Para ser una variable tiene que estar entre
+%.
+
+Variables:
+	-set: ERRORLEVEL 1 si no se encuentra la variable. Al ponerlo a secas
+		nos muestra todas las variables del sistema.
+
+* CTRL + C : break
+* CTRL + Z : pausar
+* Lo que aparece entre corchetes al hacer el /? es porque es opcional.
+* Todo comando produce un stdout (salida estándar), y/o un stdin (entrada estándar),
+y/o stderr (salida de errores). Un stdin se hace con un <. Cada uno tiene
+un código que es 0 para stdin, 1 para stdout, 2 para stderr. No confundir
+con los códigos de error. 
+Se usan con redireccionamientos: para stdin se usa el < (de izq a dcha);
+para stdout se usa > y para stderr se usa >>. Lo que hace el >> es que 
+si algo no existe lo crea, y si ya existe añade (como un 'guardar')
+mientras que > crea un archivo nuevo, y si existe lo reemplaza
+(como un 'guardar como').
+
+* Al abrir el terminal sin permisos de administrador, saldrá la ruta
+de nuestro usuario. Si se abre como administrador, el prompt será 
+C:\Windows\system32.
+
+* Salidas del comando	Redirecciones	
+stdin 	0		(0)	<	
+stdout	1		(1)	>	
+stderr	2		(2)	>>	
+
+Esos números entre paréntesis se ponen pegados a las redirecciones, para
+indicar qué queremos que salga.
+Si el stderr aparece, es porque el programador/es ha considerado su
+posterior evaluación. Básicamente, que tiene un uso.
+Si al hacer por ejemplo > copy asdkhasd > error.txt
+y no aparece nada en pantalla y en el .txt aparece el mensaje de error, 
+no se ha tenido en cuenta el stderr, y se ha mostrado el error por stdout.
+Si por el contrario al ejecutarlo aparece un mensaje de error en pantalla
+y el .txt está vacío, se ha tenido en cuenta el stderr.
+
+Para guardar un stderr en un txt de un comando que ha tenido en cuenta
+el stderr, se deberá usar el 2 antes del >. Por ejemplo:
+> cf asdasdasd 2> error.txt
+Este comando no mostrará error por pantalla, y pasará el texto al archivo.
+
+Tuberías
+& (concatena dos o más comandos)
+&& (AND lógico)
+|| (OR lógico)
+| (pipe, le pasa al segundo comando la salida del primero)
+
+
+> comando1 && comando2
+Un comando es true si su errorlevel es 0, es false si es != 0.
+El && no evalúa el segundo comando si el primero es true. Es decir,
+&& sirve para ejecutar el comando2 solo si el comando1 es true.
+
+> comando1 || comando2
+El || llegará hasta que un comando sea true. Es decir, seguirá con
+la ejecución mientras el comando actual que esté evaluando sea false.
+
+> comando1 | comando2
+Se usan 3 filtros generalmente con el pipe: more (muestra más datos);
+sort (ordena alfabéticamente la salida); y find, que encuentra un dato
+concreto.
+
+* Usando 1>&2 hace que el stdout vaya a donde el stderr, y 2>&1 hace lo contrario.
+
+* %0, %1, ... son argumentos o parámetros que acompañan la ejecución del script o batch.
+%0 equivale al nombre del script. Los comandos para trabajar con cadenas será para cuando
+trabajemos con scripts.
+
+* Para seleccionar partes de una cadena almacenada en una variable:
+set x=HOLA
+echo %x% 	// Para mostrar la variable x
+echo %x:~1,3% 	// Muestra OLA (sin el primer elemento, que es la H)
+Ese estilo de coordenadas indica primero por donde empieza a contar (1 es después del primer
+elemento, y 3 es el número de caracteres que va a mostrar empezando desde el 1).
+Si se usa un número negativo en el segundo número, empezará a contar desde el final
+de la cadena, incluso si se empieza desde otro punto en la cadena, contará desde el
+final.
+
+Ejercicio1:
+Mostrar EBRE desde las cuatro perspectivas.
+set y=FEBRERO
+
+echo %y:~1,4%
+echo %y:~1,-2%
+echo %y:~-6,4%
+echo %y:~-6,-2%
+
+* Para sustituir elementos de la variable:
+set z=vuenos dias
+echo %z:v=b%
+
+Ejercicio2:
+Poner la fecha en versión MM-DD-YYYY
+set fecha=%date:~3,3%%date:~0,3%%date:~6,4%
+set fecha=%fecha:/=-%
+echo %fecha%
+
+Ejercicio3:
+Poner HH:MM:SS,CS en una variable hora sin las centésimas, usando ',' en vez de ':'.
+set hora=%time:~0,2%,%time:~3,2%,%time:~6,2%
+echo %hora%
+
+* Para eliminar una variable, por ejemplo la z, se hace:
+set z=
+Esto la "elimina", solo hace que no aparezca cuando usamos el comando set.
+Para eliminar de verdad la variable, debe cerrarse la consola.

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejemplo de estilo externo</title>
+	<link rel="stylesheet" type="text/css" href="estilos2.css" media="screen">
+
+</head>
+<body>
+	<!--Al usar link para añadir un 
+	archivo de estilos, no tenemos ese 
+	texto en el archivo de html y es más 
+	fácil editarlo.
+
+	Además, para asignar un color a las
+	cosas, se puede usar tuplas de rgb
+	La sitaxis sería rgb(int, int, int)
+	También se puede usar el canal alfa, 
+	usándolo como un cuarto elemento de la
+	tupla, que sería de tipo float (0-1).
+	La etiqueta span indica una zona en la que habrá 
+	un estilo distinto.
+	Para identificar en el archivo css al span con id 
+	'distinto', se usa la almoadilla, tal que así
+	#distinto{insertar caracteristicas directamente 
+	aqui}
+
+	En el archivo estilos2.css, se usa un 
+	*{caracteristicas}, esto hace que esas 
+	caracteristicas se apliquen a todos los elementos 
+	de la página.
+
+	También se puede crear el atributo class en 
+	las etiquetas, y luego en el archivo de css,
+	usando por ejemplo .importante para hacer
+	referencia a las etiquetas que tengan como
+	atributo la clase importante, le aplicará lo que
+	se le asigne en las características:
+	.importante {caraterísticas}
+	-->
+
+	<h1>Esto es un <span id="distinto">encabezado</span></h1>
+	<p>Texto 1</p>
+	<p class="importante">Este es otro párrafo</p>
+	<h1>'a'</h1>
+	<p class="importante">Este es otro maldito párrafo</p>
+</body>
+</html>

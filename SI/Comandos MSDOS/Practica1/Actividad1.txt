@@ -1,0 +1,91 @@
+/* Ejercicio 1 */
+cd C:\
+mkdir comandos
+cd comandos
+mkdir practica
+mkdir teoria
+
+/* Ejercicio 2 */
+cd teoria
+attrib /? > ayuda.txt
+
+/* Ejercicio 3 */
+copy ayuda.txt copia1.txt
+copy ayuda.txt copia2.txt
+copy ayuda.txt copia3.txt
+
+/* Ejercicio 4 */
+attrib +R ayuda.txt
+
+/* Ejercicio 5 */
+attrib -R ayuda.txt
+
+/* Ejercicio 6 */
+attrib -A copia1.txt && attrib -A copia2.txt  && attrib -A copia3.txt
+
+/* Ejercicio 7 */
+attrib +S copia1.txt
+
+/* Ejercicio 8 */
+copy copia1.txt ../
+copy copia2.txt ../
+copy copia3.txt ../
+
+/* Ejercicio 9 */
+cd ..
+attrib +R -A copia1.txt
+attrib +S copia2.txt
+attrib +S -A copia3.txt
+
+/* Ejercicio 10 */
+mkdir ../copia1 && mkdir ../copia2 && mkdir ../copia3
+
+/* Ejercicio 11 */
+cd ..
+xcopy comandos copia1
+xcopy /s comandos copia2
+xcopy /e comandos copia3
+
+/*
+La primera orden xcopy va a copiar todo lo que hay dentro de /comandos a copia1.
+La segunda orden xcopy va a copiar todo lo que hay dentro de /comandos a copia2,
+excluyendo los directorios que estén vacíos, es decir, va a excluir el directorio
+practica, porque está vacío.
+En la segunda orden xcopy, hace lo mismo que la primera pero incluye los directorios
+vacíos. En este caso sí copiará el directorio practica
+*/
+
+/* Ejercicio 12 */
+rd copia1 && rd copia2 && rd copia3
+
+/* Ejercicio 13 */
+cd comandos
+attrib /? > oculto.txt && attrib +H oculto.txt
+
+/* Ejercicio 14 */
+cd ..
+
+xcopy comandos copia1
+xcopy /s comandos copia2
+xcopy /e comandos copia3
+
+rd copia1 && rd copia2 && rd copia3
+
+/*
+Se han borrado todos los archivos que hubiera en cada copia. El archivo oculto.txt
+no estaba en ninguna de ellas, puesto que no se ha usado el parametro /h.
+*/
+
+/* Ejercicio 15 */
+cd C:\
+xcopy /h comandos copia1
+xcopy /hs comandos copia2
+xcopy /he comandos copia3
+
+/*
+El primer comando xcopy va a copiar los datos que haya en comandos a copia1, 
+incluyendo los ocultos (que es el oculto.txt).
+El segundo comando va a copiar los datos a copia2, incluyendo los arhivos ocultos y 
+excluyendo los vacíos (practica).
+El tercero, copia los datos a copia3, incluyendo los archivos ocultos y los vacíos.
+*/

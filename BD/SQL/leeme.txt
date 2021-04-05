@@ -1,0 +1,10 @@
+Oracle8i Enterprise Edition Release 3 (8.1.7) for Windows 2000/NT 
+ Download the Complete File 
+   oracle817ntee.zip (598,389 kb)  
+  Directions 
+   Download Oracle8i in ZIP format 
+   Unzip oracle817ntee.zip into a directory. 	
+   Run setup.exe from the 'Disk 1\install\win32\' directory  
+   Read the installation guide (pdf) and Readme (pdf) before installing. 
+
+ 

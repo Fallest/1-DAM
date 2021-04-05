@@ -1,0 +1,426 @@
+/* Ejercicios BD Tiendas:
+Inserta cinco filas en cada una de las tablas 
+(TIENDAS,ARTÍCULOS,FABRICANTES,PEDIDOS Y VENTAS) y realiza los siguientes 
+ejercicios. Para todas las consultas debes indicar enunciado, sentencia y
+resultado. */
+
+insert into tiendas values('89636523A', 'Utensilios de cocina Luis', 'C/Las pajanosas N 23', 'Alcalá de Guadaíra', 'SEVILLA', 41101);
+insert into tiendas values('74036298N', 'Electrónica Sor María', 'C/Sor María N 15', 'Olivares', 'SEVILLA', 41807);
+insert into tiendas values('62735461K', 'Utensilios Casera', 'C/Alemania N 48', 'Cáceres', 'CACERES', 40701);
+insert into tiendas values('06846242C', 'Electrodomésticos Fran', 'C/Talavera N 13', 'Alcalá de Guadaíra', 'SEVILLA', 41101);
+insert into tiendas values('25439786F', 'El Bazar Anticuado', 'C/El Torcal N 2', 'Antequera', 'MALAGA', 42098);
+/* 
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+*/
+
+insert into fabricantes values(232, 'ANTONIO', 'ESPANA');
+insert into fabricantes values(542, 'JAIME', 'ESPANA');
+insert into fabricantes values(233, 'SANDRA', 'ALEMANIA');
+insert into fabricantes values(341, 'MANUEL', 'ESPANA');
+insert into fabricantes values(771, 'ANA MARIA', 'ESPANA');
+/* 
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+*/
+
+insert into articulos values('Espumadera', 542, 1, 'Tercera', 0.85, 0.50, 134);
+insert into articulos values('Cable ethernet', 232, 2, 'Primera', 5.50, 3.50, 32);
+insert into articulos values('Tarjeta SD 32 GB', 232, 1, 'Primera', 8.95, 6.70, 23);
+insert into articulos values('Cuchillo Premium', 233, 1, 'Tercera', 13.85, 8.00, 74);
+insert into articulos values('Portátil', 232, 3, 'Primera', 380.55, 127.50, 53);
+/* 
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+*/
+
+insert into pedidos values('06846242C', 'Portátil', 232, 3, 'Primera', '21/03/2020', 1, 380.55);
+insert into pedidos values('06846242C', 'Cable ethernet', 232, 2, 'Primera', '21/03/2020', 1, 5.50);
+insert into pedidos values('74036298N', 'Tarjeta SD 32 GB', 232, 1, 'Primera', '08/2/2020', 2, 17.90);
+insert into pedidos values('25439786F', 'Cuchillo Premium', 233, 1, 'Tercera', '14/3/2020', 1, 13.85);
+insert into pedidos values('62735461K', 'Cuchillo Premium', 233, 1, 'Tercera', '17/3/2020', 1, 13.85);
+/* 
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+*/
+
+insert into ventas values('06846242C', 'Portátil', 232, 3, 'Primera', '21/03/2020', 1);
+insert into ventas values('06846242C', 'Cable ethernet', 232, 2, 'Primera', '21/03/2020', 1);
+insert into ventas values('74036298N', 'Tarjeta SD 32 GB', 232, 1, 'Primera', '08/2/2020', 2);
+insert into ventas values('25439786F', 'Cuchillo Premium', 233, 1, 'Tercera', '14/3/2020', 1);
+insert into ventas values('62735461K', 'Cuchillo Premium', 233, 1, 'Tercera', '17/3/2020', 1);
+/* 
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+1 fila creada.
+*/
+
+/* 
+	TABLA TIENDAS
+NIF        NOMBRE                         DIRECCION		POBLACION            PROVINCIA             CODPOSTAL
+---------- ------------------------------ --------------------  -------------------- -------------------- ----------
+
+89636523A  Utensilios de cocina Luis      C/Las pajanosas N 23	Alcala de Guadaira   SEVILLA                   41101
+
+62735461K  Utensilios Casera              C/Alemania N 48	Caceres              CACERES                   40701
+
+06846242C  Electrodomesticos Fran         C/Talavera N 13	Alcala de Guadaira   SEVILLA                   41101
+
+25439786F  El Bazar Anticuado             C/El Torcal N 2	Antequera            MALAGA                    42098
+
+74036298N  Electronica Sor Maria          C/Sor Maria N 15	Olivares             SEVILLA                   41807
+
+
+	TABLA FABRICANTES
+COD_FABRICANTE NOMBRE          PAIS
+-------------- --------------- ---------------
+           232 ANTONIO         ESPANA
+           542 JAIME           ESPANA
+           341 MANUEL          ESPANA
+           771 ANA MARIA       ESPANA
+           233 SANDRA          ALEMANIA
+
+
+	TABLA ARTICULOS
+ARTICULO             COD_FABRICANTE       PESO CATEGORIA  PRECIO_VENTA	PRECIO_COSTO EXISTENCIAS
+-------------------- -------------- ---------- ---------- ------------	------------ -----------
+Espumadera                      542          1 Tercera             ,85	          ,5         134
+
+Cable ethernet                  232          2 Primera             5,5	         3,5          32
+
+Portatil                        232          3 Primera          380,55	       127,5          53
+
+Tarjeta SD 32 GB                232          1 Primera            8,95	         6,7          23
+
+Cuchillo Premium                233          1 Tercera           13,85	           8          74
+
+
+	TABLA PEDIDOS
+NIF        ARTICULO             COD_FABRICANTE       PESO CATEGORIA  FECHA_PE	UNIDADES_PEDIDAS        PVP
+---------- -------------------- -------------- ---------- ---------- --------	---------------- ----------
+74036298N  Tarjeta SD 32 GB                232          1 Primera    08/02/20	               2         18
+
+06846242C  Portatil                        232          3 Primera    21/03/20	               1        381
+
+62735461K  Cuchillo Premium                233          1 Tercera    17/03/20	               1         14
+
+25439786F  Cuchillo Premium                233          1 Tercera    14/03/20	               1         14
+
+06846242C  Cable ethernet                  232          2 Primera    21/03/20	               1          6
+
+
+	TABLA VENTAS
+NIF        ARTICULO             COD_FABRICANTE       PESO CATEGORIA  FECHA_VE	UNIDADES_VENDIDAS
+---------- -------------------- -------------- ---------- ---------- --------	---------------- 
+74036298N  Tarjeta SD 32 GB                232          1 Primera    08/02/20	                2
+
+06846242C  Portatil                        232          3 Primera    21/03/20	                1
+
+06846242C  Cable ethernet                  232          2 Primera    21/03/20	                1
+
+25439786F  Cuchillo Premium                233          1 Tercera    14/03/20	                1
+
+62735461K  Cuchillo Premium                233          1 Tercera    17/03/20	                1
+*/
+
+/* ------------------------------------------------------------------------ */
+/* 1. Añade una columna a la tabla TIENDAS para almacenar el nombre del director. */
+alter table tiendas add(nom_dir varchar2(15));
+
+/*Tabla modificada.
+Con desc tiendas comprobamos que se ha completado con éxito.
+ Nombre                                    ¿Nulo?   Tipo
+ ----------------------------------------- -------- ----------------------------
+ NIF                                       NOT NULL VARCHAR2(10)
+ NOMBRE                                             VARCHAR2(30)
+ DIRECCION                                          VARCHAR2(20)
+ POBLACION                                          VARCHAR2(20)
+ PROVINCIA                                          VARCHAR2(20)
+ CODPOSTAL                                          NUMBER(5)
+ NOM_DIR                                            VARCHAR2(15)
+
+*/
+
+/* ------------------------------------------------------------------------ */
+/* 2. Modifica la longitud de la columna unidades_pedidas de la tabla PEDIDOS. Será number(5).*/
+alter table pedidos modify unidades_pedidas number(5);
+
+/*                            *
+ERROR en línea 1:
+ORA-01440: la columna a modificar debe estar vacma para disminuir la precisisn
+o escala
+
+Para cambiar la longitud vamos a crear una tabla con los datos que hay en la columna
+unidades_pedidas, y la insertaremos después en la tabla pedidos cuando cambiemos
+la longitud.
+*/
+/* Creamos una tabla auxiliar con los datos necesarios */
+create table copia_ud_pedidas(nif, articulo, cod_fabricante, categoria, peso, ud_pedidas) as 
+select nif, articulo, cod_fabricante, categoria, peso, unidades_pedidas from pedidos;
+
+/* Actualizamos a null todas las unidades_pedidas para poder modificar la longitud,
+puesto que no las podemos poner a 0 por tener una restricción check que las obliga a
+ser mayor que 0 */
+update pedidos set unidades_pedidas = null;
+
+/* Cambiamos la longitud de la columna */
+alter table pedidos modify unidades_pedidas number(5);
+
+/* Ahora actualizamos la columna reintroduciendo los datos, haciendo las comprobaciones
+necesarias para que los datos sean los correctos */
+update pedidos set unidades_pedidas = (select unidades_pedidas from copia_ud_pedidas
+where pedidos.nif = copia_ud_pedidas.nif and pedidos.articulo = copia_ud_pedidas.articulo
+and pedidos.cod_fabricante = copia_ud_pedidas.cod_fabricante 
+and pedidos.categoria = copia_ud_pedidas.categoria and pedidos.peso = copia_ud_pedidas.peso);
+
+/* ------------------------------------------------------------------------ */
+/* 3. Añade la restricción: precio_venta> precio_costo en la tabla ARTÍCULOS.*/
+alter table articulos add constraint pventa_mayorque_preciocosto 
+check(precio_venta > precio_costo);
+
+/* 
+Tabla modificada. 
+
+select constraint_name from user_constraints where table_name = 'ARTICULOS';
+
+CONSTRAINT_NAME
+------------------------------
+SYS_C001386
+SYS_C001387
+SYS_C001388
+SYS_C001389
+PVENTA_POSITIVO
+PCOSTO_POSITIVO
+PESO_POSITIVO
+CAT_VALIDA
+PK_ARTICULOS
+FK_ARTICULOS
+PVENTA_MAYORQUE_PRECIOCOSTO   <----
+*/
+
+/* ------------------------------------------------------------------------ */
+/* 4. Desactiva la restricción de la columna provincia de la tabla TIENDAS.*/
+
+select constraint_name from user_constraints where table_name = 'TIENDAS';
+/*
+CONSTRAINT_NAME
+------------------------------
+PROVIN_MAYUS		<----
+PK_TIENDAS
+NOMASTIENDASENTOLEDO	<----
+*/
+
+alter table tiendas disable constraint provin_mayus;
+alter table tiendas disable constraint nomastiendasentoledo;
+
+/*
+Tabla modificada.
+
+select constraint_name, status from user_constraints
+where table_name = 'TIENDAS';
+
+CONSTRAINT_NAME                STATUS
+------------------------------ --------
+PROVIN_MAYUS                   DISABLED
+PK_TIENDAS                     ENABLED
+NOMASTIENDASENTOLEDO           DISABLED
+*/
+
+/* ------------------------------------------------------------------------ */
+/* 5. Elimina la restricción not null sobre el nombre de la tienda.*/
+
+select constraint_name, search_condition from user_constraints
+where table_name = 'TIENDAS';
+/*
+CONSTRAINT_NAME			SEARCH_CONDITION
+------------------------------	----------------
+PROVIN_MAYUS			provincia = upper(provincia)
+PK_TIENDAS	
+NOMASTIENDASENTOLEDO		upper(poblacion) not in ('TOLEDO')
+SYS_C001417 		<----	"NOMBRE" IS NOT NULL
+*/
+
+alter table tiendas drop constraint SYS_C001417;
+
+/*
+Tabla modificada.
+
+desc tiendas;
+ Nombre                                    ¿Nulo?   Tipo
+ ----------------------------------------- -------- ----------------------------
+ NIF                                       NOT NULL VARCHAR2(10)
+ NOMBRE                                             VARCHAR2(30)
+ DIRECCION                                          VARCHAR2(20)
+ POBLACION                                          VARCHAR2(20)
+ PROVINCIA                                          VARCHAR2(20)
+ CODPOSTAL                                          NUMBER(5)
+ NOM_DIR                                            VARCHAR2(15)
+*/
+
+/* ------------------------------------------------------------------------ */
+/* 6. Inserta una tienda sin nombre y con la provincia en minúscula.*/
+
+insert into tiendas(nif, direccion, poblacion, provincia, codpostal) values('89636523A', 'C/Las pajanosas N 23', 'Alcalá de Guadaíra', 'sevilla', 41101)
+/* 
+insert into tiendas(nif, direccion, poblacion, provincia, codpostal) values('89636523A', 'C/Las pajanosas N 23', 'Alcalá de Guadaíra', 'sevilla', 41101)
+*
+ERROR en línea 1:
+ORA-00001: restriccisn znica (SCOTT.PK_TIENDAS) violada
+*/
+
+/* ------------------------------------------------------------------------ */
+/* 7. Elimina la restricción primary key sobre VENTAS.*/
+
+select constraint_name from user_constraints
+where table_name = 'VENTAS';
+
+/*
+CONSTRAINT_NAME
+------------------------------
+CHK_UNIVENDIDAS
+VENT_CATVALIDA
+PK_VENTAS	<----
+FK_VENTAS
+FORKEY_VENTAS
+FK_VENTASNIF
+
+6 filas seleccionadas.
+*/
+
+alter table ventas drop constraint PK_VENTAS;
+
+/* ------------------------------------------------------------------------ */
+/* 8. Inserta una venta duplicada.*/
+/* Se puede introducir ya que hemos eliminado PK_VENTAS */
+insert into ventas values('06846242C', 'Portátil', 232, 3, 'Primera', '21/03/2020', 1);
+
+/* ------------------------------------------------------------------------ */
+/* 9. Diseña una consulta con not in y and.*/
+
+select nif, cod_fabricante from ventas 
+where categoria not in('Segunda', 'Tercera')
+and unidades_vendidas > 1;
+
+/* ------------------------------------------------------------------------ */
+/* 10. Diseña una consulta con not in, and y or.*/
+
+select nif, cod_fabricante from ventas 
+where categoria not in('Segunda', 'Tercera')
+or ((unidades_vendidas > 1) and (fecha_venta = '21/03/20'));
+
+/* ------------------------------------------------------------------------ */
+/* 11. Diseña una consulta con null, between y or.*/
+
+select nombre from tiendas
+where poblacion is null
+or codpostal between 41000 and 42000;
+
+/* ------------------------------------------------------------------------ */
+/* 12. Diseña una consulta con in, not null, or, and y like.*/
+
+select articulo, peso from articulos
+where categoria in('Primera', 'Segunda')
+and (articulo like 'Cable%') or (cod_fabricante is not null);
+
+/* ------------------------------------------------------------------------ */
+/* 13. Diseña una consulta con subconsulta.*/
+
+select nif, articulo from ventas
+where categoria = (select categoria from articulos
+                  where peso = 1 and existencias < 20);
+
+/* ------------------------------------------------------------------------ */
+/* 14. Diseña una consulta con dos subconsultas anidadas.*/
+
+select articulo, cod_fabricante from articulos
+where precio_venta < (select precio_venta from pedidos 
+                      where fecha_pedido = (select fecha_venta from ventas
+                                            where articulo = 'Tarjeta SD 32 GB'));
+
+/* ------------------------------------------------------------------------ */
+/* 15. Crea una vista de solo lectura con el resultado de dicha consulta.*/
+
+create view ejercicio15 as select articulo, cod_fabricante from articulos
+where precio_venta < (select precio_venta from pedidos 
+                      where fecha_pedido = (select fecha_venta from ventas
+                      where articulo = 'Tarjeta SD 32 GB')) with read only;
+
+/* ------------------------------------------------------------------------ */
+/* 16. Diseña una consulta con join de dos tablas.*/
+
+select * from articulos, pedidos
+where articulos.articulo = pedidos.articulo
+and articulos.cod_fabricante = pedidos.cod_fabricante
+and articulos.peso = pedidos.peso
+and articulos.categoria = pedidos.categoria;
+
+/* ------------------------------------------------------------------------ */
+/* 17. Diseña una consulta con join de tres tablas.*/
+
+select nombre from tiendas, articulos, pedidos
+where tiendas.nif = pedidos.nif
+and articulos.articulo = pedidos.articulo
+and articulos.cod_fabricante = pedidos.cod_fabricante
+and articulos.peso = pedidos.peso
+and articulos.categoria = pedidos.categoria;
+
+/* ------------------------------------------------------------------------ */
+/* 18. Diseña una consulta con join y subconsulta.*/
+
+select nombre from tiendas, pedidos
+where tiendas.nif = pedidos.nif
+and pedidos.cod_fabricante = (
+select cod_fabricante from fabricantes where pais = 'ALEMANIA');
+
+/* ------------------------------------------------------------------------ */
+/* 19. Diseña un update simple.*/
+
+update ventas set nif = '25439786F' where nif = '62735461K';
+
+/* ------------------------------------------------------------------------ */
+/* 20. Diseña un update con subconsulta. Usa ANY.*/
+
+update ventas set fecha_venta = '23/3/2020'
+where ventas.articulo = any(select articulo from articulos where cod_fabricante = 232);
+
+/* ------------------------------------------------------------------------ */
+/* 21. Diseña un delete simple.*/
+
+delete tiendas where nif = '06846242C';
+
+/* ------------------------------------------------------------------------ */
+/* 22. Disela un delete con subconsulta. Usa EXISTS.*/
+
+delete ventas where EXISTS (select cod_fabricante from ventas 
+where categoria in ('Segunda')); 
+
+/* ------------------------------------------------------------------------ */
+/* 23. Borra los datos de la tabla TIENDAS con un TRUNCATE.*/
+
+truncate table tiendas;
+
+/* ------------------------------------------------------------------------ */
+/* 24. borra las tablas TIENDAS, PEDIDOS y VENTAS.*/
+drop table tiendas;
+drop table pedidos;
+drop table ventas;
+
+/* ------------------------------------------------------------------------ */
+/* 25. Borra la tabla FABRICANTES*/
+drop table fabricantes.
+
+

@@ -1,0 +1,128 @@
+Los scripts se realizan en texto plano.
+
+Cómo crear ficheros vacíos con la extensión adecuada:
+	type nul > prueba.bat
+Para abrirlo con GUI se usa:
+	notepad prueba.bat
+
+Ir a formato > ajuste de línea para evitar problemas con el tamaño de las líneas. Lo que
+hace básicamente es que evita que haga un salto de línea automático.
+
+Esta línea tiene que aparecer siempre al inicio del script, ayuda a depurar la ejecución
+del programa.
+@echo off
+
+* 'echo.' es para hacer un salto de línea (el '.' tiene que estar junto al echo).
+
+* 'pause' hace que la consola espere la presión de una tecla para continuar con
+la ejecución del programa. Para personalizar el mensaje que aparece al usar pause,
+se usa un echo antes del pause, y la salida del comando pause se lleva a nul (vacío).
+
+* Para comentar se usa 'rem', se pueden usar tildes, pero es normal que no aparezcan.
+Por ejemplo: >rem Fecha: XX/XX/XXXX. Autor: David.
+
+* No tenemos obligación de indicar el fin del script con el comando 'exit', pero
+si se usa, y se usa 'exit' a secas, va a salir del programa Y también de la 
+consola. Usando 'exit /b' sale del programa pero NO de la consola.
+
+* Comando goto: Va hasta una etiqueta que se encuentre en el script. La etiqueta
+no puede tener el nombre de un comando ni de una variable que vayamos a usar.
+Se usa: >goto :etiqueta
+Hará un desvío incondicional hasta la etiqueta.
+
+* En batch solo hay números o cadenas de caracteres.
+
+Los scripts pueden tener argumentos, que son como variables que se le pasan al
+script.
+Los argumentos se definen desde %0 hasta %7 (en winXP, hoy en día se pueden tener 128 argumentos). %0 es el nombre del script, y %1-7 son los siguientes.
+> prueba.bat %1 %2 %3 ...
+
+El comando shift /n desplaza los argumentos hacia la izquierda. Si se usa /n con
+un número, empezará a desplazar hacia a la izq a partir de n, dejando el argumento
+n-1 como estaba.
+
+Comando if: if [NOT] (___) [comandos]
+Si ___ se cumple, se ejecuta [comandos]. Si no, continúa la ejecución.
+Se puede usar un else (tiene que estar al mismo nivel de tabulación que el if).
+⁭if [NOT] ()
+	[comandos]
+else
+	[comandos]
+
+Si se quiere usar el errorlevel en el if, o se usa if errorlevel n, donde n es
+un numero, o se usa if %errorlevel% equ 0, no son lo mismo.
+
+Programa que comprueba que una cadena no tenga numeros.
+
+Ejemplo 1: Usando parámetros, crear un script edad.bat que reciba un único argumento obligatorio (%1). Hay que controlar los errores: que no haya argumento,
+que haya más de 1, que la edad sea negativa, ujn caracter...
+Si la edad es < 5: eres un bebe
+Si la edad está entre [5, 16): edad del pavo
+Si la edad está entre [16, 18): adolescente
+Si la edad está entre [18, 65): trabajando
+Si la edad está entre [65, 80): inserso
+Si la edad está entre [80, 124): persona mayor
+Debe estar todo en una misma estructura.
+
+Ejemplo 2: Cuantos caracteres tiene una cadena de caracteres. Usando subcadenas.
+
+* Al usar los ifs uno dentro del else del otro (anidados en los else) se genera
+un único errorlevel. Si se usan varios ifs paralelos (al mismo nivel de
+indentación) se genera un errorlevel por cada if.
+
+* Para usar variables de forma local en los scripts se usa setlocal al principio del programa y se usa endlocal al final.
+
+Comando for: for %a in (lista) do ()
+En programación por lotes se usará %%a en vez de %a.
+En general se usan letras del abecedario como variables.
+El for normal analiza directorios y archivos generales.
+El for con el argumento /D solo analizará directorios. De esas dos formas no
+entrará en las subcarpetas (no hay recursividad). Para ello se usa el
+for con /R. Para que sea recursivo y con directorios se usa for /r /d.
+Para usar el for con números se usa for /L.
+También está el for /F, para la forma.`
+>for /F %a in (fichero/comando) do ()
+Espera un fichero o un comando. Si se le pasa un fichero, tendrá tantas 
+iteraciones como lineas tenga el fichero. Si se le pasa un comando, tendrá
+tantas iteraciones como lineas tenga el stdout de dicho comando.
+Si se quieren poner comandos para el for /F, se tienen que usar comillas simples
+para envolver al comando, si no se usan, espera un archivo, no un comando.
+Cuando se usan varias variables en el for /F, cada variable corresponde al token
+que esté en su mismo orden. Por ejemplo:
+>for /F "tokens=1, 2" %i in (archivo.txt) do @echo %i
+Va a mostrar solo el token 1 de cada linea del archivo.txt.
+Sin embargo, si se usara: 
+>for /F "tokens=1, 2" %i in (archivo.txt) do @echo %j
+Mostraria e segundi
+
+* Para usar una tubería en un bucle for, hay que "escapar" la tubería, lo cual
+se hace con ^|.
+
+for %a in (lista) do (comando)
+>for %a in (hola adios jupiter gaviota) do @echo %a
+* Se usa el @echo porque echo (sin @) muestra toda la salida (echo jupiter,...)
+y solo queremos que muestre la palabra.
+
+>for %a in (*.bat) do @echo %a
+Muesra todos los archivos que acaban en .bat en el directorio actual.
+
+Por ejemplo, para mostrar todos los jpg del ordenador:
+>for /R %a in (*.jpg) do @echo %a
+
+* Si queremos que las variables se retrasen en su actualización:
+setlocal enabledelayedexpansion
+
+Ejemplo1: Tabla de multiplicar.
+
+* En windows XP, si no se usa setlocal enabledelayedexpansion, se mostrará el
+último valor que tiene la variable en un bucle for. Para evitar esto, se usa
+el comando anteriormente mencionado, y además, habrá que indicar en el script
+qué variable queremos que afecte, usando ! en vez de % para envolver al nombre
+de la variable.
+
+*>copy con .
+Este comando va a escribir en un archivo lo que vayamos escribiendo.
+Por ejemplo: >copy con archivo.txt nos permitirá escribir en el archivo.txt 
+desde la cmd. Para parar de escribir se usa ctrl+Z y ctrl+M.
+
+Ejemplo X: Terminar el script bucles.bat, con control de errores.

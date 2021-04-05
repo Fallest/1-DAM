@@ -1,0 +1,12 @@
+select * from alum0405;
+
+select dni, nombre, apellidos, curso, nivel, clase from alum0405;
+
+select * from alum0405
+where poblacion = 'GUADALAJARA';
+
+select nombre, apellidos from alum0405
+where poblacion = 'GUADALAJARA';
+
+select dni, nombre, apellidos, curso, nivel, clase from alum0405
+order by apellidos, nombre;

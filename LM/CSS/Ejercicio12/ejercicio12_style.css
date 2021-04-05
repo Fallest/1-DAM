@@ -1,0 +1,65 @@
+h1#titulo {
+	color: #007c7c;
+}
+
+p strong {
+	color: red;
+}
+
+p span.destacado {
+	color: yellow;
+}
+
+p + h2 {
+	color: blue;
+}
+
+h2 + p a {
+	color: red;
+}
+h2 + p a em {
+	color: #637aff;
+}
+
+p span.especial {
+	color: purple;
+}
+table caption {
+	color: blue;
+}
+
+table thead th {
+	color: yellow;
+}
+
+table tfoot th {
+	color: red;
+}
+
+table tbody th.especial {
+	color: yellow;
+}
+
+table tbody tr + tr th {
+	color: red;
+}
+
+table tbody td {
+	color: green;
+}
+
+table tbody td strong {
+	color: yellow;
+}
+
+#adicional {
+	color: #ae992d;
+}
+
+#adicional p span#especial {
+	color: purple;
+}
+
+#adicional p a {
+	color: green;
+}

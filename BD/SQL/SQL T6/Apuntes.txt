@@ -1,0 +1,28 @@
+DML -> lenguaje de manipulacion de datos
+incluye las instrucciones:
+	select
+	insert
+	update
+	delete
+
+rollback; -> es una instrucción que deshace el último comando.
+commit; -> es una instrucción que añade la fila a la tabla.
+
+Estos dos comandos afectan a insert, update, y delete.
+
+Insert:
+	insert into emple values(1, 'López', 
+	'ANALISTA', 7839, '27/01/2021', 1000, 100, 10);
+	
+	insert into emple (emp_no, apellido, dept_no) 
+	values (1, 'López', 10);
+	
+Update:
+	update emple set oficio = 'ANALISTA', salario = 1000
+	where emp_no = 1;
+
+	Se pueden usar subcosultas para la selección de datos.
+
+Delete:
+	delete emple;
+	delete emple where dept_no = 10;

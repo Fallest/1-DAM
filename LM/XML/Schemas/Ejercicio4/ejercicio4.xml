@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<persona nacimiento="1999-10-20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:/C:/Users/David/Documents/1%C2%BA%20DAM/LM/XML/Schemas/Ejercicio4/ejercicio4.xsd">
+    <datos>
+        <nombre>Pepe</nombre> 
+        <apellidos>Garcia</apellidos> 
+        <dni>25390952</dni> 
+    </datos>
+    <comentario>Trabajador...</comentario> 
+</persona> 

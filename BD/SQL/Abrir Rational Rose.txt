@@ -1,0 +1,5 @@
+1. Abrir rational rose
+2. Cancel
+3. Ponernos en vista logica, click derecho > data model > new schema
+4. Data model > new > diagrama de modelo de datos
+5. doble click y abrir la ventana para dibujar

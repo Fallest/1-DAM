@@ -1,0 +1,20 @@
+Mostrar todas las tablas que son del usuario:
+select table_name from user_tables; 
+
+También se puede usar user_objects y user_catalog para mostrar los objetos y
+las tablas, vistas, sinonimos, y secuencias.
+
+Para ver todas las restricciones se puede ver una serie de vistas: 
+user_constraints
+all_constraints
+dba_constraints
+
+Las restricciones de tipo c son de tipo check
+Las restricciones de tipo r son de tipo references
+Las restricciones de tipo p son de tipo primary key
+Las restricciones de tipo u son de tipo unique
+
+Para sacar información de las restricciones de una columna concreta:
+user_cons_columns
+all_cons_columns
+dba_cons_columns

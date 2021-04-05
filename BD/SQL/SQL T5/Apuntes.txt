@@ -1,0 +1,35 @@
+/* Ejemplo join externo (OUTER JOIN) */
+select dnombre, apellido from depart, emple
+where depart.dept_no = emple.dept_no(+);
+
+select dnombre, count(apellido) from emple, depart
+where depart.dept_no = emple.dept_no(+)
+group by dnombre
+having count(apellido) = 0;
+
+/* Esta suma entre paréntesis muestra también las ocurrencias de una tabla que
+no tienen correspondencias en la otra. */
+
+/* Ejemplo union (INNER JOIN) */
+select emp_no, apellido, oficio, dept_no from emple
+where dept_no in (10, 20);
+
+select * from emple 
+where dept_no = 10
+union
+select * from emple
+where dept_no = 20;
+
+/* Ejemplo interseccion */
+select emp_no, apellido, oficio, dept_no from emple
+where dept_no = 20 and oficio = 'ANALISTA';
+
+select * from emple where dept_no = 20
+intersect
+select * from emple where oficio = 'ANALISTA';
+
+/* Diferencia */
+select * from emple where dept_no = 20
+minus
+select * from emple where oficio = 'ANALISTA';
+/* Saldrían todos los oficios que no son analistas y que son del dept_no = 20 */

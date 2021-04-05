@@ -1,0 +1,2 @@
+No hace falta usar %var% al usar una expresion al hacerle set a una variable.
+El comando tasklist tiene un argumento /fo para el formato en el que se mostrará la lista. Se usa "tasklist /fo list" para mostrarlo como una lista

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<profesores xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:/D:/Documentos/1%C2%BA%20DAM/LM/XML/Schemas/Ejercicio9/ejercicio9.xsd">
+  <departamento cod="326" nombre="Departamento de Arte">
+    <profesor>
+      <nif>83846103A</nif>
+      <nombre>Sandra</nombre>
+      <fechaalta>1990-09-02</fechaalta>
+      <categoria>Catedrático</categoria>
+      <asignaturas>
+        <asignatura>Física y Química</asignatura>
+        <curso>4</curso>
+      </asignaturas>
+    </profesor>
+    <profesor>
+      <nif>75360237N</nif>
+      <nombre>Juan Antonio</nombre>
+      <fechaalta>2002-01-11</fechaalta>
+      <categoria>Interino</categoria>
+      <asignaturas>
+        <asignatura>Lengua Española</asignatura>
+        <curso>2</curso>
+      </asignaturas>
+    </profesor>
+  </departamento>
+  <departamento cod="837" nombre="Departamento de Informática">
+    <profesor>
+    <nif>87382615L</nif>
+      <nombre>Jose Franciso</nombre>
+      <fechaalta>2015-10-07</fechaalta>
+      <categoria>Funcionario</categoria>
+      <asignaturas>
+        <asignatura>Matemáticas</asignatura>
+        <curso>3</curso>
+      </asignaturas>
+    </profesor>
+  </departamento>
+</profesores>

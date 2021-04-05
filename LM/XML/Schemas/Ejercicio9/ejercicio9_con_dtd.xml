@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE profesores [
+<!ELEMENT profesores (departamento*)>
+<!ELEMENT departamento (profesor*)>
+<!ELEMENT profesor (nif, nombre, fechaalta, categoria, asignaturas)>
+<!ELEMENT asignaturas (asignatura, curso)>
+<!ELEMENT nif (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT fechaalta (#PCDATA)>
+<!ELEMENT categoria (#PCDATA)>
+<!ELEMENT asignatura (#PCDATA)>
+<!ELEMENT curso (#PCDATA)>
+<!ATTLIST departamento cod ID #REQUIRED>
+<!ATTLIST departamento nombre CDATA #REQUIRED>
+<!ATTLIST nombre cod ID #REQUIRED>
+]>
+
+<profesores>
+  <departamento cod="DDA" nombre="Departamento de Arte">
+    <profesor>
+      <nif>83846103A</nif>
+      <nombre cod="sak">Sandra</nombre>
+      <fechaalta>1990-09-02</fechaalta>
+      <categoria>Catedrático</categoria>
+      <asignaturas>
+        <asignatura>Física y Química</asignatura>
+        <curso>4</curso>
+      </asignaturas>
+    </profesor>
+    <profesor>
+      <nif>75360237N</nif>
+      <nombre cod="jan">Juan Antonio</nombre>
+      <fechaalta>2002-01-11</fechaalta>
+      <categoria>Interino</categoria>
+      <asignaturas>
+        <asignatura>Lengua Española</asignatura>
+        <curso>2</curso>
+      </asignaturas>
+    </profesor>
+  </departamento>
+  <departamento cod="DDI" nombre="Departamento de Informática">
+    <profesor>
+    <nif>87382615L</nif>
+      <nombre cod="jfa">Jose Franciso</nombre>
+      <fechaalta>2015-10-07</fechaalta>
+      <categoria>Funcionario</categoria>
+      <asignaturas>
+        <asignatura>Matemáticas</asignatura>
+        <curso>3</curso>
+      </asignaturas>
+    </profesor>
+  </departamento>
+</profesores>

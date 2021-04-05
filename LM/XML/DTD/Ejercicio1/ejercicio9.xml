@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejemplo [
+<!ELEMENT ejemplo (a, (a|b))>
+<!ELEMENT a EMPTY>
+<!ELEMENT b EMPTY>
+]>
+
+<ejemplo>
+<a/>
+<a/>
+</ejemplo>

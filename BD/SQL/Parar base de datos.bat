@@ -1,0 +1,4 @@
+net stop OracleServiceORCL
+net stop OracleHome81Agent
+net stop OracleOraHome81DataGatherer
+net stop OracleOraHome81TNSListener
