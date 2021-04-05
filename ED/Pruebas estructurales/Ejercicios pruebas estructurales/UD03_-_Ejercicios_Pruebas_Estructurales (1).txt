@@ -1,0 +1,68 @@
+ ------------------------------------
+| GRAFO                              |
+| COMPLEJIDAD CICLOMÁTICA            |
+| CAMINOS LINEALMENTE INDEPENDIENTES |
+| CASOS DE PRUEBA                    |
+ ------------------------------------
+
+
+============================================================
+
+Leer cant 
+costo1=cant*125 
+numcaj=redondea(0.5+cant/4) 
+flete=numcaj*50 
+Si cant > 1000 entonces 
+    desc = costo1*0.1 
+de otro modo 
+    Si cant > 100 entonces 
+         desc = costo1*0.05 
+    de otro modo 
+        desc = 0 
+    FinSi
+FinSi
+costoTot =costo1+flete-desc 
+Escribe costoTot, numcaj, desc 
+
+============================================================
+
+Calcula cohesión (int nt1, nt2; String tok1[ ], tok2[ ]) 
+COMIENZO
+  numAdh = 0 
+  Para i de 0 hasta nt1-1 
+    Para j de 0 hasta nt2-1 
+      Si tok1[i]=tok2[j] entonces 
+         numAdh = numAdh +1 
+      FinSi
+    FinPara
+  FinPara
+  total = tok1 + tok2 – numAdh 
+  cohesión = numAdh / total 
+  Devuelve cohesión 
+FIN
+
+
+
+=============================================================
+
+(Máximo Común Divisor)
+COMIENZO
+lee x, y 
+   Si (x<=0) o (y<=0) entonces 
+       Escribe “deben ser no negativos"
+       Devuelve -1 
+   FinSi
+   Si (x=1) o (y=1) entonces 
+        Devuelve 1 
+   FinSi
+   Mientras (x <> y) 
+        Si (x>y) entonces 
+              x = x - y 
+        de otro modo
+              y = y – x 
+        FinSi
+   FinMientras
+   Devuelve x 
+FIN
+
+============================================================
