@@ -1,0 +1,48 @@
+id: 1-10.0.r10/0
+type: dir
+count: 0
+cpath: /branches/TrabajoED2
+copyroot: 0 /
+
+PLAIN
+K 10
+TrabajoED2
+V 16
+dir 1-10.0.r10/0
+END
+ENDREP
+id: 0-1.0.r10/134
+type: dir
+pred: 0-1.0.r1/0
+count: 1
+text: 10 79 42 42 f9ab48fe03028226e78e84700abdd0b4
+cpath: /branches
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 17
+dir 0-1.0.r10/134
+K 4
+tags
+V 15
+dir 2-1.0.r1/66
+K 5
+trunk
+V 16
+dir 3-1.0.r9/520
+END
+ENDREP
+id: 0.0.r10/386
+type: dir
+pred: 0.0.r9/769
+count: 10
+text: 10 271 102 102 35aa6eb03230f4207a0eb561d000660b
+cpath: /
+copyroot: 0 /
+
+_1.0.t9-a add-dir false false /branches/TrabajoED2
+
+
+386 517

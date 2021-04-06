@@ -1,2 +1,6 @@
 Esta es una modificación al archivo2.txt.
+<<<<<<< .mine
 Esta es la segunda modificación al archivo.
+Esta es otra modificación que creará un conflicto.=======
+Esta es la segunda modificación al archivo.
+Esta es la tercera modificación al archivo.>>>>>>> .r8

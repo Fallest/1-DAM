@@ -1,0 +1,78 @@
+id: 3-14.0-15.r15/0
+type: file
+pred: 3-14.0.r14/0
+count: 1
+text: 6 0 54 42 4f398ab3587659afeb0c238468c7fc9a 85153f3594ed7f9c85f1217d6d73c336c95361bf 13-e/_5
+cpath: /trunk/Archivo 2 - copia.txt
+copyfrom: 14 /branches/TrabajoED2/Archivo 2 - copia.txt
+
+id: 6-14.1-15.r15/250
+type: file
+pred: 6-14.0.r14/200
+count: 1
+text: 9 0 156 269 d78e95d5aeb4c5452e0f8a7fe624dc20 1c936e79c3dca754b2bdcae5d49f9a99eeed51b7 13-e/_7
+cpath: /trunk/Archivo 2.txt
+copyfrom: 14 /branches/TrabajoED2/Archivo 2.txt
+
+id: 8-14.2-15.r15/490
+type: dir
+pred: 8-14.0.r14/2497
+count: 1
+text: 14 2111 373 373 00971ad5e3bbc35750451573a86c4ea9
+cpath: /trunk/Carpeta 1
+copyfrom: 14 /branches/TrabajoED2/Carpeta 1
+
+PLAIN
+K 21
+Archivo 2 - copia.txt
+V 20
+file 3-14.0-15.r15/0
+K 13
+Archivo 2.txt
+V 22
+file 6-14.1-15.r15/250
+K 9
+Carpeta 1
+V 21
+dir 8-14.2-15.r15/490
+END
+ENDREP
+id: 3-1.0.r15/835
+type: dir
+pred: 3-1.0.r9/520
+count: 9
+text: 15 677 145 145 c90e2e613b2a4b6159bc1c5a3031d48e
+cpath: /trunk
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 18
+dir 0-1.0.r14/2989
+K 4
+tags
+V 15
+dir 2-1.0.r1/66
+K 5
+trunk
+V 17
+dir 3-1.0.r15/835
+END
+ENDREP
+id: 0.0.r15/1091
+type: dir
+pred: 0.0.r14/3247
+count: 15
+text: 15 974 104 104 cfc754363b453dd57e57bca015db0c95
+cpath: /
+copyroot: 0 /
+
+3-14._0.t14-f replace-file false false /trunk/Archivo 2 - copia.txt
+14 /branches/TrabajoED2/Archivo 2 - copia.txt
+6-14._1.t14-f replace-file false false /trunk/Archivo 2.txt
+14 /branches/TrabajoED2/Archivo 2.txt
+8-14._2.t14-f replace-dir false false /trunk/Carpeta 1
+14 /branches/TrabajoED2/Carpeta 1
+
+1091 1225

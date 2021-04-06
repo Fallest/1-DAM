@@ -1,0 +1,38 @@
+PLAIN
+END
+ENDREP
+id: 0-1.0.r13/17
+type: dir
+pred: 0-1.0.r12/134
+count: 4
+text: 13 0 4 4 2d2977d1c96f487abe4a1e202dd03b4e
+cpath: /branches
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 16
+dir 0-1.0.r13/17
+K 4
+tags
+V 15
+dir 2-1.0.r1/66
+K 5
+trunk
+V 16
+dir 3-1.0.r9/520
+END
+ENDREP
+id: 0.0.r13/267
+type: dir
+pred: 0.0.r12/388
+count: 13
+text: 13 153 101 101 317fc9f1f1549b3424c5c49d6d21571f
+cpath: /
+copyroot: 0 /
+
+1-12.0.r12/0 delete-dir false false /branches/TrabajoED2
+
+
+267 399

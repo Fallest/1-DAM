@@ -1,0 +1,178 @@
+id: 3-14.0.r14/0
+type: file
+count: 0
+text: 6 0 54 42 4f398ab3587659afeb0c238468c7fc9a 85153f3594ed7f9c85f1217d6d73c336c95361bf 13-e/_5
+cpath: /branches/TrabajoED2/Archivo 2 - copia.txt
+copyroot: 0 /
+
+id: 6-14.0.r14/200
+type: file
+count: 0
+text: 9 0 156 269 d78e95d5aeb4c5452e0f8a7fe624dc20 1c936e79c3dca754b2bdcae5d49f9a99eeed51b7 13-e/_7
+cpath: /branches/TrabajoED2/Archivo 2.txt
+copyroot: 0 /
+
+id: 9-14.0.r14/396
+type: file
+count: 0
+text: 7 90380 11370 13260 5b309b6079408876cb82b78c1506bab4 3532b5f3eca4dd95a6b7738b63fcdcf1aef15de8 13-e/_b
+props: 7 136099 53 53 113136892f2137aa0116093a524ade0b
+cpath: /branches/TrabajoED2/Carpeta 1/2021-04-05 13_47_15-Window.png
+copyroot: 0 /
+
+id: c-14.0.r14/682
+type: file
+count: 0
+text: 7 101763 6833 7466 83b8f217a74f67ab3dc6658a9148dad5 054d31b01ef5106288481d5d9c84d0921507a1b6 13-e/_d
+props: 7 136099 53 53 113136892f2137aa0116093a524ade0b
+cpath: /branches/TrabajoED2/Carpeta 1/2021-04-05 13_48_34-Window.png
+copyroot: 0 /
+
+id: e-14.0.r14/967
+type: file
+count: 0
+text: 7 108609 27278 30533 88565eed4667db931f7eba718de211c0 c7e9cc47508f20bf64684d4511c1f7a080e67750 13-e/_f
+props: 7 136099 53 53 113136892f2137aa0116093a524ade0b
+cpath: /branches/TrabajoED2/Carpeta 1/2021-04-05 13_51_03-Window.png
+copyroot: 0 /
+
+id: g-14.0.r14/1254
+type: file
+count: 0
+text: 7 80 55569 61369 c3a83a2853880deee91a74bcfe1bdb92 c688339852c8ac1b9add8d946635d96ce12b7739 13-e/_h
+props: 7 136099 53 53 113136892f2137aa0116093a524ade0b
+cpath: /branches/TrabajoED2/Carpeta 1/2021-04-05 14_01_54-Window.png
+copyroot: 0 /
+
+id: i-14.0.r14/1538
+type: file
+count: 0
+text: 7 65625 24742 27942 e6401ec57e4fabb2641e36468e8e43f0 fc750c0f25770adf1767bc9d42e0561f3935b487 13-e/_j
+props: 7 136099 53 53 113136892f2137aa0116093a524ade0b
+cpath: /branches/TrabajoED2/Carpeta 1/2021-04-05 14_02_39-Window.png
+copyroot: 0 /
+
+id: k-14.0.r14/1825
+type: file
+count: 0
+text: 7 55662 9950 10730 6d0bf5c9a9b032b2d78c8940942a50cf a09a899901f0f313b507f479f7b4f8ea20b04724 13-e/_l
+props: 7 136099 53 53 113136892f2137aa0116093a524ade0b
+cpath: /branches/TrabajoED2/Carpeta 1/2021-04-05 14_03_16-Window.png
+copyroot: 0 /
+
+PLAIN
+K 30
+2021-04-05 13_47_15-Window.png
+V 19
+file 9-14.0.r14/396
+K 30
+2021-04-05 13_48_34-Window.png
+V 19
+file c-14.0.r14/682
+K 30
+2021-04-05 13_51_03-Window.png
+V 19
+file e-14.0.r14/967
+K 30
+2021-04-05 14_01_54-Window.png
+V 20
+file g-14.0.r14/1254
+K 30
+2021-04-05 14_02_39-Window.png
+V 20
+file i-14.0.r14/1538
+K 30
+2021-04-05 14_03_16-Window.png
+V 20
+file k-14.0.r14/1825
+END
+ENDREP
+id: 8-14.0.r14/2497
+type: dir
+count: 0
+text: 14 2111 373 373 00971ad5e3bbc35750451573a86c4ea9
+cpath: /branches/TrabajoED2/Carpeta 1
+copyroot: 0 /
+
+PLAIN
+K 21
+Archivo 2 - copia.txt
+V 17
+file 3-14.0.r14/0
+K 13
+Archivo 2.txt
+V 19
+file 6-14.0.r14/200
+K 9
+Carpeta 1
+V 19
+dir 8-14.0.r14/2497
+END
+ENDREP
+id: 1-14.0.r14/2794
+type: dir
+count: 0
+text: 14 2644 137 137 0beeede9e3cfbbc7700a5c68afb10d42
+cpath: /branches/TrabajoED2
+copyroot: 0 /
+
+PLAIN
+K 10
+TrabajoED2
+V 19
+dir 1-14.0.r14/2794
+END
+ENDREP
+id: 0-1.0.r14/2989
+type: dir
+pred: 0-1.0.r13/17
+count: 5
+text: 14 2931 45 45 57186039a546a402d45c38669eaa1eea
+cpath: /branches
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 18
+dir 0-1.0.r14/2989
+K 4
+tags
+V 15
+dir 2-1.0.r1/66
+K 5
+trunk
+V 16
+dir 3-1.0.r9/520
+END
+ENDREP
+id: 0.0.r14/3247
+type: dir
+pred: 0.0.r13/267
+count: 14
+text: 14 3131 103 103 7e78b02d5d046a8e8f99580a24af9fb6
+cpath: /
+copyroot: 0 /
+
+_1.0.t13-e add-dir false false /branches/TrabajoED2
+
+_3.0.t13-e add-file true false /branches/TrabajoED2/Archivo 2 - copia.txt
+
+_6.0.t13-e add-file true false /branches/TrabajoED2/Archivo 2.txt
+
+_8.0.t13-e add-dir false false /branches/TrabajoED2/Carpeta 1
+
+_9.0.t13-e add-file true true /branches/TrabajoED2/Carpeta 1/2021-04-05 13_47_15-Window.png
+
+_c.0.t13-e add-file true true /branches/TrabajoED2/Carpeta 1/2021-04-05 13_48_34-Window.png
+
+_e.0.t13-e add-file true true /branches/TrabajoED2/Carpeta 1/2021-04-05 13_51_03-Window.png
+
+_g.0.t13-e add-file true true /branches/TrabajoED2/Carpeta 1/2021-04-05 14_01_54-Window.png
+
+_i.0.t13-e add-file true true /branches/TrabajoED2/Carpeta 1/2021-04-05 14_02_39-Window.png
+
+_k.0.t13-e add-file true true /branches/TrabajoED2/Carpeta 1/2021-04-05 14_03_16-Window.png
+
+
+3247 3381
