@@ -215,7 +215,7 @@ group by C.nombre;
 
 /*12*/
 
-select PRO.especialidad, count(PRO.dni) "Profesores" from profesores PRO
+select PRO.especialidad, count(PRO.cod_centro) "Profesores" from profesores PRO
 group by PRO.especialidad
 having count(PRO.dni) = (select min(count(PRO2.dni)) from profesores PRO2
 			group by PRO2.especialidad);
