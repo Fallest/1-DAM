@@ -17,7 +17,7 @@ public class ProyReturn
 	sueldo1 = emp1.devolSueldo();
 	sueldo2 = emp2.devolSueldo();
 	
-	System.out.println("\nEstos son los datos del empleado que m�s gana:");
+	System.out.println("\nEstos son los datos del empleado que más gana:");
 	
 	if (sueldo1 > sueldo2)
 	  emp1.visuDatosEmpleado();

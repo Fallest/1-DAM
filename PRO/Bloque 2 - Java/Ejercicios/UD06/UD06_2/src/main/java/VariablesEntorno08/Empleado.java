@@ -21,7 +21,7 @@ public class Empleado
 	sueldo = Float.parseFloat(suelCad);
   }
   
-  public void asignarValores(String m, float s)
+  public void asignarValores(String n, float s)
   {
     nombre = n;
 	sueldo = s;
@@ -38,7 +38,7 @@ public class Empleado
     sueldo = s;
   }
   
-  void devolSueldo()
+  float devolSueldo()
   {
     return sueldo;
   }
