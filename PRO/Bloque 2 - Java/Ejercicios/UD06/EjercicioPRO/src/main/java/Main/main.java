@@ -23,7 +23,7 @@ public class main {
         /*------------------------------------------------*/
         // Ejercicio 4:
         Alumno copia_alum1;
-        copia_alum1 = alum1;
+        copia_alum1 = alum1; // No es una copia real.
         /*------------------------------------------------*/
         // Ejercicio 5:
         mostrar_alumnos(alum1, alum2, alum3, copia_alum1);

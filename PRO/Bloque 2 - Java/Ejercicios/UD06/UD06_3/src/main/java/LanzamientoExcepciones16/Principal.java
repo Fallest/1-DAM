@@ -24,7 +24,7 @@ class Principal
             System.out.println("\n\nError grave. El programa se va a cerrar.");
             System.exit(0);
         }
-  }
+    }
 
 
   static String pedirCadena() throws IOException
