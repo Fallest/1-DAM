@@ -260,4 +260,4 @@ and M.tipo_mov = 'R'
 group by S.nombre_suc
 having sum(M.importe) = (select max(sum(M2.importe)) from movimientos M2
 			where M2.tipo_mov = 'R'
-			group by M2.cod_sucur)
+			group by M2.cod_sucur);
