@@ -1,5 +1,7 @@
 package CRacional;
 
+// Autor: David Bernal Navarrete
+
 import java.io.*;
 
 public class CRacional {

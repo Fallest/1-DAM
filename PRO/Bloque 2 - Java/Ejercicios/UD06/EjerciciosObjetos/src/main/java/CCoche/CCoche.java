@@ -1,16 +1,22 @@
 package CCoche;
 
+// Autor: David Bernal Navarrete
+
 import java.io.*;
+
+/*
+    En esta clase he implementado mucha más funciones de las necesarias, porque puedo.
+    Cualquier duda, a preguntar.
+*/
 
 public class CCoche {
     // Atributos del coche
     private String marca, modelo, color;
-    private int marcha, velocidad;
-    private static int marchas = 6;
+    private int marcha = 0, velocidad = 0;
     private boolean electronicaOn = false;
     private boolean motorOn = false;
     
-    public void Coche()
+    CCoche()
     {
         setMarca();
         setModelo();
@@ -255,23 +261,25 @@ public class CCoche {
     
     public void acelerar()
     {
-        if (marcha > 1)
+        if (marcha >= 1)
         {
             velocidad += 10;
             if (velocidad < 0)
                 System.out.println("O estás en pendiente o has tenido un día muy complicado.");
             else if (velocidad >= 0 && velocidad < 25)
-                System.out.println("Aceleras hasta 25 km/h.");
+                System.out.println("Aceleras hasta " + velocidad + " km/h.");
             else if (velocidad >= 20 && velocidad < 50)
-                System.out.println("Aceleras hasta 50 km/h. Límite permitido en poblado.");
+                System.out.println("Aceleras hasta " + velocidad + " km/h. Límite permitido en poblado.");
             else if (velocidad >= 50 && velocidad < 75)
-                System.out.println("Aceleras hasta 75 km/h. Espero que estés en carretera.");
+                System.out.println("Aceleras hasta " + velocidad + " km/h. Espero que estés en carretera.");
             else if (velocidad >= 75 && velocidad < 100)
-                System.out.println("Aceleras hasta 100km/h. Ten cuidado.");
+                System.out.println("Aceleras hasta " + velocidad + " km/h. Ten cuidado.");
             else if (velocidad >= 100 && velocidad < 120)
-                System.out.println("Aceleras hasta 120 km/h. Límite establecido por la ley.");
-            else if (velocidad >= 120)
-                System.out.println("Deberías tener cuidado...");
+                System.out.println("Aceleras hasta " + velocidad + " km/h. Límite establecido por la ley.");
+            else if (velocidad >= 120 && velocidad < 180)
+                System.out.println("Vas a " + velocidad + " km/h. Deberías tener cuidado...");
+            else if (velocidad >= 180)
+                System.out.println("Vas a " + velocidad + " km/h. El coche no puede acelerar más. Menos mal que no puede acelerar más.");
         }
         else if (marcha == 0)
         {
@@ -294,17 +302,17 @@ public class CCoche {
             if (velocidad < 0)
                 System.out.println("O estás en pendiente o has tenido un día muy complicado.");
             else if (velocidad >= 0 && velocidad < 25)
-                System.out.println("Frenas hasta 25 km/h. Ha sido por el badén, no?");
+                System.out.println("Frenas hasta " + velocidad + " km/h. Ha sido por el badén, no?");
             else if (velocidad >= 20 && velocidad < 50)
-                System.out.println("Frenas hasta 50 km/h. Límite permitido en poblado.");
+                System.out.println("Frenas hasta " + velocidad + " km/h. Límite permitido en poblado.");
             else if (velocidad >= 50 && velocidad < 75)
-                System.out.println("Frenas hasta 75 km/h. Espero que estés en carretera.");
+                System.out.println("Frenas hasta " + velocidad + " km/h. Espero que estés en carretera.");
             else if (velocidad >= 75 && velocidad < 100)
-                System.out.println("Frenas hasta 100km/h. Ten cuidado.");
+                System.out.println("Frenas hasta " + velocidad + " km/h. Ten cuidado.");
             else if (velocidad >= 100 && velocidad < 120)
-                System.out.println("Frenas hasta 120 km/h. Ya no eres una persona irresponsable.");
+                System.out.println("Frenas hasta " + velocidad + " km/h. Ya no eres una persona irresponsable.");
             else if (velocidad >= 120)
-                System.out.println("Eso es lo que deberías haber hecho antes de ver el radar...");
+                System.out.println("Vas a " + velocidad + " km/h. Eso es lo que deberías haber hecho antes de ver el radar...");
         }
         else
         {
