@@ -1,5 +1,7 @@
 package CPolinomio;
 
+// Autor: David Bernal Navarrete
+
 import java.io.*;
 
 public class main {
