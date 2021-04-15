@@ -117,6 +117,9 @@ or avg(salario) >= (select avg(salario) from emple where dept_no = 20 group by d
 select apellido "Empleado", decode(dir, 7566, 'JIMENEZ', 7698, 'NEGRO', 7782, 'CEREZO',
 7788, 'GIL', 7839, 'REY', 7902, 'FERNANDEZ', 'Sin jefe') "Jefe" from emple;
 
+select e1.apellido, e2.apellido from emple e1, emple e2
+where e1.dir = e2.emp_no;
+
 /*------------------------------------------------------------------*/
 /* 17.Mostrar el apellido de los empleados que tienen 3 ó más trabajadores a su cargo. */
 
