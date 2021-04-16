@@ -12,7 +12,7 @@
 
 4. Nombre de los módulos de ciclos cuyo título se aprobó en 2008:
 
-/ies/modulos/modulo[ciclo=/ies/ciclos/ciclo[@decretoTitulo="2008"]/@id]/nombre
+/ies/modulos/modulo[ciclo=/ies/ciclos/ciclo/decretoTitulo[@anyo="2008"]/../@id]/nombre
 
 5. Grado de los ciclos con módulos de primer curso:
 

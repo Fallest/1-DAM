@@ -100,7 +100,12 @@ where apellido = 'SAAVEDRA';
 /* Actividades complementarias */
 /* 1 */
 
-
+update centros set num_plazas = num_plazas/2
+where (
+	select count(*) from profesores
+	where centros.cod_centro = profesores.cod_centro
+) < 2
+;
 
 /*-----------------------------------------------------------
 /* 2 */

@@ -1,0 +1,82 @@
+1. Nombre de la Universidad.
+
+/universidad/nombre
+
+2. Pais de la Universidad.
+
+/universidad/pais
+
+3. Nombres de las Carreras.
+
+/universidad/carreras/carrera/nombre
+
+4. Años de plan de estudio de las carreras.
+
+//carrera/plan
+
+5. Nombres de todos los alumnos.
+
+//alumno/nombre
+
+6. Identificadores de todas las carreras.
+
+//carreras/carrera/@id
+
+7. Datos de la carrera cuyo id es c01.
+
+//carreras/carrera[@id = "c01"]
+
+8. Centro en que se estudia la carrera cuyo id es c02.
+
+//carreras/carrera[@id = "c02"]/centro
+
+9. Nombre de las carreras que tengan subdirector.
+
+//carreras/carrera[subdirector]/nombre
+
+10. Nombre de los alumnos que estén haciendo proyecto.
+
+//alumnos/alumno/estudios[proyecto]/../nombre
+
+11. Códigos de las carreras en las que hay algún alumno matriculado.
+
+//carreras/carrera[@id = /universidad/alumnos/alumno/estudios/carrera/@codigo]/@id
+
+12. Apellidos y Nombre de los alumnos con beca.
+
+/universidad/alumnos/alumno[@beca = "si"]/apellido1 |
+/universidad/alumnos/alumno[@beca = "si"]/apellido2 |
+/universidad/alumnos/alumno[@beca = "si"]/nombre
+
+13. Nombre de las asignaturas de la titulación c04.
+
+/universidad/asignaturas/asignatura[@titulacion="c04"]/nombre
+
+14. Nombre de las asignaturas de segundo trimestre.
+
+/universidad/asignaturas/asignatura[trimestre=2]/nombre
+
+15. Nombre de las asignaturas que no tienen 4 créditos teóricos.
+
+/universidad/asignaturas/asignatura[creditos_teoricos != 4]/nombre
+
+16. Código de la carrera que estudia el último alumno.
+
+/universidad/alumnos/alumno[last()]/estudios/carrera/@codigo
+
+17. Código de las asignaturas que estudian mujeres.
+
+/universidad/alumnos/alumno[sexo="Mujer"]/estudios/asignaturas/asignatura/@codigo
+
+18. Nombre de los alumnos que están matriculados en la asignatura a02.
+
+/universidad/alumnos/alumno["a02"=estudios/asignaturas/asignatura/@codigo]/nombre
+
+19. Códigos de las carreras que estudian los alumnos matriculados en alguna asignatura.
+
+/universidad/alumnos/alumno/estudios[asignaturas/asignatura]/carrera/@codigo
+
+20. Apellidos de todos los hombres. 
+
+/universidad/alumnos/alumno[sexo="Hombre"]/apellido1 |
+/universidad/alumnos/alumno[sexo="Hombre"]/apellido2
