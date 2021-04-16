@@ -1,0 +1,193 @@
+/* Casos prácticos */
+/* 2 */
+
+insert into emple30 (emp_no, apellido, oficio, dir, fecha_alt, slario, comision, dept_no)
+select emp_no, apellido, oficio, dir, fecha_alt, slario, comision, dept_no 
+from emple
+where dept_no = 30;
+
+insert into emple30 select * from emple where dept_no = 30;
+
+insert into nombres (nombre)
+select apellido from emple
+where dept_no = 20;
+
+insert into emple
+select distinct 1111, 'GARCÍA', 'DIRECTOR', null, sysdate, 2400, 0, dept_no 
+from emple
+group by dept_no
+having count(*) = (select max(count(*)) from emple group by dept_no);
+
+
+insert into emple
+select distinct 1112, 'QUIROGA', oficio, dir, sysdate, salario, comision, dept_no 
+from emple
+where apellido = 'GIL';
+
+/*-----------------------------------------------------------
+/* 4 */
+
+update centros 
+set (direccion, num_plazas) = (select direccion, num_plazas 
+				from centros 
+				where cod_centro = 50) 
+where cod_centro = 10;
+
+update emple 
+set salario = salario/2, comision = 0 
+where dept_no = (
+	select dept_no from emple 
+	group by dept_no 
+	having count(*)= (
+		select max(count(*)) from emple group by dept_no
+	)
+);
+
+update emple set apellido = lower(apellido), salario = (
+	select salario*2 from emple where apellido = 'SÁNCHEZ'
+) where dept_no = (
+	select dept_no from depart where dnombre = 'CONTABILIDAD'
+);
+
+/*-----------------------------------------------------------
+/* 5 */
+
+commit;
+delete centros where cod_centro = 50;
+rollback;
+
+delete centros;
+rollback;
+
+delete from libreria L1 where ejemplares < (
+	select avg(ejemplares) from libreria L2 where L2.estante = L1.estante
+	group by estante
+);
+rollback;
+
+delete from depart where dept_no in (
+	select dept_no from emple group by dept_no
+	having count(*) < 4
+);
+
+/*-----------------------------------------------------------
+/* Actividades propuestas */
+/* 2 */
+
+insert into alum select * from nuevos;
+
+insert into emple
+select 2000, 'SAAVEDRA', oficio, dir, sysdate, salario*1.2, comision, dept_no
+from emple
+where apellido = 'SALA';
+
+/*-----------------------------------------------------------
+/* 4 */
+
+update emple set dept_no = (
+	select dept_no from emple
+	where oficio = 'EMPLEADO'
+	group by dept_no
+	having count(*) = (
+		select max(count(*)) from emple
+		where oficio = 'EMPLEADO'
+		group by dept_no
+	)
+)
+where apellido = 'SAAVEDRA';
+
+/*-----------------------------------------------------------*/
+/* Actividades complementarias */
+/* 1 */
+
+
+
+/*-----------------------------------------------------------
+/* 2 */
+
+
+
+/*-----------------------------------------------------------
+/* 3 */
+
+
+
+/*-----------------------------------------------------------
+/* 4 */
+
+
+
+/*-----------------------------------------------------------
+/* 5 */
+
+
+
+/*-----------------------------------------------------------
+/* 6 */
+
+
+
+/*-----------------------------------------------------------
+/* 7 */
+
+
+
+/*-----------------------------------------------------------
+/* 8 */
+
+
+
+/*-----------------------------------------------------------
+/* 9 */
+
+
+
+/*-----------------------------------------------------------
+/* 10 */
+
+
+
+/*-----------------------------------------------------------
+/* 11 */
+
+
+
+/*-----------------------------------------------------------
+/* 12 */
+
+
+
+/*-----------------------------------------------------------
+/* 13 */
+
+
+
+/*-----------------------------------------------------------
+/* 14 */
+
+
+
+/*-----------------------------------------------------------
+/* 15 */
+
+
+
+/*-----------------------------------------------------------
+/* 16 */
+
+
+
+/*-----------------------------------------------------------
+/* 17 */
+
+
+
+/*-----------------------------------------------------------
+/* 18 */
+
+
+
+/*-----------------------------------------------------------
+/* 19 */
+
+
