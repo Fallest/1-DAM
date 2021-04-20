@@ -16,7 +16,6 @@ for /L %%i in (1, 1, %temp%) do (
 	echo -Temporada %%i
 	md "%nom%\Temporada0%%i"
 	for /L %%j in (1, 1, %epi%) do (
-		0
 		echo ----Capitulo %%j
 		md "%nom%\Temporada0%%i\Capitulo0%%j"
 	)
