@@ -2,12 +2,30 @@ package EjRecorridoProfesores;
 
 public class main {
     public static void main(String[] args) {
+        // Variable interruptor
+        String cad = "s";
         // Instituto con los departamentos y los profesores
+        
+        /*
+        Este ejercicio es bastante lioso, porque tienes una array de Profesores
+        dentro de un array de Departamentos.
+        Lo que es imprescindible entender, es que el array de profesores es un 
+        ATRIBUTO de un departamento. Es decir, no tratamos con objetos profesores
+        de forma independiente a no ser que accedamos al array de departamentos,
+        y luego al array de profesores que hay dentro de cada objeto departamento.
+        
+        */
         Departamento instituto[] = new Departamento[4];
         
         introducirDatos(instituto);
         
-        buscarProfesor(instituto);
+        do {
+            buscarProfesor(instituto);
+            
+            System.out.println("¿Quiere buscar otro profesor (s/n)?: ");
+            cad = Leer.dato();
+        } while("s".equals(cad)); // Método equals de las cadenas, recomendable frente a '=='.
+        
     }
     
     public static void introducirDatos(Departamento[] instituto) {
@@ -48,6 +66,7 @@ public class main {
                     numProf = j;
         }
         
+        // if-else para comprobar si se ha encontrado al menos una coincidencia.
         if (dep != 0)
         {
             System.out.println("Se ha encontrado una última coincidencia en el profesor " + numProf + " del departamento " + dep + ".");

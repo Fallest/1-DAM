@@ -1,5 +1,4 @@
-
-package EjRecorridoAlumnos;
+package EjRecorridoProfesores;
 
 import java.io.*;
 

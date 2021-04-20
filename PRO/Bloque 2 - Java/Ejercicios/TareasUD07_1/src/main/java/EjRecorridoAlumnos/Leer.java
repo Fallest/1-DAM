@@ -1,7 +1,5 @@
-package EjRecorridoProfesores;
+package EjRecorridoAlumnos;
 
-import Recorrido_1.*;
-import Default.*;
 import java.io.*;
 
 public class Leer

@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package EjRecorridoAlumnos;
 
-/**
- *
- * @author David
- */
 public class main {
     public static void main(String[] args) {
         int cantAlum;
@@ -55,10 +46,12 @@ public class main {
             System.out.println("Alumno " + (i+1) + ": ");
             System.out.println("\tNombre: " + alumnos[i].getNombre());
             System.out.println("\tNúmeros de teléfono: en total " + alumnos[i].getCantTlf());
+            
             for (j = 0; j < alumnos[i].getCantTlf(); j++)
             {
                 System.out.println("\t\tTeléfono nº" + (j+1) + ": " + alumnos[i].getTlfFromArray(j));
             }
+            
             System.out.println("\n");
         }
     }
