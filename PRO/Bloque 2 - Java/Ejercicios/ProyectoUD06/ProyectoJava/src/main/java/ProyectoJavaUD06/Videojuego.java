@@ -10,7 +10,8 @@ public final class Videojuego {
     private String titulo;
     private Fecha fechaLanz;
     private float precio;
-    private String plataforma; // Como no hemos dado enum, se usará una función 
+    private int cantPlat;
+    private String plataformas[]; // Como no hemos dado enum, se usará una función 
                                // para controlar su valor.
     
     /*------------------------------------------------------------------------*/
@@ -153,7 +154,7 @@ public final class Videojuego {
         } while (ejec);
     }
     
-    public void setPlataforma() {
+    private void setCantPlat() {
         boolean ejec;
         Errores error = new Errores();
         
@@ -163,13 +164,53 @@ public final class Videojuego {
         do {
             try {
                 ejec = false;
-                
-                System.out.println("\n\tIntroduzca la plataforma (Windows, Mac, Linux"
-                        + "PlayStation o Xbox): ");
-                this.plataforma = teclado.readLine();
-                
-                if (!checkPlataforma(this.plataforma))
+
+                System.out.println("\tIntroduzca la cantidad de plataformas (1-5):");
+                this.cantPlat = Integer.parseInt(teclado.readLine());
+
+                if ((this.cantPlat < 1) || (this.cantPlat > 5))
                     throw error;
+            } 
+            catch (IOException e) {
+                System.out.println("\n\tError en la entrada de datos.");
+                ejec = true;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("\n\tError: Se han introducido caracteres no válidos.");
+                ejec = true;
+            }
+            catch (Errores e) {
+                e.invalidCantPlat();
+                ejec = true;
+            }
+        } while (ejec);
+    }
+    
+    public void setPlataforma() {
+        int i;
+        boolean ejec;
+        Errores error = new Errores();
+        
+        setCantPlat(); // Pedimos la cantidad de plataformas.
+        
+        this.plataformas = new String[this.cantPlat]; // Inicializamos el array.
+        
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+        
+        do {
+            try {
+                ejec = false;
+                
+                for (i = 0; i < this.cantPlat; i++)
+                {                
+                    System.out.println("\n\tIntroduzca la plataforma (Windows, Mac, Linux"
+                            + "PlayStation o Xbox): ");
+                    this.plataformas[i] = teclado.readLine();
+
+                    if (!checkPlataforma(this.plataformas[i]))
+                        throw error;
+                }
             }
             catch (IOException e) {
                 System.out.println("\n\tError en la entrada de datos.");
@@ -201,8 +242,8 @@ public final class Videojuego {
         return this.precio;
     }
     
-    public String getPlataforma() {
-        return this.plataforma;
+    public String[] getPlataformas() {
+        return this.plataformas;
     }
     
     /*------------------------------------------------------------------------*/
@@ -223,11 +264,13 @@ public final class Videojuego {
     /*------------------------------------------------------------------------*/
     // Mostrar los datos:
     public void mostrarDatos() {
+        int i;
         System.out.println("\tTítulo: " + this.titulo);
         System.out.println("\tDesarrolladora: " + this.desarrolladora);
         System.out.println("\tPrecio: " + this.precio + "€");
         System.out.println("\tFecha de lanzamiento: " + Fecha.toStr(this.fechaLanz));
-        System.out.println("\tPlataformas: " + this.plataforma);
+        for (i = 0; i < this.cantPlat; i++)
+            System.out.println("\tPlataforma " + (i+1) + ": " + this.plataformas[i]);
     }
     
     /*------------------------------------------------------------------------*/

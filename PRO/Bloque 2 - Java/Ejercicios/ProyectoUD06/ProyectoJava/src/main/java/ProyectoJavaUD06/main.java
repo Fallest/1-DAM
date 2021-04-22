@@ -114,7 +114,7 @@ public class main {
                 // este número la cantidad de días desde el 1/1/1 hasta esa fecha.
                 // Como vamos a ordenar los videojuegos por fecha, de más nuevo a
                 // más antiguo, vamos a comparar este número.
-                else if (Fecha.toInt(juegos[i].getFechaLanz()) < Fecha.toInt(juego.getFechaLanz()))
+                else if (juegos[i] != null && Fecha.toInt(juegos[i].getFechaLanz()) < Fecha.toInt(juego.getFechaLanz()))
                 {
                     // Iteramos desde el final hasta la posición inmediatamente
                     // superior a i.
@@ -127,7 +127,7 @@ public class main {
                         // Si estamos en el último elemento, que está vacío porque
                         // si no la función checkLleno no habría dejado entrar
                         // en este código, solo hay que desplazar el de abajo hacia a arriba.
-                        else if (j == 99) {
+                        else if (j == juegos.length) {
                             juegos[j] = juegos[j-1];
                         }
                         // Si j no es 99, y el juego de la posición inferior
@@ -203,7 +203,7 @@ public class main {
                         // Si estamos en el último elemento, este se va a quedar
                         // vacío, puesto que estamos bajando las posiciones de todos
                         // los elementos.
-                        else if (j == 99) {
+                        else if (j == juegos.length) {
                             juegos[j-1] = juegos[j];
                             juegos[j].finalize();
                         }
@@ -259,7 +259,7 @@ public class main {
                 // de la canción que vamos a dar de alta, vamos a desplazar todas
                 // las demás canciones del vector hacia arriba, hasta que lleguemos
                 // a una que está vacía (no habría necesidad de seguir desplazando).
-                else if (canciones[i].getTitulo().charAt(0) > cancion.getTitulo().charAt(0))
+                else if (canciones[i] != null && canciones[i].getTitulo().charAt(0) > cancion.getTitulo().charAt(0))
                 {
                     // Iteramos desde el final hasta la posición inmediatamente
                     // superior a i.
@@ -272,7 +272,7 @@ public class main {
                         // Si estamos en el último elemento, que está vacío porque
                         // si no la función checkLleno no habría dejado entrar
                         // en este código, solo hay que desplazar el de abajo hacia a arriba.
-                        else if (j == 99) {
+                        else if (j == canciones.length - 1) {
                             canciones[j] = canciones[j-1];
                         }
                         // Si j no es 99, y la canción de la posición inferior
@@ -347,7 +347,7 @@ public class main {
                         // Si estamos en el último elemento, este se va a quedar
                         // vacío, puesto que estamos bajando las posiciones de todos
                         // los elementos.
-                        else if (j == 99) {
+                        else if (j == canciones.length) {
                             canciones[j-1] = canciones[j];
                             canciones[j].finalize();
                         }

@@ -110,7 +110,7 @@ public final class Cancion {
                     this.artistas[i] = teclado.readLine();
                     
                     // Comprobar que el dato introducido es válido, cada vez.
-                    if ((this.artistas[i].length() > 40) || (this.artistas[i].equals("")))
+                    if ((this.artistas[i].length() > 40) || (this.artistas[i].isEmpty()))
                         throw error;
                 }
             }
@@ -141,6 +141,7 @@ public final class Cancion {
                 this.fechaEstreno = new Fecha(Integer.parseInt(cad.substring(0, 2)),
                     Integer.parseInt(cad.substring(3, 5)), 
                     Integer.parseInt(cad.substring(6, 10)));
+                
             }
             catch (IOException e) {
                 System.out.println("\n\tError en la entrada de datos.");

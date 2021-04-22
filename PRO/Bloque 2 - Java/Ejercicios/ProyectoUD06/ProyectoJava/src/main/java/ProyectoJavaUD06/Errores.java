@@ -3,7 +3,7 @@ package ProyectoJavaUD06;
 public class Errores extends Exception {
     
     void invalidStr () {
-        System.out.println("\n\tError - Cadena no válida: Está vacía o es demasiado larga (>40 caracteres).");
+        System.out.println("\n\tError - Cadena no válida: Está vacía o es demasiado larga (1 - 40 caracteres).");
     }
     
     void invalidDate() {
@@ -15,7 +15,11 @@ public class Errores extends Exception {
     }
     
     void invalidCantArtistas() {
-        System.out.println("\n\tError - Número no válido: Ningún o demasiados artistas (> 6).");
+        System.out.println("\n\tError - Número no válido: Ningún o demasiados artistas (1 - 6).");
+    }
+    
+    void invalidCantPlat() {
+        System.out.println("\n\tError - Número no válido: Ningúna o demasiadas plataformas (1 - 5).");
     }
     
     void invalidPlatform() {

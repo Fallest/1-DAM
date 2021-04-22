@@ -8,7 +8,7 @@ public class Catalogo {
     // Los dos vectores son finales porque solo va a existir una copia de cada uno en main.
     private final Cancion canciones[];
     private final Videojuego videojuegos[];
-    private int tamCatalogo;
+    private static int tamCatalogo;
     
     /*------------------------------------------------------------------------*/
     // Constructor:
