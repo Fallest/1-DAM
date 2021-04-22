@@ -8,13 +8,14 @@ public final class Videojuego {
     // Atributos
     private String desarrolladora;
     private String titulo;
-    private Fecha fecha_lanz;
+    private Fecha fechaLanz;
     private float precio;
     private String plataforma; // Como no hemos dado enum, se usará una función 
                                // para controlar su valor.
     
+    /*------------------------------------------------------------------------*/
     // Constructor: 
-    Videojuego() throws Errores {
+    Videojuego() {
         setTitulo();
         setDesarrolladora();
         setFechaLanz();
@@ -22,6 +23,7 @@ public final class Videojuego {
         setPlataforma();
     }
     
+    /*------------------------------------------------------------------------*/
     // Setters:
     public void setTitulo() {
         // Prácticamente el mismo que de Cancion.
@@ -31,12 +33,12 @@ public final class Videojuego {
         boolean ejec;
         Errores error = new Errores();
         
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+        
         do {
             try {
                 ejec = false;
-                
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
 
                 System.out.println("\n\tIntroduzca el título del videojuego (40 car. max.):");
                 this.titulo = teclado.readLine();
@@ -60,12 +62,12 @@ public final class Videojuego {
         boolean ejec;
         Errores error = new Errores();
         
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+        
         do {
             try {
                 ejec = false;
-                
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
 
                 System.out.println("\n\tIntroduzca el nombre de la empresa desarrolladora (40 car. max.):");
                 this.desarrolladora = teclado.readLine();
@@ -87,17 +89,20 @@ public final class Videojuego {
     
     public void setFechaLanz() {
         boolean ejec;
+        String cad;
+        
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
         
         do {
             try {
                 ejec = false;
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
                 
                 System.out.println("\n\tIntroduzca la fecha de lanzamiento (DD/MM/YYYY): ");
-                this.fecha_lanz = new Fecha(Integer.parseInt(teclado.readLine().substring(0, 1)),
-                    Integer.parseInt(teclado.readLine().substring(3, 4)), 
-                    Integer.parseInt(teclado.readLine().substring(6, 9)));
+                cad = teclado.readLine();
+                this.fechaLanz = new Fecha(Integer.parseInt(cad.substring(0, 2)),
+                    Integer.parseInt(cad.substring(3, 5)), 
+                    Integer.parseInt(cad.substring(6, 10)));
             }
             catch (IOException e) {
                 System.out.println("\n\tError en la entrada de datos.");
@@ -119,11 +124,12 @@ public final class Videojuego {
         boolean ejec;
         Errores error = new Errores();
         
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+        
         do {
             try {
                 ejec = false;
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
                 
                 System.out.println("\n\tIntroduzca el precio del videojuego (separador decimal \".\"):");
                 this.precio = Float.parseFloat(teclado.readLine());
@@ -151,11 +157,12 @@ public final class Videojuego {
         boolean ejec;
         Errores error = new Errores();
         
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+        
         do {
             try {
                 ejec = false;
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
                 
                 System.out.println("\n\tIntroduzca la plataforma (Windows, Mac, Linux"
                         + "PlayStation o Xbox): ");
@@ -176,6 +183,7 @@ public final class Videojuego {
         } while (ejec);
     }
     
+    /*------------------------------------------------------------------------*/
     // Getters:
     public String getTitulo() {
         return this.titulo;
@@ -186,7 +194,7 @@ public final class Videojuego {
     }
     
     public Fecha getFechaLanz() {
-        return this.fecha_lanz;
+        return this.fechaLanz;
     }
     
     public float getPrecio() {
@@ -197,6 +205,7 @@ public final class Videojuego {
         return this.plataforma;
     }
     
+    /*------------------------------------------------------------------------*/
     // Checkers:
     private boolean checkPlataforma(String plataforma) {
         boolean esValida = false;
@@ -211,4 +220,19 @@ public final class Videojuego {
         return esValida;
     }
     
+    /*------------------------------------------------------------------------*/
+    // Mostrar los datos:
+    public void mostrarDatos() {
+        System.out.println("\tTítulo: " + this.titulo);
+        System.out.println("\tDesarrolladora: " + this.desarrolladora);
+        System.out.println("\tPrecio: " + this.precio + "€");
+        System.out.println("\tFecha de lanzamiento: " + Fecha.toStr(this.fechaLanz));
+        System.out.println("\tPlataformas: " + this.plataforma);
+    }
+    
+    /*------------------------------------------------------------------------*/
+    // Finalize:
+    // Debido a que finalize se usa solo para borrar copias, no es necesario darle
+    // funcionalidades extra.
+    protected void finalize() {}
 }

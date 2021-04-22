@@ -24,10 +24,14 @@ public class Errores extends Exception {
     }
     
     void invalidCatTam() {
-        System.out.println("\n\tError - Número no válido: Ningún o demasiados objetos de catálogo (> 80).");
+        System.out.println("\n\tError - Número no válido: Pocos o demasiados objetos de catálogo (5 - 80).");
     }
     
     void catLleno() {
         System.out.println("\n\tError - Catálogo completo: Borre elementos para introducir más.");
+    }
+    
+    void catVacio() {
+        System.out.println("\n\tError - Catálogo vacío: Introduzca elementos para borrar alguno.");
     }
 }

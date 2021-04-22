@@ -11,29 +11,31 @@ public final class Cancion {
     private Fecha fechaEstreno;
     private int cantArtistas;
     
+    /*------------------------------------------------------------------------*/
     // Constructor:
     //      Usamos solo uno porque no le daremos uso a otros.
     //      Con crear una clase con funciones completas es suficiente.
-    Cancion () throws Errores {        
+    Cancion () {        
         setTitulo();
         setArtistas();
         setFechaEstr();
     }
     
+    /*------------------------------------------------------------------------*/
     // Setters:
-    public void setTitulo() throws Errores {
+    public void setTitulo() {
         // Usaremos una flag para seguir preguntando al usuario si no ha introducido
         // bien los datos. Además, creamos un objeto Errores para lanzarlo si es
         // necesario. Esto se va a repetir en todos los setters.
         boolean ejec;
         Errores error = new Errores();
         
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+        
         do {
             try {
                 ejec = false;
-                
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
 
                 System.out.println("\n\tIntroduzca el título de la canción (40 car. max.):");
                 this.titulo = teclado.readLine();
@@ -53,18 +55,18 @@ public final class Cancion {
         } while (ejec);
     }
     
-    private void setCantArtistas() throws Errores {
+    private void setCantArtistas() {
         boolean ejec;
         Errores error = new Errores();
+        
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
         
         do {
             try {
                 ejec = false;
 
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
-
-                System.out.println("Introduzca la cantidad de artistas (1-6):");
+                System.out.println("\tIntroduzca la cantidad de artistas (1-6):");
                 this.cantArtistas = Integer.parseInt(teclado.readLine());
 
                 if ((this.cantArtistas < 1) || (this.cantArtistas > 6))
@@ -85,7 +87,7 @@ public final class Cancion {
         } while (ejec);
     }
     
-    public void setArtistas() throws Errores {
+    public void setArtistas() {
         int i;
         boolean ejec;
         Errores error = new Errores();
@@ -94,11 +96,12 @@ public final class Cancion {
         
         this.artistas = new String[this.cantArtistas]; // Inicializamos el array.
         
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+        
         do {
             try {
                 ejec = false;
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
                 
                 // Asignar todos los artistas
                 for (i = 0; i < this.artistas.length; i++)
@@ -122,19 +125,22 @@ public final class Cancion {
         } while (ejec);
     }
     
-    public void setFechaEstr() throws Errores {
+    public void setFechaEstr() {
         boolean ejec;
+        String cad;
+        
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
         
         do {
             try {
                 ejec = false;
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
                 
                 System.out.println("\n\tIntroduzca la fecha de estreno (DD/MM/YYYY): ");
-                this.fechaEstreno = new Fecha(Integer.parseInt(teclado.readLine().substring(0, 1)),
-                    Integer.parseInt(teclado.readLine().substring(3, 4)), 
-                    Integer.parseInt(teclado.readLine().substring(6, 9)));
+                cad = teclado.readLine();
+                this.fechaEstreno = new Fecha(Integer.parseInt(cad.substring(0, 2)),
+                    Integer.parseInt(cad.substring(3, 5)), 
+                    Integer.parseInt(cad.substring(6, 10)));
             }
             catch (IOException e) {
                 System.out.println("\n\tError en la entrada de datos.");
@@ -152,6 +158,7 @@ public final class Cancion {
         } while (ejec);
     }
     
+    /*------------------------------------------------------------------------*/
     // Getters:
     public String getTitulo() {
         return this.titulo;
@@ -164,4 +171,20 @@ public final class Cancion {
     public Fecha getFecha() {
         return this.fechaEstreno;
     }
+    
+    /*------------------------------------------------------------------------*/
+    // Mostrar los datos:
+    public void mostrarDatos() {
+        int i;
+        System.out.println("\tTítulo: " + this.titulo);
+        for (i = 0; i < cantArtistas; i++)
+            System.out.println("\tArtista " + (i+1) + ": " + this.artistas[i]);
+        System.out.println("\tFecha de estreno: " + Fecha.toStr(this.fechaEstreno));
+    }
+    
+    /*------------------------------------------------------------------------*/
+    // Finalize:
+    // Debido a que finalize se usa solo para borrar copias, no es necesario darle
+    // funcionalidades extra.
+    protected void finalize() {}
 }

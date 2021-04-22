@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Catalogo {
-    private Cancion canciones[];
-    private Videojuego videojuegos[];
+    // Los dos vectores son finales porque solo va a existir una copia de cada uno en main.
+    private final Cancion canciones[];
+    private final Videojuego videojuegos[];
     private int tamCatalogo;
     
+    /*------------------------------------------------------------------------*/
     // Constructor:
-    Catalogo () throws Errores {
+    Catalogo () {
         // Pedir el tamaño del catálogo.
         setTamCat();
         
@@ -19,22 +21,23 @@ public class Catalogo {
         this.videojuegos = new Videojuego[tamCatalogo];
     }
     
+    /*------------------------------------------------------------------------*/
     // Setters:
     private void setTamCat() {
         boolean ejec;
         Errores error = new Errores();
         
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+        
         do {
             try {
                 ejec = false;
 
-                InputStreamReader stream = new InputStreamReader(System.in);
-                BufferedReader teclado = new BufferedReader(stream);
-
-                System.out.println("Introduzca el tamaño del catálogo (1-80):");
+                System.out.println("Introduzca el tamaño del catálogo (5-80):");
                 this.tamCatalogo = Integer.parseInt(teclado.readLine());
 
-                if ((this.tamCatalogo < 1) || (this.tamCatalogo > 80))
+                if ((this.tamCatalogo < 5) || (this.tamCatalogo > 80))
                     throw error;
             } 
             catch (IOException e) {
@@ -52,8 +55,9 @@ public class Catalogo {
         } while (ejec);
     }
     
+    /*------------------------------------------------------------------------*/
     // Getters:
-    public Cancion[] getCaciones() {
+    public Cancion[] getCanciones() {
         return this.canciones;
     }
     
@@ -61,28 +65,7 @@ public class Catalogo {
         return this.videojuegos;
     }
     
-    // Checkers:
-    // Este método checkers va a ser público porque lo vamos a llamar desde main()
-    // cada vez que vayamos a introducir un dato.
-    public boolean checkCapacidad() {
-        int i, contador = 0;
-        boolean lleno = false;
-        
-        for (i = 0; i < this.tamCatalogo; i++)
-        {
-            // Si encontramos un videojuego o una canción que tiene un título:
-            // Hay que separarlos porque si en un mismo índice hay tanto una canción
-            // como un videojuego, hay que aumentar el contador dos veces.
-            if (!this.videojuegos[i].getTitulo().isEmpty())
-                contador++;
-            if (!this.canciones[i].getTitulo().isEmpty())
-                contador++;
-        }
-        
-        // Comprobar si está lleno.
-        if (contador == this.tamCatalogo)
-            lleno = true;
-        
-        return lleno;
+    public int getTamCat() {
+        return this.tamCatalogo;
     }
 }
