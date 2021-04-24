@@ -113,6 +113,10 @@ public final class Videojuego {
                 System.out.println("\n\tError: Se han introducido caracteres no válidos o de forma incorrecta.");
                 ejec = true;
             } 
+            catch (StringIndexOutOfBoundsException e) {
+                System.out.println("\n\tError: Datos incorrectos.");
+                ejec = true;
+            }
             catch (Errores e)
             {
                 e.invalidDate(); // Control de la excepción propagada desde Fecha.
@@ -204,7 +208,7 @@ public final class Videojuego {
                 
                 for (i = 0; i < this.cantPlat; i++)
                 {                
-                    System.out.println("\n\tIntroduzca la plataforma (Windows, Mac, Linux"
+                    System.out.println("\n\tIntroduzca la plataforma " + (i+1) + "(Windows, Mac, Linux, "
                             + "PlayStation o Xbox): ");
                     this.plataformas[i] = teclado.readLine();
 

@@ -94,7 +94,7 @@ public class main {
         Errores error = new Errores();
         
         if (!checkLleno(catalogo)) {
-            int i, j;
+            int j;
             Videojuego juegos[] = catalogo.getVideojuegos(); // Para poder modificar 
                                                              // el array desde esta función.
             Videojuego juego;
@@ -102,46 +102,61 @@ public class main {
             // Inicializamos el juego que vamos a insertar:
             juego = new Videojuego();
             
-            // Buscamos el lugar en el que hay que meter el juego.
-            for (i = 0; i < juegos.length; i++) {
-                // Si es el primer dato
-                if (juegos[i] == null && i == 0) {
-                    juegos[i] = juego;
-                    break;
-                }
-                    
-                // Tenemos una función de Fecha para pasarla a int, representando
-                // este número la cantidad de días desde el 1/1/1 hasta esa fecha.
-                // Como vamos a ordenar los videojuegos por fecha, de más nuevo a
-                // más antiguo, vamos a comparar este número.
-                else if (juegos[i] != null && Fecha.toInt(juegos[i].getFechaLanz()) < Fecha.toInt(juego.getFechaLanz()))
+            // Si es el primer dato
+            if (juegos[0] == null) {
+                juegos[0] = juego;
+            }
+
+            /*
+            Vamos a buscar la posición en la que vamos a meter el juego.
+            Para ello vamos a hacer una iteracíon inversa a la lista, para
+            ir moviendo hacia arriba todos los juegos que estuvieran dentro
+            que tienen una fecha anterior al que vamos a insertar.
+            */
+            else 
+            {
+                // Iteramos desde el final hasta la posición inmediatamente
+                // superior a 0.
+                for (j = juegos.length - 1; j > 0; j--)
                 {
-                    // Iteramos desde el final hasta la posición inmediatamente
-                    // superior a i.
-                    for (j = juegos.length - 1; j > i; j--)
-                    {
-                        // Si el elemento en una posición inferior a la actual está
-                        // vacío, no hay que hacer ningún cambio.
-                        if (juegos[j - 1] == null)
-                            continue;
-                        // Si estamos en el último elemento, que está vacío porque
-                        // si no la función checkLleno no habría dejado entrar
-                        // en este código, solo hay que desplazar el de abajo hacia a arriba.
-                        else if (j == juegos.length) {
-                            juegos[j] = juegos[j-1];
+                    if (j == 0) {
+                        juegos[j] = juego;
+                        break;
+                    }
+                    // Si el elemento en una posición inferior a la actual está
+                    // vacío, no hay que hacer ningún cambio.
+                    else if (juegos[j-1] == null)
+                        continue;
+
+                    // Si nos encontramos que la posición inferior no está vacía,
+                    // tenemos que comprobar si vamos a meter ahí el juego o no.
+                    else if (juegos[j-1] != null) {
+                        // Tenemos que comprobar si estamos en el último elemento,
+                        // para no salirnos de los límites de la lista.
+                        if (j == juegos.length - 1) {
+                            if (Fecha.toInt(juegos[j-1].getFechaLanz()) <= Fecha.toInt(juego.getFechaLanz())) {
+                                juegos[j] = juego;
+                                break;
+                            }
+                            else
+                                juegos[j] = juegos[j-1];
+                        }  
+                        // Si la fecha del juego de la lista es anterior
+                        // a la del juego, es el lugar en el que hay
+                        // que insertarlo.
+                        else if (Fecha.toInt(juegos[j-1].getFechaLanz()) <= Fecha.toInt(juego.getFechaLanz())) {
+                            juegos[j] = juego;
+                            break;
                         }
-                        // Si j no es 99, y el juego de la posición inferior
-                        // no está vacía, significa que hay que hacer un cambio.
-                        // El cambio es subir el actual una posición, y el siguiente
-                        // subirlo a la posición del actual. Así no se pierde información.
+
+                        // Si hay que seguir avanzando para encontrar otra juego,
+                        // hay que dejar desplazadas los otros juegos para
+                        // no perder datos.
                         else {
                             juegos[j+1] = juegos[j];
                             juegos[j] = juegos[j-1];
-                        }
+                        }                            
                     }
-                    // Después de desplazarlo todo hacia arriba, podemos introducir
-                    // el nuevo dato sin perder información.
-                    juegos[i] = juego;
                 }
             }
         }
@@ -200,6 +215,7 @@ public class main {
                             juegos[j] = null;
                             break;
                         }
+                        
                         // Si estamos en el último elemento, este se va a quedar
                         // vacío, puesto que estamos bajando las posiciones de todos
                         // los elementos.
@@ -207,11 +223,8 @@ public class main {
                             juegos[j-1] = juegos[j];
                             juegos[j].finalize();
                         }
-                        // Si j no es 99, y la canción de la posición superior
-                        // no está vacía, significa que hay que hacer un cambio.
-                        // El cambio es bajar el actual una posición, y el siguiente
-                        // bajarlo a la posición del actual. Así se sustituye
-                        // la información de la canción que queremos eliminar.
+                        
+                        //
                         else {
                             juegos[j-1] = juegos[j];
                             juegos[j] = juegos[j+1];
@@ -238,7 +251,7 @@ public class main {
     public static void altaCancion(Catalogo catalogo) throws Errores {
         Errores error = new Errores();
         if (!checkLleno(catalogo)) {
-            int i, j;
+            int j;
             Cancion[] canciones = catalogo.getCanciones(); // Para poder modificar 
                                                         // el array desde esta función.
             Cancion cancion;
@@ -246,47 +259,63 @@ public class main {
             // Inicializamos la cancion que vamos a insertar:
             cancion = new Cancion();
             
-            // Buscamos el lugar en el que hay que meter la canción.
-            for (i = 0; i < canciones.length; i++) {
-                // Si es el primer dato
-                if (canciones[i] == null && i == 0) {
-                    canciones[i] = cancion;
-                    break;
-                }
-                
-                // Si la inicial del título de la canción del vector que estamos
-                // comprobando está después en el abecedario que la inicial del título
-                // de la canción que vamos a dar de alta, vamos a desplazar todas
-                // las demás canciones del vector hacia arriba, hasta que lleguemos
-                // a una que está vacía (no habría necesidad de seguir desplazando).
-                else if (canciones[i] != null && canciones[i].getTitulo().charAt(0) > cancion.getTitulo().charAt(0))
+            // Si es el primer dato
+            if (canciones[0] == null) {
+                canciones[0] = cancion;
+            }
+
+            /*
+            Vamos a buscar la posición en la que vamos a meter la canción.
+            Para ello vamos a hacer una iteracíon inversa a la lista, para
+            ir moviendo hacia arriba todas las canciones que estuvieran dentro
+            que están por detrás en el abecedario que la canción que vamos a 
+            insertar.
+            */
+            else 
+            {
+                // Iteramos desde el final hasta la posición inmediatamente
+                // superior a 0.
+                for (j = canciones.length - 1; j >= 0; j--)
                 {
-                    // Iteramos desde el final hasta la posición inmediatamente
-                    // superior a i.
-                    for (j = canciones.length - 1; j > i; j--)
-                    {
-                        // Si el elemento en una posición inferior a la actual está
-                        // vacío, no hay que hacer ningún cambio.
-                        if (canciones[j - 1] == null)
-                            continue;
-                        // Si estamos en el último elemento, que está vacío porque
-                        // si no la función checkLleno no habría dejado entrar
-                        // en este código, solo hay que desplazar el de abajo hacia a arriba.
-                        else if (j == canciones.length - 1) {
-                            canciones[j] = canciones[j-1];
+                    if (j == 0) {
+                        canciones[j] = cancion;
+                        break;
+                    }
+                    // Si el elemento en una posición inferior a la actual está
+                    // vacío, no hay que hacer ningún cambio.
+                    else if (canciones[j-1] == null)
+                        continue;
+
+                    // Si nos encontramos que la canción inferior no está vacía,
+                    // tenemos que comprobar si vamos a meter ahí la canción o no.
+                    else if (canciones[j-1] != null) {
+                        
+                        // Tenemos que comprobar si estamos en el último elemento,
+                        // para no salirnos de los límites de la lista.
+                        if (j == canciones.length - 1) {
+                            if (canciones[j-1].getTitulo().charAt(0) <= cancion.getTitulo().charAt(0)) {
+                                canciones[j] = cancion;
+                                break;
+                            }
+                            else
+                                canciones[j] = canciones[j-1];
+                        }  
+                        // Si la inicial de la canción de la lista es anterior
+                        // a la de la canción, es el lugar en el que hay
+                        // que meter la canción.
+                        else if (canciones[j-1].getTitulo().charAt(0) <= cancion.getTitulo().charAt(0)) {
+                            canciones[j] = cancion;
+                            break;
                         }
-                        // Si j no es 99, y la canción de la posición inferior
-                        // no está vacía, significa que hay que hacer un cambio.
-                        // El cambio es subir el actual una posición, y el siguiente
-                        // subirlo a la posición del actual. Así no se pierde información.
+
+                        // Si hay que seguir avanzando para encontrar otra canción,
+                        // hay que dejar desplazadas las otras canciones para
+                        // no perder datos.
                         else {
                             canciones[j+1] = canciones[j];
                             canciones[j] = canciones[j-1];
-                        }
+                        }                            
                     }
-                    // Después de desplazarlo todo hacia arriba, podemos introducir
-                    // el nuevo dato sin perder información.
-                    canciones[i] = cancion;
                 }
             }
         }
@@ -350,6 +379,7 @@ public class main {
                         else if (j == canciones.length) {
                             canciones[j-1] = canciones[j];
                             canciones[j].finalize();
+                            break;
                         }
                         // Si j no es 99, y la canción de la posición superior
                         // no está vacía, significa que hay que hacer un cambio.

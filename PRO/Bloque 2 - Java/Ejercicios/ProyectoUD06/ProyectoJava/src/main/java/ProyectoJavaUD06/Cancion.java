@@ -151,6 +151,10 @@ public final class Cancion {
                 System.out.println("\n\tError: Se han introducido caracteres no válidos o de forma incorrecta.");
                 ejec = true;
             } 
+            catch (StringIndexOutOfBoundsException e) {
+                System.out.println("\n\tError: Datos incorrectos.");
+                ejec = true;
+            }
             catch (Errores e)
             {
                 e.invalidDate(); // Control de la excepción propagada desde Fecha.
