@@ -293,7 +293,7 @@ public class main {
                         // Tenemos que comprobar si estamos en el último elemento,
                         // para no salirnos de los límites de la lista.
                         if (j == canciones.length - 1) {
-                            if (canciones[j-1].getTitulo().charAt(0) <= cancion.getTitulo().charAt(0)) {
+                            if (canciones[j-1].getTitulo().toLowerCase().charAt(0) <= cancion.getTitulo().toLowerCase().charAt(0)) {
                                 canciones[j] = cancion;
                                 break;
                             }
@@ -303,7 +303,7 @@ public class main {
                         // Si la inicial de la canción de la lista es anterior
                         // a la de la canción, es el lugar en el que hay
                         // que meter la canción.
-                        else if (canciones[j-1].getTitulo().charAt(0) <= cancion.getTitulo().charAt(0)) {
+                        else if (canciones[j-1].getTitulo().toLowerCase().charAt(0) <= cancion.getTitulo().toLowerCase().charAt(0)) {
                             canciones[j] = cancion;
                             break;
                         }
