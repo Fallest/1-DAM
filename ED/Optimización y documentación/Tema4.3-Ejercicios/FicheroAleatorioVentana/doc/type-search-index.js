@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"VentanaDepart"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"FicheroAleatorioVentana"},{"p":"<Unnamed>","l":"VentanaDepart"}];updateSearchResults();

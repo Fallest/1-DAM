@@ -5,18 +5,21 @@ import java.io.RandomAccessFile;
 
 import javax.swing.JFrame;
 
-/*
- * Clase para albergar la funcion main
- * 
- * @version 1.0
- * @author Juan Antonio
- * */
+/**
+ * <h2>Clase FicheroAleatorioVentana</h2>
+ * Clase principal para el programa.
+ * @see VentanaDepart
+ * @author David
+ * @version v1.0
+ */
 
 public class FicheroAleatorioVentana {
 
-	/*
-	 * Funcion principal.
-	 * */
+	/**
+	 * <h3>Función main de la clase FicheroAleatorioVentana</h3>
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		
 		JFrame f = new JFrame("DEPARTAMENTOS.");
