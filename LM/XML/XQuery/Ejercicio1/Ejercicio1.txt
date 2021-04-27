@@ -1,0 +1,32 @@
+1. Bailes que se realizan en la sala número 1.
+
+for $x in bailes/baile/sala
+where $x/data() = 1
+return $x/../nombre
+
+2. Bailes que se impartan en la sala número 2 y cuyo precio sea menor que 35 euros.
+
+for $x in bailes/baile
+where $x/sala = 2 and $x/precio < 35
+return $x/nombre
+
+3. Nombre de los profesores que dan clase con cuotas mensuales.
+
+for $x in bailes/baile
+where $x/precio/@cuota = "mensual"
+return $x/profesor
+
+4. Nombre de los bailes, profesores que los imparten y número de plazas ofertadas.
+
+for $x in /bailes/baile
+let $y :=$x/nombre | $x/profesor | $x/plazas
+return $y
+
+for $x in /bailes/baile
+return ($x/nombre, $x/profesor, $x/plazas)
+
+5. Igual que el anterior pero para bailes con cuotas trimestrales.
+
+for $x in /bailes/baile
+where $x/precio/cuota = "trimestral"
+return ($x/nombre, $x/profesor, $x/plazas)
