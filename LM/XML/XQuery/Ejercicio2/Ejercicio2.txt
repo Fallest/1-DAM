@@ -1,0 +1,103 @@
+/* 1) Mostrar cada uno de los nombres de los bailes con la etiqueta "losbailes". */
+
+for $x in //baile
+return <losbailes>{$x/nombre/data()}</losbailes>
+
+/* 2) Mostrar los nombres de los bailes seguidos con el número de plazas entre paréntesis, ambos dentro de la misma etiqueta "losbailes". */
+
+for $x in //baile
+return <losbailes>{$x/nombre/data()} - ({$x/plazas/data()})</losbailes>
+
+/* 3) Mostrar los nombres de los bailes cuyo precio sea mayor de 30. */
+
+for $x in //baile
+where $x/precio/data() > 30
+return $x/nombre/data()
+
+/* 4) Mostrar los nombres de los bailes cuyo precio sea mayor de 30 y la moneda "euro". */
+
+for $x in //baile
+where $x/precio/data() > 30 
+and $x/precio/@moneda/data() = "euro"
+return $x/nombre/data()
+
+/* 5) Mostrar los nombres y la fecha de comienzo de los bailes que comiencen el mes de enero (utiliza para buscarlo la cadena de texto "/1/"). */
+
+for $x in //baile
+where contains($x/comienzo/data(), "/1/")
+return ($x/nombre/data(), $x/comienzo/data())
+
+/* 6) Mostrar los nombres de los profesores y la sala en la que dan clase, ordénalos por sala. */
+
+for $x in //baile
+order by $x/sala/data()
+return ($x/profesor/data(), $x/sala/data())
+
+/* 7) Mostrar los nombres de los profesores eliminando los repetidos y acompañar cada nombre con todas las salas en la que da clase, ordénalos por nombre. */
+
+distinct-values(
+	for $x in //baile
+	order by $x/profesor/data() 
+	return <profesor>
+		{$x/profesor/data()}
+		{
+		    for $i in //baile
+		    where $i/profesor/data() = $x/profesor/data()
+		    return (" ", <sala>{$i/sala/data()}</sala>)
+		}
+	</profesor>
+)
+
+/* 8) Mostrar la media de los precios de todos los bailes. */
+
+for $x in /bailes
+return avg(//baile/precio/data())
+
+/* 9) Mostrar la suma de los precios de los bailes de la sala 1. */
+
+let $y := //baile/precio
+where $y/../sala = 1
+return sum($y)
+
+/* 10) Mostrar cuántas plazas en total oferta el profesor "Jesus Lozano". */
+
+let $y := //baile
+where $y/profesor = 'Jesus Lozano'
+return sum($y/plazas)
+
+/* 11) Mostrar el dinero que ganaría la profesora "Laura Mendiola" si se completaran todas las plazas de su baile, sabiendo que sólo tiene un baile. */
+
+for $x in //baile
+where $x/profesor = 'Laura Mendiola'
+return $x/precio*$x/plazas
+
+/* 12) Mostrar el dinero que ganaría el profesor "Jesus Lozano" si se completaran todas las plazas de su baile, pero mostrando el beneficio de cada baile por separado. */
+
+for $x in //baile
+where $x/profesor = 'Jesus Lozano'
+return $x/precio*$x/plazas
+
+/* 13) Mostrar el dinero que ganaría la profesora "Laura" (no conocemos su apellido) si se completaran todas las plazas de su baile. */
+
+for $x in //baile
+where contains($x/profesor, 'Laura')
+return $x/precio*$x/plazas
+
+/* 14) Mostrar el nombre del baile, su precio y el precio con un descuento del 15% para familias numerosas. Ordenar por el nombre del baile */
+
+for $x in //baile
+order by $x/nombre
+return ("Baile: ", $x/nombre/data(), "Precio: ", $x/precio/data(), "Precio Familia Numerosa: ", $x/precio*0.85, "")
+
+/* 15) Mostrar todos los datos de cada baile excepto la fecha de comienzo y de fin. */
+
+for $x in //baile
+return ($x/nombre, $x/precio, $x/plazas, $x/profesor, $x/sala, "")
+
+/* 16) Mostrar en una tabla de HTML los nombres de los bailes y su profesor, cada uno en una fila. */
+
+for $x in //baile
+return <tr>
+  <td>{$x/nombre}</td>
+  <td>{$x/profesor}</td>
+</tr>

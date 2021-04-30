@@ -1,0 +1,88 @@
+/* Casos prácticos */
+
+/* 1 */ *pasarlo a la carpeta de bd
+
+start "C:\\CasoPractico1.sql"
+
+/* 2 */
+
+
+
+/* 3 */
+
+
+
+/* Actividades propuestas */
+
+/* 1 */
+
+set termout off
+start "C:\\CasoPractico1.sql"
+/*
+No se muestra nada por pantalla.
+*/
+
+set termout on
+start "C:\\CasoPractico1.sql"
+/*
+Se ve la salida normal del listado.
+*/
+
+/* 2 */
+
+ttitle 'Esto es para un ejemplo'
+btitle 'Aquí se acaba el ejemplo'
+select * from tarticulos;
+
+/*
+Aparece como título superior 'Esto es para un ejemplo' y como título inferior
+'Aquí se acaba el ejemplo'.
+
+Para evitar que aparezcan se usa ttitle off y btitle off
+*/
+
+ttitle off
+btitle off
+select * from tarticulos;
+
+/*
+Con eso ya no salen los títulos.
+*/
+
+/* 3 */
+
+/*Modificar esta línea*/
+break on denom duplicate skip 2
+
+/*
+Añadiendo duplicate a la sentencia break on lo que ocurre es que el nombre aparece
+una vez por cada venta que exista.
+*/
+
+/* 4 */
+
+
+
+/* 5 */
+
+
+
+/* Actividades complementarias */
+
+/* 1 */
+
+
+
+/* 2 */
+
+
+
+/* 3 */
+
+
+
+/* 4 */
+
+
+
+/* 5 */

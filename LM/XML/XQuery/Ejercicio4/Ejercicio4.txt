@@ -1,0 +1,95 @@
+CONSULTA 1:
+-----------
+Títulos de los libros que tengan más de dos autores ordenados por su título.
+
+
+
+CONSULTA 2:
+-----------
+Títulos de los libros del año 2.000.
+
+
+CONSULTA 3:
+-----------
+<titulos>
+<titulo>TCP/IP Illustrated</titulo>
+</titulos>
+<titulos>
+<titulo>Advan Programming in the Unix environment</titulo>
+</titulos>
+<titulos>
+<titulo>Data on the Web</titulo>
+</titulos>
+<titulos>
+<titulo> Economics of Technology for Digital TV</titulo>
+</titulos>
+
+
+CONSULTA 4:
+-----------
+<titulos>
+<titulo>TCP/IP Illustrated</titulo>
+<titulo>Advan Programming in the Unix environment</titulo>
+<titulo>Data on the Web</titulo>
+<titulo> Economics of Technology for Digital TV</titulo>
+</titulos>
+
+
+CONSULTA 5:
+-----------
+Título de los libros junto con el número de autores de cada libro.
+
+
+CONSULTA 6:
+-----------
+Títulos de los libros (libros.xml) y comentarios (comentarios.xml) de cada libro.
+
+
+CONSULTA 7:
+-----------
+Títulos de los libros almacenados en el archivo "libros.xml" y sus dos primeros autores.
+
+
+CONSULTA 8:
+-----------
+Títulos de los libros en los que al menos uno de sus autores es W. Stevens.
+
+
+CONSULTA 9:
+-----------
+Títulos de los libros que mencionen “Unix” y “programing” en el mismo título.
+
+
+CONSULTA 10:
+------------
+Lista ordenada de apellidos de todos los autores y editores.
+
+
+CONSULTA 11:
+------------
+Todos los apellidos distintos de los autores.
+
+
+CONSULTA 12:
+------------
+Todos los nodos libro que tengan al menos un nodo autor.
+
+
+CONSULTA 13:
+------------
+Nombre y año de todos los libros publicados por Addison-Wesley después de 1991.
+
+
+CONSULTA 14:
+------------
+Título de los libros cuyo precio esté por debajo de 50.00€.
+
+
+CONSULTA 15:
+------------
+Por cada libro almacenado en el archivo "libros.xml" devuelve el título del libro, el precio con que consta dicho libro en el archivo "libros.xml" y el precio con que consta ese libro en el archivo "comentarios.xml".
+
+
+CONSULTA 16:
+------------
+Por cada libro con autores, devuelve el título del libro y sus autores. Si el libro no tiene autores pero sí editor, la consulta devolverá el título del libro y la afiliación del editor. 
