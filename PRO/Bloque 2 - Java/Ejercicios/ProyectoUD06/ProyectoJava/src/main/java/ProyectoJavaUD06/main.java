@@ -117,7 +117,7 @@ public class main {
             {
                 // Iteramos desde el final hasta la posición inmediatamente
                 // superior a 0.
-                for (j = juegos.length - 1; j > 0; j--)
+                for (j = juegos.length - 1; j >= 0; j--)
                 {
                     if (j == 0) {
                         juegos[j] = juego;
