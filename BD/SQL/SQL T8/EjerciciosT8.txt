@@ -4,14 +4,28 @@
 
 start "C:\\CasoPractico1.sql"
 
+/*------------------------------------------------------------------*/
 /* 2 */
 
+start "C:\\CasoPractico2.sql"
+/*
+En ese archivo sql están los tres break on, comentados para que no se sobrescriban.
+*/
 
-
+/*------------------------------------------------------------------*/
 /* 3 */
 
+accept ndep number prompt "Introduzca el nº de departamento: "
+define
 
+select apellido, emp_no, oficio, salario from emple
+where dept_no = &ndep
+order by apellido;
 
+accept ofi prompt 'Introduzca el oficio: '
+select * from emple where oficio = '&ofi';
+
+/*------------------------------------------------------------------*/
 /* Actividades propuestas */
 
 /* 1 */
@@ -28,6 +42,7 @@ start "C:\\CasoPractico1.sql"
 Se ve la salida normal del listado.
 */
 
+/*------------------------------------------------------------------*/
 /* 2 */
 
 ttitle 'Esto es para un ejemplo'
@@ -49,6 +64,7 @@ select * from tarticulos;
 Con eso ya no salen los títulos.
 */
 
+/*------------------------------------------------------------------*/
 /* 3 */
 
 /*Modificar esta línea*/
@@ -59,30 +75,51 @@ Añadiendo duplicate a la sentencia break on lo que ocurre es que el nombre apar
 una vez por cada venta que exista.
 */
 
+/*------------------------------------------------------------------*/
 /* 4 */
 
+start "C:\\ActivPropuesta4.sql"
 
-
+/*------------------------------------------------------------------*/
 /* 5 */
 
+accept ndep number prompt 'Introduzca el numero de departamento: '
+accept ofi prompt 'Introduzca el oficio a filtrar: '
 
+define cabecera="Departamento: " ndep
+define pie="Oficio: " ofi
 
+ttitle center 'Departamento ' ndep skip 1
+btitle center 'Oficio ' ofi skip 1
+
+select loc, apellido, emp_no, salario, comision
+from emple, depart
+where emple.dept_no = depart.dept_no
+and oficio = '&ofi'
+and emple.dept_no = &ndep
+order by apellido;
+
+/*------------------------------------------------------------------*/
 /* Actividades complementarias */
 
 /* 1 */
 
 
 
+/*------------------------------------------------------------------*/
 /* 2 */
 
 
 
+/*------------------------------------------------------------------*/
 /* 3 */
 
 
 
+/*------------------------------------------------------------------*/
 /* 4 */
 
 
 
+/*------------------------------------------------------------------*/
 /* 5 */
