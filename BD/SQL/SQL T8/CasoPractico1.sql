@@ -7,7 +7,7 @@ column denom format A15
 column denom truncated
 
 column fecha_venta heading 'Fecha|Venta'
-column uni_vend heading 'Unidades|Vendidas' format 9G999
+column uni_vend heading 'Unidades|Vendidas' format 99G999
 column importe format 9G999D99
 
 break on denom duplicate skip 2
