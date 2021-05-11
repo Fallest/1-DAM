@@ -2,12 +2,18 @@ CONSULTA 1:
 -----------
 Títulos de los libros que tengan más de dos autores ordenados por su título.
 
-
+for $x in //libro
+where count($x/autor) > 2
+order by $x/titulo
+return $x/titulo
 
 CONSULTA 2:
 -----------
 Títulos de los libros del año 2.000.
 
+for $x in //libro
+where $x/@año = 2000
+return $x/titulo
 
 CONSULTA 3:
 -----------
@@ -24,6 +30,8 @@ CONSULTA 3:
 <titulo> Economics of Technology for Digital TV</titulo>
 </titulos>
 
+for $x in //libro
+return <titulos><titulo>{$x/titulo/data()}</titulo></titulos>
 
 CONSULTA 4:
 -----------
@@ -34,10 +42,16 @@ CONSULTA 4:
 <titulo> Economics of Technology for Digital TV</titulo>
 </titulos>
 
+let $x := //libro
+return <titulos>
+  {for $y in $x
+  return <titulo>{$y/titulo/data()}</titulo>}
+</titulos>
 
 CONSULTA 5:
 -----------
 Título de los libros junto con el número de autores de cada libro.
+
 
 
 CONSULTA 6:

@@ -49,11 +49,12 @@ public class Principal {
         return edad;
     }
 
-    private static void deleteEmple(ArrayList col1, int edadElim) {
+    private static void deleteEmple(Collection col1, int edadElim) {
         Iterator iter = col1.iterator();
         
         while (iter.hasNext()) {
-            if (iter.s)
+            if ()
+                
         }
     }
 }
