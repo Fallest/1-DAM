@@ -1,3 +1,5 @@
+package Interfaces_14;
+
 public class Moto implements Vehiculo {
 
     int velocidad;

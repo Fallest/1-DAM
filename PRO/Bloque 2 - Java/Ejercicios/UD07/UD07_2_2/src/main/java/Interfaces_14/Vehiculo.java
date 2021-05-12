@@ -1,3 +1,5 @@
+package Interfaces_14;
+
 public interface Vehiculo {
 
     int velocidadMaxima=120;

@@ -4,9 +4,9 @@ clase que la hereda.
 	-Si la clase es abstracta, deberá declararse como como abstract class:
 	abstract class Nombre.
 	-Al declararse un método, se debe declarar como si fuera un prototipo, sin llaves.
-	Además, se pueden diferenciar entre métodos abstract y métodos no abstractos.
-	Los métodos no abstractos pueden tener código.
-	Al sobrescribir el método abstracto en una clase derivada, no hay que poner asbtract.
+	-Además, se pueden diferenciar entre métodos abstract y métodos no abstractos.
+	-Los métodos no abstractos pueden tener código.
+	-Al sobrescribir el método abstracto en una clase derivada, no hay que poner asbtract.
 	-En la clase derivada se definen los métodos.
 	-Cuando la clase es abstracta no se puede hacer new (no se puede instanciar).
 	-Cuando una clase hereda una clase abstracta, está obligada a impletentar

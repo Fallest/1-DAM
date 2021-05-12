@@ -1,15 +1,17 @@
+package Interfaces_14;
+
 public class UsoVehiculo {
 
     static Vehiculo[] moviles;
 
     public static void main(String[] args) {
         genera();
-/*      Vehiculo v1=new Moto();
+        Vehiculo v1=new Moto();
         Coche v2 = new Coche();
         System.out.println(acelerar(100,v1));
         System.out.println(v1.frenar(25));
         System.out.println(acelerar(130,v2));
-        System.out.println(v2.frenar(25));*/
+        System.out.println(v2.frenar(25));
 
     }
 
