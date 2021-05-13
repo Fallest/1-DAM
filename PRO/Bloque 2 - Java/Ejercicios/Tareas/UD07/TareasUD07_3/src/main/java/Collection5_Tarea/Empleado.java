@@ -24,4 +24,8 @@ public class Empleado {
     public int getEdad() {
         return this.edad;
     }
+    
+    public String toString() {
+        return "Nombre: " + this.nombre + " - Edad: " + this.edad;
+    }
 }
