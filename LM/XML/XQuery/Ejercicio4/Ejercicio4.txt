@@ -1,109 +1,86 @@
-CONSULTA 1:
------------
-Títulos de los libros que tengan más de dos autores ordenados por su título.
+12) Mostrar la suma total de los precios de los libros con la etiqueta "total".
 
-for $x in //libro
-where count($x/autor) > 2
-order by $x/titulo
-return $x/titulo
+let $x := //book
+return <total>{sum($x/price)}</total>
 
-CONSULTA 2:
------------
-Títulos de los libros del año 2.000.
+13) Mostrar cada uno de los precios de los libros, y al final una nueva etiqueta con la suma de los precios.
 
-for $x in //libro
-where $x/@año = 2000
-return $x/titulo
+let $x := //book
+return 
+<precios>
+  {$x/price}
+  <total>{sum($x/price)}</total>
+</precios>
 
-CONSULTA 3:
------------
-<titulos>
-<titulo>TCP/IP Illustrated</titulo>
-</titulos>
-<titulos>
-<titulo>Advan Programming in the Unix environment</titulo>
-</titulos>
-<titulos>
-<titulo>Data on the Web</titulo>
-</titulos>
-<titulos>
-<titulo> Economics of Technology for Digital TV</titulo>
-</titulos>
+14) Mostrar el título y el número de autores que tiene cada título en etiquetas diferentes.
 
-for $x in //libro
-return <titulos><titulo>{$x/titulo/data()}</titulo></titulos>
+for $x in //book
+return 
+<libros>
+  {$x/title}
+  <nautores>{count($x/author)}</nautores>
+</libros>
 
-CONSULTA 4:
------------
-<titulos>
-<titulo>TCP/IP Illustrated</titulo>
-<titulo>Advan Programming in the Unix environment</titulo>
-<titulo>Data on the Web</titulo>
-<titulo> Economics of Technology for Digital TV</titulo>
-</titulos>
+15) Mostrar en la misma etiqueta el título y entre paréntesis el número de autores que tiene ese título.
 
-let $x := //libro
-return <titulos>
-  {for $y in $x
-  return <titulo>{$y/titulo/data()}</titulo>}
-</titulos>
+for $x in //book
+return 
+<libros>
+  {$x/title/data(), "(", count($x/author), ")"}
+</libros>
 
-CONSULTA 5:
------------
-Título de los libros junto con el número de autores de cada libro.
+16) Mostrar los libros escritos en años que terminen en "3".
 
+for $x in //book
+let $y := $x/year
+where ends-with($y, "3")
+return $x/title
 
+17) Mostrar los libros cuya categoría empiece por "C".
 
-CONSULTA 6:
------------
-Títulos de los libros (libros.xml) y comentarios (comentarios.xml) de cada libro.
+for $y in //book
+let $x := $y/@category/data()
+where starts-with($x, "c")
+return $y
 
+18) Mostrar los libros que tengan una "X" mayúscula o minúscula en el título.
 
-CONSULTA 7:
------------
-Títulos de los libros almacenados en el archivo "libros.xml" y sus dos primeros autores.
+for $x in //book
+let $y := $x/title/data()
+where contains($y, "x")
+or contains($y, "X")
+return $x
 
+19) Mostrar el título y el número de caracteres que tiene cada título, cada uno con su propia etiqueta.
 
-CONSULTA 8:
------------
-Títulos de los libros en los que al menos uno de sus autores es W. Stevens.
+for $x in //book
+let $y := $x/title/data()
+return <libros>
+  {$x/title, <long>{string-length($y)}</long>}
+</libros>
 
+20) Mostrar todos los años en los que se ha publicado un libro eliminando los repetidos. Etiquétalos con "año".
 
-CONSULTA 9:
------------
-Títulos de los libros que mencionen “Unix” y “programing” en el mismo título.
+distinct-values(
+  for $y in //book
+  return <año>{$y/year}</año>
+)
 
+21) Mostrar todos los autores eliminando los que se repiten y ordenados por el número de caracteres que tiene cada autor.
 
-CONSULTA 10:
-------------
-Lista ordenada de apellidos de todos los autores y editores.
+for $x in //book
+return distinct-values(
+  let $y := $x/author/data()
+  order by string-length($y)
+  return $x/author
+)
 
+22) Mostrar los títulos en una tabla de HTML. 
 
-CONSULTA 11:
-------------
-Todos los apellidos distintos de los autores.
-
-
-CONSULTA 12:
-------------
-Todos los nodos libro que tengan al menos un nodo autor.
-
-
-CONSULTA 13:
-------------
-Nombre y año de todos los libros publicados por Addison-Wesley después de 1991.
-
-
-CONSULTA 14:
-------------
-Título de los libros cuyo precio esté por debajo de 50.00€.
-
-
-CONSULTA 15:
-------------
-Por cada libro almacenado en el archivo "libros.xml" devuelve el título del libro, el precio con que consta dicho libro en el archivo "libros.xml" y el precio con que consta ese libro en el archivo "comentarios.xml".
-
-
-CONSULTA 16:
-------------
-Por cada libro con autores, devuelve el título del libro y sus autores. Si el libro no tiene autores pero sí editor, la consulta devolverá el título del libro y la afiliación del editor. 
+for $x in //book
+return 
+<table>
+  <td>
+    <tr>{$x/title/data()}</tr>
+  </td>
+</table>

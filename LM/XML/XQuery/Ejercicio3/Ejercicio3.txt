@@ -1,43 +1,98 @@
 /* 1) Mostrar los títulos de los libros con la etiqueta "titulo". */
 
+for $x in //book
+return $x/title/data()
 
-
+/*--------------------------------------------------------*/
 /* 2) Mostrar los libros cuyo precio sea menor o igual a 30. Primero incluyendo la condición en la cláusula "where" y luego en la ruta del XPath. */
 
+for $x in //book
+where $x/price <= 30
+return $x
 
+for $x in //book
+return $x[price<=30]
 
+/*--------------------------------------------------------*/
 /* 3) Mostrar sólo el título de los libros cuyo precio sea menor o igual a 30. */
 
+for $x in //book
+where $x/price <= 30
+return $x/title
 
+for $x in //book
+return $x[price<=30]/title
 
+/*--------------------------------------------------------*/
 /* 4) Mostrar sólo el título sin atributos de los libros cuyo precio sea menor o igual a 30. */
 
+for $x in //book
+where $x/price <= 30
+return $x/title/data()
 
+for $x in //book
+return $x[price<=30]/title/data()
 
+/*--------------------------------------------------------*/
 /* 5) Mostrar el título y el autor de los libros del año 2005, y etiquetar cada uno de ellos con "lib2005". */
 
+for $x in //book
+where $x/year = 2005
+return 
+<lib2005>
+	{$x/title}
+	{$x/author}
+</lib2005>
 
-
+/*--------------------------------------------------------*/
 /* 6) Mostrar los años de publicación, primero con "for" y luego con "let" para comprobar la diferencia entre ellos. Etiquetar la salida con "publicacion". */
 
+for $x in //book
+return 
+<publicacion>
+	{$x/year}
+</publicacion>
 
+let $x:= //book
+return 
+<publicacion>
+	{$x/year}
+</publicacion>
 
+/*--------------------------------------------------------*/
 /* 7) Mostrar los libros ordenados primero por "category" y luego por "title" en una sola consulta. */
 
+for $x in //book
+order by $x/@category, $x/title
+return $x
 
-
+/*--------------------------------------------------------*/
 /* 8) Mostrar cuántos libros hay, y etiquetarlo con "total". */
 
+let $x := //book
+return <total>{count($x)}</total>
 
-
+/*--------------------------------------------------------*/
 /* 9) Mostrar los títulos de los libros y al final una etiqueta con el número total de libros. */
 
+let $y := //book
+return ($y/title,
+  let $x := $y
+  return <total>{count($x)}</total>
+)
 
-
+/*--------------------------------------------------------*/
 /* 10) Mostrar el precio mínimo y máximo de los libros. */
 
+let $y := //book
+return (max($y/price),min($y/price))
 
-
+/*--------------------------------------------------------*/
 /* 11) Mostrar el título del libro, su precio y su precio con el IVA incluido, cada uno con su propia etiqueta. Ordénalos por precio con IVA. */
 
-
+for $x in //book
+order by $x/price*1.21
+return ($x/title, 
+  <precio>{$x/price/data()}</precio>, 
+  <precioIVA>{$x/price/data()*1.21}</precioIVA>, ""
+)

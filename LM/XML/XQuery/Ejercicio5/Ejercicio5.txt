@@ -2,11 +2,18 @@ CONSULTA 1:
 -----------
 Títulos de los libros que tengan más de dos autores ordenados por su título.
 
+for $x in //libro
+where count($x/autor) > 2
+order by $x/titulo
+return $x/titulo
 
 CONSULTA 2:
 -----------
 Títulos de los libros del año 2.000.
 
+for $x in //libro
+where $x/@año = 2000
+return $x/titulo
 
 CONSULTA 3:
 -----------
@@ -23,6 +30,8 @@ CONSULTA 3:
 <titulo> Economics of Technology for Digital TV</titulo>
 </titulos>
 
+for $x in //libro
+return <titulos><titulo>{$x/titulo/data()}</titulo></titulos>
 
 CONSULTA 4:
 -----------
@@ -33,62 +42,146 @@ CONSULTA 4:
 <titulo> Economics of Technology for Digital TV</titulo>
 </titulos>
 
+let $x := //libro
+return <titulos>
+  {for $y in $x
+  return <titulo>{$y/titulo/data()}</titulo>}
+</titulos>
 
 CONSULTA 5:
 -----------
 Título de los libros junto con el número de autores de cada libro.
 
+let $x := //libro
+return 
+<titulos>
+  {for $y in $x
+  return 
+  <titulo>{
+  $y/titulo/data(),
+  "(",
+  count($y/autor),
+  ")"
+  }
+  </titulo>}
+</titulos>
 
 CONSULTA 6:
 -----------
 Títulos de los libros (libros.xml) y comentarios (comentarios.xml) de cada libro.
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+return ($x/titulo, 
+  for $y in db:open("comentarios", "comentarios.xml")/comentarios/entrada
+  where $x/titulo/data() = $y/titulo/data()
+  return $y/comentario)
 
 CONSULTA 7:
 -----------
 Títulos de los libros almacenados en el archivo "libros.xml" y sus dos primeros autores.
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+return ($x/titulo, 
+  let $y := $x/autor
+  return ($y[1], $y[2])
+)
 
 CONSULTA 8:
 -----------
 Títulos de los libros en los que al menos uno de sus autores es W. Stevens.
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+let $y := $x/autor
+return (
+  for $autor in $y
+  where $autor/apellido = "Stevens" 
+  and $autor/nombre = "W."
+  return $x/titulo
+)
 
 CONSULTA 9:
 -----------
 Títulos de los libros que mencionen “Unix” y “programing” en el mismo título.
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+let $y := $x/titulo
+where contains($y, "Unix")
+and contains($y, "Programming")
+return $x/titulo
 
 CONSULTA 10:
 ------------
 Lista ordenada de apellidos de todos los autores y editores.
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+order by $x/editorial
+return (
+  let $y := $x/autor
+  order by $y[1]
+  return <autor>{$y/apellido}
+</autor>,
+  let $y := $x/editorial
+  return <editorial>{$y}</editorial>,
+  ""
+)
 
 CONSULTA 11:
 ------------
 Todos los apellidos distintos de los autores.
 
+distinct-values(for $x in db:open("libros", "libros.xml")/bib/libro
+let $y := $x/autor/apellido
+return $y)
 
 CONSULTA 12:
 ------------
 Todos los nodos libro que tengan al menos un nodo autor.
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+where $x/autor 
+return $x
 
 CONSULTA 13:
 ------------
 Nombre y año de todos los libros publicados por Addison-Wesley después de 1991.
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+where $x/editorial = "Addison-Wesley"
+and $x/@año > 1991
+return ($x/titulo/data(), $x/@año, "")
 
 CONSULTA 14:
 ------------
 Título de los libros cuyo precio esté por debajo de 50.00€.
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+where $x/precio < 50.00
+return $x/titulo
 
 CONSULTA 15:
 ------------
 Por cada libro almacenado en el archivo "libros.xml" devuelve el título del libro, el precio con que consta dicho libro en el archivo "libros.xml" y el precio con que consta ese libro en el archivo "comentarios.xml".
 
+for $x in db:open("libros", "libros.xml")/bib/libro
+return (
+  $x/titulo,
+  <precioLibros>{$x/precio/data()}</precioLibros>,
+  for $y in db:open("comentarios", "comentarios.xml")/comentarios/entrada
+  where $y/titulo/data() = $x/titulo/data()
+  return <precioComentario>{$y/precio/data()}</precioComentario>,
+  ""
+)
 
 CONSULTA 16:
 ------------
 Por cada libro con autores, devuelve el título del libro y sus autores. Si el libro no tiene autores pero sí editor, la consulta devolverá el título del libro y la afiliación del editor. 
+
+for $x in db:open("libros", "libros.xml")/bib/libro
+return 
+if ($x/autor) then 
+  <HayAutor>{($x/titulo, $x/autor)}</HayAutor>
+else (
+  if ($x/editorial) then
+  <sinAutor>{($x/titulo, $x/editorial)}</sinAutor>
+  else()
+)
