@@ -31,10 +31,6 @@ public class Errores extends Exception {
         System.out.println("\n\tError - Número no válido: Pocos o demasiados objetos de catálogo (5 - 80).");
     }
     
-    public void catLleno() {
-        System.out.println("\n\tError - Catálogo completo: Borre elementos para introducir más.");
-    }
-    
     public void catVacio() {
         System.out.println("\n\tError - Catálogo vacío: Introduzca elementos para borrar alguno.");
     }

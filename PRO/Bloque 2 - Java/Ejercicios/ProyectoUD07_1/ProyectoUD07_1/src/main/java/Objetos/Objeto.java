@@ -45,5 +45,5 @@ public abstract class Objeto {
     // Finalize:
     // Debido a que finalize se usa solo para borrar copias, no es necesario darle
     // funcionalidades extra.
-    protected void finalize() {}
+    public void finalize() {}
 }
