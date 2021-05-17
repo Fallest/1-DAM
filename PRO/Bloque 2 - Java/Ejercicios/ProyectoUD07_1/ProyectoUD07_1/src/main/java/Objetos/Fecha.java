@@ -1,4 +1,6 @@
-package ProyectoJavaUD06;
+package Objetos;
+
+import Errores.Errores;
 
 public class Fecha {
     // Atributos
@@ -8,7 +10,7 @@ public class Fecha {
     
     /*------------------------------------------------------------------------*/
     // Constructor:
-    Fecha (int dia, int mes, int año) throws Errores {
+    public Fecha (int dia, int mes, int año) throws Errores {
         Errores error = new Errores();
         
         if (!checkFecha(dia, mes, año))
@@ -138,7 +140,7 @@ public class Fecha {
         return diasTotales;
     }
     
-    public static String toStr(Fecha fecha) {
+    public static String toString(Fecha fecha) {
         String fechaCad;
         
         fechaCad = String.valueOf(fecha.dia) + "/" + String.valueOf(fecha.mes) + "/"

@@ -1,10 +1,11 @@
-package ProyectoJavaUD06;
+package Objetos;
 
+import Errores.Errores;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public final class Videojuego {
+public final class Videojuego extends Objeto {
     // Atributos
     private String desarrolladora;
     private String titulo;
@@ -16,10 +17,10 @@ public final class Videojuego {
     
     /*------------------------------------------------------------------------*/
     // Constructor: 
-    Videojuego() {
+    public Videojuego() {
         setTitulo();
         setDesarrolladora();
-        setFechaLanz();
+        setFecha();
         setPrecio();
         setPlataforma();
     }
@@ -88,7 +89,7 @@ public final class Videojuego {
         } while (ejec);
     }
     
-    public void setFechaLanz() {
+    public void setFecha() {
         boolean ejec;
         String cad;
         
@@ -238,7 +239,7 @@ public final class Videojuego {
         return this.desarrolladora;
     }
     
-    public Fecha getFechaLanz() {
+    public Fecha getFecha() {
         return this.fechaLanz;
     }
     
@@ -272,14 +273,23 @@ public final class Videojuego {
         System.out.println("\tTítulo: " + this.titulo);
         System.out.println("\tDesarrolladora: " + this.desarrolladora);
         System.out.println("\tPrecio: " + this.precio + "€");
-        System.out.println("\tFecha de lanzamiento: " + Fecha.toStr(this.fechaLanz));
+        System.out.println("\tFecha de lanzamiento: " + this.fechaLanz);
         for (i = 0; i < this.cantPlat; i++)
             System.out.println("\tPlataforma " + (i+1) + ": " + this.plataformas[i]);
     }
     
-    /*------------------------------------------------------------------------*/
-    // Finalize:
-    // Debido a que finalize se usa solo para borrar copias, no es necesario darle
-    // funcionalidades extra.
-    protected void finalize() {}
+    public String toString() {
+        String cad;
+        
+        cad = this.titulo + "\n";
+        cad += this.desarrolladora + "\n";
+        cad += "Fecha de lanzamiento: " + this.fecha + "\n";
+        cad += "Plataformas: ";
+        for (int i = 0; i < this.plataformas.length; i++)
+            cad += this.plataformas[i] + ", ";
+        cad += "\nFecha de estreno: " + this.fecha;
+        cad += "\nPrecio: " + this.precio + "€";
+        
+        return cad;
+    }
 }

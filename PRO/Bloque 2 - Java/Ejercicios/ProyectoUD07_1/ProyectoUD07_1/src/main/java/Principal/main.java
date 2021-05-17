@@ -1,8 +1,9 @@
-package ProyectoJavaUD06;
+package Principal;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import Catalogos.*;
+import Objetos.*;
+import Errores.Errores;
+import java.io.*;
 
 public class main {
     

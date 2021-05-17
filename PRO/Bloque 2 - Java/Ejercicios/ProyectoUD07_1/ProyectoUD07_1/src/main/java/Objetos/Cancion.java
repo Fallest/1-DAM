@@ -1,29 +1,30 @@
-package ProyectoJavaUD06;
+package Objetos;
 
+import Errores.Errores;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public final class Cancion {
+public final class Cancion extends Objeto {
     // Atributos
-    private String titulo;
     private String artistas[];
-    private Fecha fechaEstreno;
     private int cantArtistas;
     
     /*------------------------------------------------------------------------*/
     // Constructor:
     //      Usamos solo uno porque no le daremos uso a otros.
     //      Con crear una clase con funciones completas es suficiente.
-    Cancion () {        
+    public Cancion () {        
         setTitulo();
         setArtistas();
-        setFechaEstr();
+        setFecha();
     }
     
     /*------------------------------------------------------------------------*/
-    // Setters:
+    // Setters: 
     public void setTitulo() {
+        // Polimorfismo - Sobrecarga
+        
         // Usaremos una flag para seguir preguntando al usuario si no ha introducido
         // bien los datos. Además, creamos un objeto Errores para lanzarlo si es
         // necesario. Esto se va a repetir en todos los setters.
@@ -125,7 +126,7 @@ public final class Cancion {
         } while (ejec);
     }
     
-    public void setFechaEstr() {
+    public void setFecha() {
         boolean ejec;
         String cad;
         
@@ -138,7 +139,7 @@ public final class Cancion {
                 
                 System.out.println("\n\tIntroduzca la fecha de estreno (DD/MM/YYYY): ");
                 cad = teclado.readLine();
-                this.fechaEstreno = new Fecha(Integer.parseInt(cad.substring(0, 2)),
+                this.fecha = new Fecha(Integer.parseInt(cad.substring(0, 2)),
                     Integer.parseInt(cad.substring(3, 5)), 
                     Integer.parseInt(cad.substring(6, 10)));
                 
@@ -174,7 +175,7 @@ public final class Cancion {
     }
     
     public Fecha getFecha() {
-        return this.fechaEstreno;
+        return this.fecha;
     }
     
     /*------------------------------------------------------------------------*/
@@ -184,12 +185,17 @@ public final class Cancion {
         System.out.println("\tTítulo: " + this.titulo);
         for (i = 0; i < cantArtistas; i++)
             System.out.println("\tArtista " + (i+1) + ": " + this.artistas[i]);
-        System.out.println("\tFecha de estreno: " + Fecha.toStr(this.fechaEstreno));
+        System.out.println("\tFecha de estreno: " + this.fecha);
     }
-    
-    /*------------------------------------------------------------------------*/
-    // Finalize:
-    // Debido a que finalize se usa solo para borrar copias, no es necesario darle
-    // funcionalidades extra.
-    protected void finalize() {}
+
+    public String toString() {
+        String cad;
+        
+        cad = this.titulo + " - ";
+        for (int i = 0; i < this.artistas.length; i++)
+            cad += this.artistas[i];
+        
+        cad += "\nFecha de estreno: " + this.fecha;
+        return cad;
+    }
 }
