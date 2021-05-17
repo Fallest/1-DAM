@@ -27,10 +27,6 @@ public class Errores extends Exception {
                 + "\"Mac\", \"Linux\", \"PlayStation\", o \"Xbox\"");
     }
     
-    public void invalidCatTam() {
-        System.out.println("\n\tError - Número no válido: Pocos o demasiados objetos de catálogo (5 - 80).");
-    }
-    
     public void catVacio() {
         System.out.println("\n\tError - Catálogo vacío: Introduzca elementos para borrar alguno.");
     }

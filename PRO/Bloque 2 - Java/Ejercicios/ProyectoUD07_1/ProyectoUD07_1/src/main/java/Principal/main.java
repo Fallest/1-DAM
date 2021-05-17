@@ -18,8 +18,9 @@ public class main {
         } while (opcion != 8);
     }
     /*------------------------------------------------------------------------*/
-    // Funciones del menú:
+    // Funciones del menú: 2/2
     public static int menu() {
+        // Muestra el menú y lee la opción a escoger.
         int opcion = 0;
         
         System.out.println("-------------MENU-------------");
@@ -56,20 +57,20 @@ public class main {
     public static void ejecutarOpcion(int opcion, Catalogo catalogo) {
         switch (opcion) {
             case 1: {
-                darAlta((ArrayList) catalogo.getCanciones());
+                darAlta(catalogo.getCanciones());
                 break;
             }
             case 2: {
-                darAlta((ArrayList) catalogo.getVideojuegos());
+                darAlta(catalogo.getVideojuegos());
                 break;
             }
             case 3: {
-                try {darBaja((ArrayList) catalogo.getVideojuegos());}
+                try {darBaja(catalogo.getVideojuegos());}
                 catch (Errores e) {e.catVacio();}
                 break;
             }
             case 4: {
-                try {darBaja((ArrayList) catalogo.getCanciones());}
+                try {darBaja(catalogo.getCanciones());}
                 catch (Errores e) {e.catVacio();}
                 break;
             }
@@ -78,16 +79,18 @@ public class main {
                 break;
             }
             case 6: {
-                mostrarDatos((ArrayList) catalogo.getCanciones());
+                mostrarDatos(catalogo.getCanciones());
                 break;
             }
             case 7: {
-                mostrarDatos((ArrayList) catalogo.getVideojuegos());
+                mostrarDatos(catalogo.getVideojuegos());
                 break;
             }
         }
     }
     
+    /*------------------------------------------------------------------------*/
+    // Funciones de alta y baja: 2/2
     public static void darAlta(ArrayList lista) {
         if (lista.get(0) instanceof Videojuego) {
             // Código para insertar un videojuego
@@ -116,7 +119,8 @@ public class main {
         }
     }
     
-    /*------------------------------------------------------------------------*/
+    /*-----*/ 
+    // Funciones de alta y baja de juegos: 0/2
     public static void insertarVideojuego(ArrayList<Videojuego> lista) {    
         // Inicializamos el juego que vamos a insertar:
         juego = new Videojuego();
@@ -246,7 +250,8 @@ public class main {
         }
     }
 
-    // Funciones relacionadas con las canciones:
+    /*-----*/
+    // Funciones de alta y baja de las canciones: 0/2
     public static void insertarCancion(ArrayList<Cancion> lista) {
         Errores error = new Errores();
         int j;
@@ -379,8 +384,8 @@ public class main {
         }
     }
 
-    
-    // Funciones para mostrar datos del catálogo:
+    /*------------------------------------------------------------------------*/
+    // Funciones para mostrar datos del catálogo: 2/2
     public static void mostrarDatos(ArrayList lista) {
         if (lista.get(0) instanceof Videojuego) {
             Catalogo catAux = new Catalogo();

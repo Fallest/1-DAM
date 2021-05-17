@@ -8,7 +8,7 @@ public class Catalogo {
     private Collection canciones = new ArrayList<Cancion>();
     private Collection videojuegos = new ArrayList<Videojuego>();
     
-    // Constructor
+    // Constructores: 2/2
     public Catalogo() {} // Dejamos un constructor vacío, no hace falta inicializar
                          // ningún valor.
     
@@ -17,7 +17,7 @@ public class Catalogo {
         setCatVideojuegos(catJuegos);
     }
     
-    // Setters
+    // Setters: 2/2
     public void setCatCanciones(Collection catCanc) {
         // Se asume que el catálogo dado por parámetros ya está ordenado.
         // Esta función no se va a usar, de todas maneras.
@@ -40,16 +40,16 @@ public class Catalogo {
         }
     }
     
-    // Getters
-    public Collection getCanciones() {
-        return this.canciones;
+    // Getters: 2/2
+    public ArrayList getCanciones() {
+        return (ArrayList) this.canciones;
     }
     
-    public Collection getVideojuegos() {
-        return this.videojuegos;
+    public ArrayList getVideojuegos() {
+        return (ArrayList) this.videojuegos;
     }
     
-    // Utilidades    
+    // Utilidades: 3/3    
     public void mostrarDatos() {
         // Solo hay que llamar a los otros dos métodos juntos
         mostrarCanciones();
