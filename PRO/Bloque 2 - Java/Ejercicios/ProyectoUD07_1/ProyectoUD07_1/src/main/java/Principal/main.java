@@ -120,268 +120,113 @@ public class main {
     }
     
     /*-----*/ 
-    // Funciones de alta y baja de juegos: 0/2
-    public static void insertarVideojuego(ArrayList<Videojuego> lista) {    
+    // Funciones de alta y baja de juegos: 2/2
+    public static void insertarVideojuego(ArrayList<Videojuego> lista) {
         // Inicializamos el juego que vamos a insertar:
-        juego = new Videojuego();
+        Videojuego juego = new Videojuego();
 
         // Si es el primer dato
-        if (juegos[0] == null) {
-            juegos[0] = juego;
+        if (lista.get(0) == null) {
+            lista.add(juego);
         }
-
-        /*
-        Vamos a buscar la posición en la que vamos a meter el juego.
-        Para ello vamos a hacer una iteracíon inversa a la lista, para
-        ir moviendo hacia arriba todos los juegos que estuvieran dentro
-        que tienen una fecha anterior al que vamos a insertar.
-        */
+        
+        //Vamos a buscar la posición en la que vamos a meter el juego.
         else 
         {
-            // Iteramos desde el final hasta la posición inmediatamente
-            // superior a 0.
-            for (j = juegos.length - 1; j >= 0; j--)
-            {
-                if (j == 0) {
-                    juegos[j] = juego;
+            Iterator iter = lista.iterator();
+            int cont = 0;
+            Videojuego aux;
+            
+            while (iter.hasNext()) {
+                aux = (Videojuego) iter.next(); // Hay que hacer casting por alguna razón.
+                if (Fecha.toInt(aux.getFecha()) <= Fecha.toInt(juego.getFecha())) {
+                    lista.add(cont, juego);
                     break;
                 }
-                // Si el elemento en una posición inferior a la actual está
-                // vacío, no hay que hacer ningún cambio.
-                else if (juegos[j-1] == null)
-                    continue;
-
-                // Si nos encontramos que la posición inferior no está vacía,
-                // tenemos que comprobar si vamos a meter ahí el juego o no.
-                else if (juegos[j-1] != null) {
-                    // Tenemos que comprobar si estamos en el último elemento,
-                    // para no salirnos de los límites de la lista.
-                    if (j == juegos.length - 1) {
-                        if (Fecha.toInt(juegos[j-1].getFechaLanz()) <= Fecha.toInt(juego.getFechaLanz())) {
-                            juegos[j] = juego;
-                            break;
-                        }
-                        else
-                            juegos[j] = juegos[j-1];
-                    }  
-                    // Si la fecha del juego de la lista es anterior
-                    // a la del juego, es el lugar en el que hay
-                    // que insertarlo.
-                    else if (Fecha.toInt(juegos[j-1].getFechaLanz()) <= Fecha.toInt(juego.getFechaLanz())) {
-                        juegos[j] = juego;
-                        break;
-                    }
-
-                    // Si hay que seguir avanzando para encontrar otra juego,
-                    // hay que dejar desplazadas los otros juegos para
-                    // no perder datos.
-                    else {
-                        juegos[j+1] = juegos[j];
-                        juegos[j] = juegos[j-1];
-                    }                            
+                else {
+                    cont ++;
+                    iter.next();
                 }
             }
         }
     }
     
     public static void eliminarVideojuego(ArrayList<Videojuego> lista) {
-        Errores error = new Errores();
-
-        if (!checkVacio(catalogo)) {
-            int i, j;
-            String tituloElim = new String();
-            boolean ejec;
-            Videojuego juegos[] = catalogo.getVideojuegos(); // Para poder modificar 
-            // el array desde esta función.
-
-            // Pedir el título del juego a eliminar.
-            InputStreamReader stream = new InputStreamReader(System.in);
-            BufferedReader teclado = new BufferedReader(stream);
-
-            do {
-                try {
-                    ejec = false;
-                    System.out.println("\nIntroduzca el título del juego a eliminar:");
-                    tituloElim = teclado.readLine();
-
-                    if (tituloElim.length() > 40 || tituloElim.isEmpty()) {
-                        throw error;
-                    }
-                } catch (IOException e) {
-                    System.out.println("\n\tError en la entrada de datos.");
-                    ejec = true;
-                } catch (Errores e) {
-                    e.invalidStr();
-                    ejec = true;
-                }
-            } while (ejec);
-
-            // Buscamos la posición de la canción a eliminar.
-            for (i = 0; i < juegos.length; i++) // Comprobamos si los títulos coinciden.
-            {
-                if (juegos[i] != null && juegos[i].getTitulo().toLowerCase().equals(tituloElim.toLowerCase())) {
-                    // Iteramos desde el final hasta la posición inmediatamente
-                    // superior a i.
-                    for (j = i + 1; j < juegos.length; j++) {
-                        // Si el elemento en una posición superior a la actual está
-                        // vacío, significa que j y j-1 son el mismo objeto, y hemos
-                        // terminado de bajar posiciones. Entonces vaciamos j, y 
-                        // salimos del bucle.
-                        if (juegos[j + 1] == null) {
-                            juegos[j - 1] = juegos[j];
-                            juegos[j] = null;
-                            break;
-                        } // Si estamos en el último elemento, este se va a quedar
-                        // vacío, puesto que estamos bajando las posiciones de todos
-                        // los elementos.
-                        else if (j == juegos.length) {
-                            juegos[j - 1] = juegos[j];
-                            juegos[j].finalize();
-                        } //
-                        else {
-                            juegos[j - 1] = juegos[j];
-                            juegos[j] = juegos[j + 1];
-                        }
-                    }
-                }
+        // Pedimos el título a eliminar:
+        System.out.println("Título a eliminar: ");
+        String tituloElim = pedirTitulo();
+        boolean elim = false; // Bandera para saber si hemos eliminado algún juego.
+        Iterator iter = lista.iterator();
+        Videojuego aux;
+        
+        // Buscamos dicho título en el array
+        while (iter.hasNext()) {
+            aux = (Videojuego) iter.next();
+            if (aux.getTitulo().equals(tituloElim)) {
+                iter.remove();
+                System.out.println("Juego eliminado.\n");
+                elim = true;
             }
-        } else {
-            throw error;
+            else iter.next();
         }
+        
+        if (!elim)
+            System.out.println("No existe dicho juego.\n");
     }
 
     /*-----*/
-    // Funciones de alta y baja de las canciones: 0/2
+    // Funciones de alta y baja de las canciones: 2/2
     public static void insertarCancion(ArrayList<Cancion> lista) {
-        Errores error = new Errores();
-        int j;
-        Collection canciones = catalogo.getCanciones(); // Para poder modificar 
-        // el array desde esta función.
-        Cancion cancion;
-
-        // Inicializamos la cancion que vamos a insertar:
-        cancion = new Cancion();
+        // Inicializamos la canción que vamos a insertar:
+        Cancion cancion = new Cancion();
 
         // Si es el primer dato
-        if (canciones[0] == null) {
-            canciones[0] = cancion;
-        } /*
-        Vamos a buscar la posición en la que vamos a meter la canción.
-        Para ello vamos a hacer una iteracíon inversa a la lista, para
-        ir moviendo hacia arriba todas las canciones que estuvieran dentro
-        que están por detrás en el abecedario que la canción que vamos a 
-        insertar.
-         */ else {
-            // Iteramos desde el final hasta la posición inmediatamente
-            // superior a 0.
-            for (j = canciones.length - 1; j >= 0; j--) {
-                if (j == 0) {
-                    canciones[j] = cancion;
+        if (lista.get(0) == null) {
+            lista.add(cancion);
+        }
+        
+        //Vamos a buscar la posición en la que vamos a meter la canción.
+        else 
+        {
+            Iterator iter = lista.iterator();
+            int cont = 0;
+            Cancion aux;
+            
+            while (iter.hasNext()) {
+                aux = (Cancion) iter.next(); // Hay que hacer casting por alguna razón.
+                if (aux.getTitulo().charAt(0) >= cancion.getTitulo().charAt(0)) {
+                    lista.add(cont, cancion);
                     break;
-                } // Si el elemento en una posición inferior a la actual está
-                // vacío, no hay que hacer ningún cambio.
-                else if (canciones[j - 1] == null) {
-                    continue;
-                } // Si nos encontramos que la canción inferior no está vacía,
-                // tenemos que comprobar si vamos a meter ahí la canción o no.
-                else if (canciones[j - 1] != null) {
-
-                    // Tenemos que comprobar si estamos en el último elemento,
-                    // para no salirnos de los límites de la lista.
-                    if (j == canciones.length - 1) {
-                        if (canciones[j - 1].getTitulo().toLowerCase().charAt(0) <= cancion.getTitulo().toLowerCase().charAt(0)) {
-                            canciones[j] = cancion;
-                            break;
-                        } else {
-                            canciones[j] = canciones[j - 1];
-                        }
-                    } // Si la inicial de la canción de la lista es anterior
-                    // a la de la canción, es el lugar en el que hay
-                    // que meter la canción.
-                    else if (canciones[j - 1].getTitulo().toLowerCase().charAt(0) <= cancion.getTitulo().toLowerCase().charAt(0)) {
-                        canciones[j] = cancion;
-                        break;
-                    } // Si hay que seguir avanzando para encontrar otra canción,
-                    // hay que dejar desplazadas las otras canciones para
-                    // no perder datos.
-                    else {
-                        canciones[j + 1] = canciones[j];
-                        canciones[j] = canciones[j - 1];
-                    }
+                }
+                else {
+                    cont ++;
+                    iter.next();
                 }
             }
         }
-
     }
 
     public static void eliminarCancion(ArrayList<Cancion> lista) {
-        Errores error = new Errores();
-
-        if (!checkVacio(catalogo)) {
-            int i, j;
-            String tituloElim = new String();
-            boolean ejec;
-            Cancion[] canciones = catalogo.getCanciones(); // Para poder modificar 
-            // el array desde esta función.
-
-            // Pedir el título de la canción a eliminar.
-            InputStreamReader stream = new InputStreamReader(System.in);
-            BufferedReader teclado = new BufferedReader(stream);
-
-            do {
-                try {
-                    ejec = false;
-                    System.out.println("\nIntroduzca el título de la canción a eliminar:");
-                    tituloElim = teclado.readLine();
-
-                    if (tituloElim.length() > 40 || tituloElim.isEmpty()) {
-                        throw error;
-                    }
-                } catch (IOException e) {
-                    System.out.println("\n\tError en la entrada de datos.");
-                    ejec = true;
-                } catch (Errores e) {
-                    e.invalidStr();
-                    ejec = true;
-                }
-            } while (ejec);
-
-            // Buscamos la posición de la canción a eliminar.
-            for (i = 0; i < canciones.length; i++) // Comprobamos si los títulos coinciden.
-            {
-                if (canciones[i] != null && canciones[i].getTitulo().toLowerCase().equals(tituloElim.toLowerCase())) {
-                    // Iteramos desde el final hasta la posición inmediatamente
-                    // superior a i.
-                    for (j = i + 1; j < canciones.length; j++) {
-                        // Si el elemento en una posición superior a la actual está
-                        // vacío, hemos terminado de bajar posiciones. Entonces 
-                        // vaciamos j, y salimos del bucle.
-                        if (canciones[j + 1] == null) {
-                            canciones[j - 1] = canciones[j];
-                            canciones[j] = null;
-                            break;
-                        } // Si estamos en el último elemento, este se va a quedar
-                        // vacío, puesto que estamos bajando las posiciones de todos
-                        // los elementos.
-                        else if (j == canciones.length) {
-                            canciones[j - 1] = canciones[j];
-                            canciones[j].finalize();
-                            break;
-                        } // Si j no es 99, y la canción de la posición superior
-                        // no está vacía, significa que hay que hacer un cambio.
-                        // El cambio es bajar el actual una posición, y el siguiente
-                        // bajarlo a la posición del actual. Así se sustituye
-                        // la información de la canción que queremos eliminar.
-                        else {
-                            canciones[j - 1] = canciones[j];
-                            canciones[j] = canciones[j + 1];
-                        }
-                    }
-                }
+        // Pedimos el título a eliminar:
+        System.out.println("Título a eliminar: ");
+        String tituloElim = pedirTitulo();
+        boolean elim = false; // Bandera para saber si hemos eliminado alguna canción.
+        Iterator iter = lista.iterator();
+        Cancion aux;
+        
+        // Buscamos dicho título en el array
+        while (iter.hasNext()) {
+            aux = (Cancion) iter.next();
+            if (aux.getTitulo().equals(tituloElim)) {
+                iter.remove();
+                System.out.println("Canción eliminada.\n");
+                elim = true;
             }
-        } else {
-            throw error;
+            else iter.next();
         }
+        
+        if (!elim)
+            System.out.println("No existe dicha canción.\n");
     }
 
     /*------------------------------------------------------------------------*/
@@ -401,5 +246,36 @@ public class main {
 
     public static void mostrarCatalogo(Catalogo catalogo) {
         catalogo.mostrarDatos();
+    }
+    
+    /*------------------------------------------------------------------------*/
+    // Funciones extra: 1/1
+    public static String pedirTitulo() {
+        Errores error = new Errores();
+        boolean ejec;
+        String res = null;
+        
+        InputStreamReader stream = new InputStreamReader(System.in);
+        BufferedReader teclado = new BufferedReader(stream);
+
+        do {
+            try {
+                ejec = false;
+                System.out.println("\nIntroduzca el título:");
+                res = teclado.readLine();
+
+                if (res.length() > 40 || res.isEmpty()) {
+                    throw error;
+                }
+            } catch (IOException e) {
+                System.out.println("\n\tError en la entrada de datos.");
+                ejec = true;
+            } catch (Errores e) {
+                e.invalidStr();
+                ejec = true;
+            }
+        } while (ejec);
+        
+        return res;
     }
 }
