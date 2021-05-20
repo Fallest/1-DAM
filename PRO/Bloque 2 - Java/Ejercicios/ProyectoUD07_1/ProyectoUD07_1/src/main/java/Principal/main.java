@@ -117,7 +117,7 @@ public class main {
         Errores error = new Errores();
         
         // No se puede eliminar un objeto si la lista está vacía
-        if (lista.get(0) == null)
+        if (lista.isEmpty())
             throw error;
         
         else if (lista.get(0) instanceof Videojuego) {
@@ -178,6 +178,7 @@ public class main {
                 iter.remove();
                 System.out.println("Juego eliminado.\n");
                 elim = true;
+                break;
             }
         }
         
@@ -201,16 +202,21 @@ public class main {
         {
             Iterator iter = lista.iterator();
             int cont = 0;
+            boolean flag = false;
             Cancion aux;
             
             while (iter.hasNext()) {
                 aux = (Cancion) iter.next(); // Hay que hacer casting por alguna razón.
                 if (aux.getTitulo().charAt(0) >= cancion.getTitulo().charAt(0)) {
                     lista.add(cont, cancion);
+                    flag = true;
                     break;
                 }
                 else cont ++;
             }
+            
+            if (!flag)
+                lista.add(cancion);
         }
     }
 
@@ -229,6 +235,7 @@ public class main {
                 iter.remove();
                 System.out.println("Canción eliminada.\n");
                 elim = true;
+                break;
             }
         }
         
@@ -241,12 +248,12 @@ public class main {
     public static void mostrarDatos(ArrayList lista, int opc) {
         if (lista.isEmpty())
         {System.out.println("No se pueden mostrar datos de un catálogo vacío.\n");}
-        else if (opc == 7 && lista.get(0) instanceof Videojuego) {
+        else if (lista.get(0) instanceof Videojuego) {
             Catalogo catAux = new Catalogo();
             catAux.setCatVideojuegos(lista);
             catAux.mostrarVideojuegos();
         }
-        else if (opc == 6 && lista.get(0) instanceof Cancion) {
+        else if (lista.get(0) instanceof Cancion) {
             Catalogo catAux = new Catalogo();
             catAux.setCatCanciones(lista);
             catAux.mostrarCanciones();

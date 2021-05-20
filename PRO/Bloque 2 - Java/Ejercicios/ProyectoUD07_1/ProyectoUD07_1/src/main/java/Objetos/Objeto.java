@@ -1,7 +1,6 @@
 package Objetos;
 
 import Errores.Errores;
-import java.util.*;
 
 public abstract class Objeto {
     // Atributos
