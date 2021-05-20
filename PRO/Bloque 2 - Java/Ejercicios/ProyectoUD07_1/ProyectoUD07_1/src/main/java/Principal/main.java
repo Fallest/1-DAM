@@ -146,16 +146,20 @@ public class main {
         {
             Iterator iter = lista.iterator();
             int cont = 0;
+            boolean flag = false;
             Videojuego aux;
             
             while (iter.hasNext()) {
                 aux = (Videojuego) iter.next(); // Hay que hacer casting por alguna razón.
                 if (Fecha.toInt(aux.getFecha()) <= Fecha.toInt(juego.getFecha())) {
                     lista.add(cont, juego);
+                    flag = true;
                     break;
                 }
-                else cont ++;
             }
+            
+            if (!flag)
+                lista.add(juego);
         }
     }
     
