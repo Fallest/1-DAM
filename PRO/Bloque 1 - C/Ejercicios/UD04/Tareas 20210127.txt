@@ -1,0 +1,9 @@
+ALTA DE SOCIO
+- El proceso ahora no debe repetirse mientras el usuario quiera seguir sino que se debe ceñir a dar de alta un socio y volver al menu.
+- Los codigos de socio no pueden repetirse.
+
+BAJA DE SOCIO
+- Hay que realizarla entera.
+
+MODIFICACION DE SOCIO
+- Hay que realizarla entera.
