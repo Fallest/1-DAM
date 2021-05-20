@@ -1,0 +1,104 @@
+/* 1 */
+
+connect scott/tiger
+
+create table ciudades(
+	ciudad	varchar2(20) not null,
+	provincia varchar2(20),
+	poblacion varchar2(20),
+	constraint pk_ciudad primary key (ciudad)
+);
+
+create table inmobiliarias(
+	agencia varchar2(30) not null,
+	ciudad varchar2(20),
+	num_tra varchar2(2),
+	director varchar2(30),
+	constraint pk_inmobiliaria primary key (agencia),
+	constraint fk_inmobiliaria foreign key (ciudad) references ciudades on delete cascade
+);
+
+create table pisos(
+	referencia varchar(5) not null,
+	vendido varchar2(2),
+	precio varchar2(6),
+	inmobiliaria varchar2(20),
+	constraint pk_pisos primary key (referencia),
+	constraint fk_pisos foreign key (inmobiliaria) references inmobiliarias on delete cascade
+);
+
+
+start "14mayo.sql";
+
+/*----------------------------------------------------*/
+/* 2 */
+
+create user ejercicio2 identified by eje2 quota 500k on users;
+grant connect to ejercicio2;
+
+grant select on ciudades to ejercicio2;
+grant select on inmobiliarias to ejercicio2;
+grant select on pisos to ejercicio2;
+
+/*----------------------------------------------------*/
+/* 3 */
+
+alter table pisos add(amueblado varchar2(1));
+alter table pisos add constraint ck_amueblado check(amueblado in ('S', 'N'));
+
+/*----------------------------------------------------*/
+/* 4 */
+
+select referencia, precio, inmobiliaria, substr(director, instr(director, ' ')) "Apellido Director"
+from pisos P, inmobiliarias I
+where P.inmobiliaria = I.agencia
+and (
+	(precio < 200000)
+	or 
+	(inmobiliaria = 'INMOBILIARIA RUIZ' 
+	and I.ciudad = 'SEVILLA'
+	and precio > 200000)
+)
+order by inmobiliaria desc, precio desc;
+
+/*----------------------------------------------------*/
+/* 5 */
+
+update inmobiliarias 
+set director = (
+	select director from inmobiliarias
+	where substr(director, -1) = 'S'
+) where agencia = (
+	select inmobiliaria from pisos
+	where precio = (select max(precio) from pisos)
+);
+
+/*----------------------------------------------------*/
+/* 6 */
+
+select C.ciudad, C.poblacion, count(P.referencia)
+from ciudades C, pisos P, inmobiliarias I
+where C.ciudad = I.ciudad
+and P.inmobiliaria = I.agencia
+and P.vendido = 'NO'
+group by C.ciudad, C.poblacion;
+
+
+/*----------------------------------------------------*/
+/* 7 */
+
+alter table pisos disable constraint pk_pisos;
+
+insert into pisos
+select distinct '9999A', 'NO', precio, inmobiliaria, 'S'
+from pisos P, inmobiliarias I
+where P.precio = (
+	select min(precio) from pisos
+	where inmobiliaria = 'INMOBELDA'
+) and I.num_tra > 6;
+
+/*----------------------------------------------------*/
+/* 8 */
+
+start "ejercicio8.sql";
+

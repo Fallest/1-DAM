@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="D:/Documentos/1-DAM/LM/XML/XSL%20y%20XPATH/Practica%20XSL/library.xsl"?>
+
+<library>
+	<!--
+	<song saved="">
+		<title></title>
+		<artist></artist>
+		<album></album>
+		<duration ud="seconds"></duration>
+		<icon>icons/.png</icon>
+	</song>
+	 -->
+	<song saved="yes">
+		<title>Pompeii</title>
+		<artist>Bastille</artist>
+		<album>All This Bad Blood</album>
+		<duration ud="seconds">214</duration>
+		<icon>icons/pompeii.png</icon>
+	</song>
+	<song saved="yes">
+		<title>Basket Case</title>
+		<artist>Green Day</artist>
+		<album>Dookie</album>
+		<duration ud="seconds">181</duration>
+		<icon>icons/basketcase.png</icon>
+	</song>
+	<song saved="no">
+		<title>Caffeine Rush</title>
+		<artist>Jacob Tillberg</artist>
+		<album>Caffeine Rush</album>
+		<duration ud="seconds">156</duration>
+		<icon>icons/caffeinerush.png</icon>
+	</song>
+	<song saved="yes">
+		<title>RISE</title>
+		<artist>League of Legends</artist>
+		<artist>The Glitch Mob</artist>
+		<artist>Mako</artist>
+		<artist>The World Alive</artist>
+		<album>RISE</album>
+		<duration ud="seconds">192</duration>
+		<icon>icons/rise.png</icon>
+	</song>
+	<song saved="yes">
+		<title>Viego, the Ruined King</title>
+		<artist>League of Legends</artist>
+		<album>Viego, the Ruined King</album>
+		<duration ud="seconds">266</duration>
+		<icon>icons/viegotheruinedking.png</icon>
+	</song>
+	<song saved="yes">
+		<title>Cradles</title>
+		<artist>Sub Urban</artist>
+		<album>Cradles</album>
+		<duration ud="seconds">209</duration>
+		<icon>icons/cradles.png</icon>
+	</song>
+	<song saved="no">
+		<title>One More Time</title>
+		<artist>Daft Punk</artist>
+		<album>Discovery</album>
+		<duration ud="seconds">320</duration>
+		<icon>icons/onemoretime.png</icon>
+	</song>
+	<song saved="yes">
+		<title>Then</title>
+		<artist>Gaho</artist>
+		<artist>Villain</artist>
+		<album>Preparation For a Jouney</album>
+		<duration ud="seconds">240</duration>
+		<icon>icons/then.png</icon>
+	</song>
+	<song saved="yes">
+		<title>All Star</title>
+		<artist>Smash Mouth</artist>
+		<album>Astro Lounge</album>
+		<duration ud="seconds">200</duration>
+		<icon>icons/allstar.png</icon>
+	</song>
+	<song saved="yes">
+		<title>Weight of My Pride</title>
+		<artist>Pay Money To My Pain</artist>
+		<album>Remember the Name</album>
+		<duration ud="seconds">272</duration>
+		<icon>icons/weightofmypride.png</icon>
+	</song>
+	<song saved="yes">
+		<title>Pérses</title>
+		<artist>BEATSMASH</artist>
+		<artist>Trias</artist>
+		<album>Pérses</album>
+		<duration ud="seconds">177</duration>
+		<icon>icons/perses.png</icon>
+	</song>
+	<song saved="yes">
+		<title>IMPERIAL SMOKE TOWN</title>
+		<artist>Ichiko Aoba</artist>
+		<album>UTABIKO</album>
+		<duration ud="seconds">437</duration>
+		<icon>icons/imperialsmoketown.png</icon>
+	</song>
+</library>
