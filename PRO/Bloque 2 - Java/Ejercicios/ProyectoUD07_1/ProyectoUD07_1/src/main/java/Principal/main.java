@@ -57,20 +57,20 @@ public class main {
     public static void ejecutarOpcion(int opcion, Catalogo catalogo) {
         switch (opcion) {
             case 1: {
-                darAlta(catalogo.getCanciones());
+                darAlta(catalogo.getCanciones(), opcion);
                 break;
             }
             case 2: {
-                darAlta(catalogo.getVideojuegos());
+                darAlta(catalogo.getVideojuegos(), opcion);
                 break;
             }
             case 3: {
-                try {darBaja(catalogo.getVideojuegos());}
+                try {darBaja(catalogo.getCanciones());}
                 catch (Errores e) {e.catVacio();}
                 break;
             }
             case 4: {
-                try {darBaja(catalogo.getCanciones());}
+                try {darBaja(catalogo.getVideojuegos());}
                 catch (Errores e) {e.catVacio();}
                 break;
             }
@@ -79,11 +79,11 @@ public class main {
                 break;
             }
             case 6: {
-                mostrarDatos(catalogo.getCanciones());
+                mostrarDatos(catalogo.getCanciones(), opcion);
                 break;
             }
             case 7: {
-                mostrarDatos(catalogo.getVideojuegos());
+                mostrarDatos(catalogo.getVideojuegos(), opcion);
                 break;
             }
         }
@@ -91,8 +91,19 @@ public class main {
     
     /*------------------------------------------------------------------------*/
     // Funciones de alta y baja: 2/2
-    public static void darAlta(ArrayList lista) {
-        if (lista.get(0) instanceof Videojuego) {
+    public static void darAlta(ArrayList lista, int opc) {
+        if (lista.isEmpty())
+        {
+            if (opc == 2) {
+                // Código para insertar un videojuego
+                insertarVideojuego(lista);
+            }
+            else if (opc == 1) {
+                // Código para insertar una canción
+                insertarCancion(lista);
+            }
+        }
+        else if (lista.get(0) instanceof Videojuego) {
             // Código para insertar un videojuego
             insertarVideojuego(lista);
         }
@@ -121,12 +132,12 @@ public class main {
     
     /*-----*/ 
     // Funciones de alta y baja de juegos: 2/2
-    public static void insertarVideojuego(ArrayList<Videojuego> lista) {
+    public static void insertarVideojuego(ArrayList lista) {
         // Inicializamos el juego que vamos a insertar:
         Videojuego juego = new Videojuego();
 
         // Si es el primer dato
-        if (lista.get(0) == null) {
+        if (lista.isEmpty()) {
             lista.add(juego);
         }
         
@@ -143,15 +154,12 @@ public class main {
                     lista.add(cont, juego);
                     break;
                 }
-                else {
-                    cont ++;
-                    iter.next();
-                }
+                else cont ++;
             }
         }
     }
     
-    public static void eliminarVideojuego(ArrayList<Videojuego> lista) {
+    public static void eliminarVideojuego(ArrayList lista) {
         // Pedimos el título a eliminar:
         System.out.println("Título a eliminar: ");
         String tituloElim = pedirTitulo();
@@ -162,12 +170,11 @@ public class main {
         // Buscamos dicho título en el array
         while (iter.hasNext()) {
             aux = (Videojuego) iter.next();
-            if (aux.getTitulo().equals(tituloElim)) {
+            if (aux.getTitulo().toLowerCase().equals(tituloElim.toLowerCase())) {
                 iter.remove();
                 System.out.println("Juego eliminado.\n");
                 elim = true;
             }
-            else iter.next();
         }
         
         if (!elim)
@@ -176,12 +183,12 @@ public class main {
 
     /*-----*/
     // Funciones de alta y baja de las canciones: 2/2
-    public static void insertarCancion(ArrayList<Cancion> lista) {
+    public static void insertarCancion(ArrayList lista) {
         // Inicializamos la canción que vamos a insertar:
         Cancion cancion = new Cancion();
 
         // Si es el primer dato
-        if (lista.get(0) == null) {
+        if (lista.isEmpty()) {
             lista.add(cancion);
         }
         
@@ -198,15 +205,12 @@ public class main {
                     lista.add(cont, cancion);
                     break;
                 }
-                else {
-                    cont ++;
-                    iter.next();
-                }
+                else cont ++;
             }
         }
     }
 
-    public static void eliminarCancion(ArrayList<Cancion> lista) {
+    public static void eliminarCancion(ArrayList lista) {
         // Pedimos el título a eliminar:
         System.out.println("Título a eliminar: ");
         String tituloElim = pedirTitulo();
@@ -217,12 +221,11 @@ public class main {
         // Buscamos dicho título en el array
         while (iter.hasNext()) {
             aux = (Cancion) iter.next();
-            if (aux.getTitulo().equals(tituloElim)) {
+            if (aux.getTitulo().toLowerCase().equals(tituloElim.toLowerCase())) {
                 iter.remove();
                 System.out.println("Canción eliminada.\n");
                 elim = true;
             }
-            else iter.next();
         }
         
         if (!elim)
@@ -231,13 +234,15 @@ public class main {
 
     /*------------------------------------------------------------------------*/
     // Funciones para mostrar datos del catálogo: 2/2
-    public static void mostrarDatos(ArrayList lista) {
-        if (lista.get(0) instanceof Videojuego) {
+    public static void mostrarDatos(ArrayList lista, int opc) {
+        if (lista.isEmpty())
+        {System.out.println("No se pueden mostrar datos de un catálogo vacío.\n");}
+        else if (opc == 7 && lista.get(0) instanceof Videojuego) {
             Catalogo catAux = new Catalogo();
             catAux.setCatVideojuegos(lista);
             catAux.mostrarVideojuegos();
         }
-        else if (lista.get(0) instanceof Cancion) {
+        else if (opc == 6 && lista.get(0) instanceof Cancion) {
             Catalogo catAux = new Catalogo();
             catAux.setCatCanciones(lista);
             catAux.mostrarCanciones();

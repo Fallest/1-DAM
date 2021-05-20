@@ -140,7 +140,7 @@ public class Fecha {
         return diasTotales;
     }
     
-    public static String toString(Fecha fecha) {
+    public static String toStr(Fecha fecha) {
         String fechaCad;
         
         fechaCad = String.valueOf(fecha.dia) + "/" + String.valueOf(fecha.mes) + "/"

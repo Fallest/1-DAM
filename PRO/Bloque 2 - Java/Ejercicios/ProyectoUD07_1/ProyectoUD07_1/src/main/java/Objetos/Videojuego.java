@@ -8,8 +8,6 @@ import java.io.InputStreamReader;
 public final class Videojuego extends Objeto {
     // Atributos
     private String desarrolladora;
-    private String titulo;
-    private Fecha fechaLanz;
     private float precio;
     private int cantPlat;
     private String plataformas[]; // Como no hemos dado enum, se usará una función 
@@ -102,7 +100,7 @@ public final class Videojuego extends Objeto {
                 
                 System.out.println("\n\tIntroduzca la fecha de lanzamiento (DD/MM/YYYY): ");
                 cad = teclado.readLine();
-                this.fechaLanz = new Fecha(Integer.parseInt(cad.substring(0, 2)),
+                this.fecha = new Fecha(Integer.parseInt(cad.substring(0, 2)),
                     Integer.parseInt(cad.substring(3, 5)), 
                     Integer.parseInt(cad.substring(6, 10)));
             }
@@ -240,7 +238,7 @@ public final class Videojuego extends Objeto {
     }
     
     public Fecha getFecha() {
-        return this.fechaLanz;
+        return this.fecha;
     }
     
     public float getPrecio() {
@@ -273,7 +271,7 @@ public final class Videojuego extends Objeto {
         System.out.println("\tTítulo: " + this.titulo);
         System.out.println("\tDesarrolladora: " + this.desarrolladora);
         System.out.println("\tPrecio: " + this.precio + "€");
-        System.out.println("\tFecha de lanzamiento: " + this.fechaLanz);
+        System.out.println("\tFecha de lanzamiento: " + Fecha.toStr(this.fecha));
         for (i = 0; i < this.cantPlat; i++)
             System.out.println("\tPlataforma " + (i+1) + ": " + this.plataformas[i]);
     }

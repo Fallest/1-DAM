@@ -13,30 +13,28 @@ public class Catalogo {
                          // ningún valor.
     
     public Catalogo(Collection catCanc, Collection catJuegos) {
-        setCatCanciones(catCanc);
-        setCatVideojuegos(catJuegos);
+        setCatCanciones((ArrayList)catCanc);
+        setCatVideojuegos((ArrayList)catJuegos);
     }
     
     // Setters: 2/2
-    public void setCatCanciones(Collection catCanc) {
+    public void setCatCanciones(ArrayList catCanc) {
         // Se asume que el catálogo dado por parámetros ya está ordenado.
         // Esta función no se va a usar, de todas maneras.
         Iterator iter = catCanc.iterator();
         
         while (iter.hasNext()) {
             this.canciones.add(iter.next());
-            iter.next();
         }
     }
     
-    public void setCatVideojuegos(Collection catJuegos) {
+    public void setCatVideojuegos(ArrayList catJuegos) {
         // Se asume que el catálogo dado por parámetros ya está ordenado.
         // Esta función no se va a usar, de todas maneras.
         Iterator iter = catJuegos.iterator();
         
         while (iter.hasNext()) {
-            this.canciones.add(iter.next());
-            iter.next();
+            this.videojuegos.add(iter.next());
         }
     }
     
@@ -65,7 +63,6 @@ public class Catalogo {
         while (iter.hasNext()) {
             cancAux = (Cancion) iter.next();
             cancAux.mostrarDatos();
-            iter.next();
             System.out.println("-----");
         }
     }
@@ -79,7 +76,6 @@ public class Catalogo {
         while (iter.hasNext()) {
             juegoAux = (Videojuego) iter.next();
             juegoAux.mostrarDatos();
-            iter.next();
             System.out.println("-----");
         }
     }

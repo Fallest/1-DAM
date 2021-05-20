@@ -185,7 +185,7 @@ public final class Cancion extends Objeto {
         System.out.println("\tTítulo: " + this.titulo);
         for (i = 0; i < cantArtistas; i++)
             System.out.println("\tArtista " + (i+1) + ": " + this.artistas[i]);
-        System.out.println("\tFecha de estreno: " + this.fecha);
+        System.out.println("\tFecha de estreno: " + Fecha.toStr(this.fecha));
     }
 
     public String toString() {
