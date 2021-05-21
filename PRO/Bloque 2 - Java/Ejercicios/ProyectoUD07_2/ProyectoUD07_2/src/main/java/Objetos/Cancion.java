@@ -185,7 +185,7 @@ public final class Cancion extends Objeto {
         System.out.println("\tTítulo: " + this.titulo);
         for (i = 0; i < cantArtistas; i++)
             System.out.println("\tArtista " + (i+1) + ": " + this.artistas[i]);
-        System.out.println("\tFecha de estreno: " + Fecha.toStr(this.fecha));
+        System.out.println("\tFecha de estreno: " + this.fecha.toStr(this.fecha));
     }
 
     public String toString() {
@@ -195,7 +195,7 @@ public final class Cancion extends Objeto {
         for (int i = 0; i < this.artistas.length; i++)
             cad += this.artistas[i];
         
-        cad += "\nFecha de estreno: " + this.fecha;
+        cad += "\nFecha de estreno: " + this.fecha.toStr(this.fecha);
         return cad;
     }
 }

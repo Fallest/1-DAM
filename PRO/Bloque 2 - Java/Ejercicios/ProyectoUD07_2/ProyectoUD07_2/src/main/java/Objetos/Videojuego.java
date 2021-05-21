@@ -10,8 +10,7 @@ public final class Videojuego extends Objeto {
     private String desarrolladora;
     private float precio;
     private int cantPlat;
-    private String plataformas[]; // Como no hemos dado enum, se usará una función 
-                               // para controlar su valor.
+    private Plataforma plataformas[];
     
     /*------------------------------------------------------------------------*/
     // Constructor: 
@@ -102,7 +101,38 @@ public final class Videojuego extends Objeto {
                 cad = teclado.readLine();
                 this.fecha = new Fecha(Integer.parseInt(cad.substring(0, 2)),
                     Integer.parseInt(cad.substring(3, 5)), 
-                    Integer.parseInt(cad.substring(6, 10)));
+                    Integer.parseInt(cad.substring(6, 10))) {
+                        // Clase anónima, para redefinir el toStr para los videojuegos
+                        public String getMesStr(Fecha fecha) {
+                            String res = null;
+                            
+                            switch(fecha.getMes()) {
+                                case 1 -> {res = "Enero";}
+                                case 2 -> {res = "Febrero";}
+                                case 3 -> {res = "Marzo";}
+                                case 4 -> {res = "Abril";}
+                                case 5 -> {res = "Mayo";}
+                                case 6 -> {res = "Junio";}
+                                case 7 -> {res = "Julio";}
+                                case 8 -> {res = "Agosto";}
+                                case 9 -> {res = "Septiembre";}
+                                case 10 -> {res = "Octubre";}
+                                case 11 -> {res = "Noviembre";}
+                                case 12 -> {res = "Diciembre";}
+                            }
+                            
+                            return res;
+                        }
+                        
+                        public String toStr(Fecha fecha) {
+                        String fechaCad;
+
+                        fechaCad = String.valueOf(fecha.getDia()) + " de " + getMesStr(fecha) + " de "
+                                + String.valueOf(fecha.getAño());
+
+                        return fechaCad;
+                        }
+                    };
             }
             catch (IOException e) {
                 System.out.println("\n\tError en la entrada de datos.");
@@ -168,7 +198,7 @@ public final class Videojuego extends Objeto {
             try {
                 ejec = false;
 
-                System.out.println("\tIntroduzca la cantidad de plataformas (1-5):");
+                System.out.println("\n\tIntroduzca la cantidad de plataformas (1-5):");
                 this.cantPlat = Integer.parseInt(teclado.readLine());
 
                 if ((this.cantPlat < 1) || (this.cantPlat > 5))
@@ -192,11 +222,12 @@ public final class Videojuego extends Objeto {
     public void setPlataforma() {
         int i;
         boolean ejec;
+        String aux;
         Errores error = new Errores();
         
         setCantPlat(); // Pedimos la cantidad de plataformas.
         
-        this.plataformas = new String[this.cantPlat]; // Inicializamos el array.
+        this.plataformas = new Plataforma[this.cantPlat]; // Inicializamos el array.
         
         InputStreamReader stream = new InputStreamReader(System.in);
         BufferedReader teclado = new BufferedReader(stream);
@@ -208,11 +239,9 @@ public final class Videojuego extends Objeto {
                 for (i = 0; i < this.cantPlat; i++)
                 {                
                     System.out.println("\n\tIntroduzca la plataforma " + (i+1) + "(Windows, Mac, Linux, "
-                            + "PlayStation o Xbox): ");
-                    this.plataformas[i] = teclado.readLine();
-
-                    if (!checkPlataforma(this.plataformas[i]))
-                        throw error;
+                            + "PlayStation o XBox): ");
+                    // Método del enum Plataforma para convertir cadenas a Plataformas.
+                    this.plataformas[i] = Plataforma.convPlat(teclado.readLine()); 
                 }
             }
             catch (IOException e) {
@@ -245,23 +274,8 @@ public final class Videojuego extends Objeto {
         return this.precio;
     }
     
-    public String[] getPlataformas() {
+    public Plataforma[] getPlataformas() {
         return this.plataformas;
-    }
-    
-    /*------------------------------------------------------------------------*/
-    // Checkers:
-    private boolean checkPlataforma(String plataforma) {
-        boolean esValida = false;
-        
-        if (plataforma.toLowerCase().equals("windows") ||
-                plataforma.toLowerCase().equals("mac") ||
-                plataforma.toLowerCase().equals("linux") ||
-                plataforma.toLowerCase().equals("playstation") ||
-                plataforma.toLowerCase().equals("xbox"))
-            esValida = true;
-        
-        return esValida;
     }
     
     /*------------------------------------------------------------------------*/
@@ -271,21 +285,23 @@ public final class Videojuego extends Objeto {
         System.out.println("\tTítulo: " + this.titulo);
         System.out.println("\tDesarrolladora: " + this.desarrolladora);
         System.out.println("\tPrecio: " + this.precio + "€");
-        System.out.println("\tFecha de lanzamiento: " + Fecha.toStr(this.fecha));
+        System.out.println("\tFecha de lanzamiento: " + this.fecha.toStr(this.fecha));
         for (i = 0; i < this.cantPlat; i++)
             System.out.println("\tPlataforma " + (i+1) + ": " + this.plataformas[i]);
     }
-    
+    // Método toString:
     public String toString() {
         String cad;
         
         cad = this.titulo + "\n";
         cad += this.desarrolladora + "\n";
-        cad += "Fecha de lanzamiento: " + this.fecha + "\n";
-        cad += "Plataformas: ";
-        for (int i = 0; i < this.plataformas.length; i++)
-            cad += this.plataformas[i] + ", ";
-        cad += "\nFecha de estreno: " + this.fecha;
+        cad += "Fecha de lanzamiento: " + this.fecha.toStr(this.fecha) + "\n";
+        cad += "Plataformas: " + this.plataformas[0];
+        for (int i = 1; i < this.plataformas.length; i++) {
+            cad += " " + this.plataformas[i];
+            if (i != this.plataformas.length - 1)
+                cad += ", ";
+        }
         cad += "\nPrecio: " + this.precio + "€";
         
         return cad;
