@@ -10,15 +10,15 @@ public class Empleado
   void pedirDatosEmp() throws IOException
   {
     String suelCad;
-	InputStreamReader via = new InputStreamReader(System.in);
-	BufferedReader teclado = new BufferedReader(via);
-	
-	System.out.println("\n\tInserte el nombre del empleado: ");
-	nombre = teclado.readLine();
-	
-	System.out.println("\n\tInserte el sueldo del empleado: ");
-	suelCad = teclado.readLine();
-	sueldo = Float.parseFloat(suelCad);
+    InputStreamReader via = new InputStreamReader(System.in);
+    BufferedReader teclado = new BufferedReader(via);
+
+    System.out.println("\n\tInserte el nombre del empleado: ");
+    nombre = teclado.readLine();
+
+    System.out.println("\n\tInserte el sueldo del empleado: ");
+    suelCad = teclado.readLine();
+    sueldo = Float.parseFloat(suelCad);
   }
   
   public void asignarValores(String n, float s)

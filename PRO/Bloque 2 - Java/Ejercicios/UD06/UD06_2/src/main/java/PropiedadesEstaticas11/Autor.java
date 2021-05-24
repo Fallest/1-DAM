@@ -16,7 +16,7 @@ public class Autor
 
     String pedirCadena()
     {
-        String cadena="";
+        String cadena = null;
         InputStreamReader flujo = new InputStreamReader(System.in);
         BufferedReader teclado = new BufferedReader(flujo);
 

@@ -8,6 +8,9 @@ public class Tarea {
         
     }
     
-    public static int ()
-    {}
+    public static int a()
+    
+    {
+        return 0;
+    }
 }
