@@ -2,50 +2,47 @@
 /* 1. Eliminar los empleados de los centros de trabajo donde haya dos o menos trabajadores, sin contar a los encargados. */
 
 delete empleado where exists (
-	select dni_emp, cod_centro_tra from empleado
-	group by dni_emp, cod_centro_tra
-	having count(dni_emp) =< 2;
+	select codcentrotra from empleado
+	group by codcentrotra
+	having count(dniemp) <= 2;
 );
 
 /*---------------------------------------------*/
 /* 2. Mostrar los encargados de los centros de trabajo que tengan algún empleado.*/
 
 select * from encargado
-where dni_enc any (select dni_enc from empleado);
+where dnienc in (select dnienc from empleado);
 
 /*---------------------------------------------*/
-/* 3. Mostrar los empleados y los encargados de los centros de trabajo que estén bajo la administración con código 823716.*/
+/* 3. Mostrar los empleados de los centros de trabajo que estén bajo la administración con código 632521 y que cobren igual o más de 630 euros. */
 
-select dni_emp, E.nombre
+select dniemp, E.nombre
 from empleado E
-where cod_centro_tra in (
-	select cod_centro_tra from centro_trabajo
-	where cod_admin = 823716	
+where codcentrotra in (
+	select codcentrotra from centrotrabajo
+	where codadmin = 632521
 )
 intersect
-select dni_enc, En.nombre
-from encargado En
-where cod_centro_tra in (
-	select cod_centro_tra from centro_trabajo
-	where cod_admin = 823716	
-);
+select dniemp, nombre
+from empleado
+where salario >= 630;
 
 /*---------------------------------------------*/
 /* 4. Mostrar el director de la administración encargada del centro de trabajo que tenga al mayor número de empleados. */
 
-select Dir.dni_dir, Dir.nombre 
-from director_admin Dir
-where Dir.dni_dir in (
-	select Ad.dni_dir from administracion Ad
-	where Ad.cod_admin in (
-		select Ct.cod_admin from centro_trabajo Ct
-		where Ct.cod_centro_tra = (
-			select Em.cod_centro_tra	
+select Dir.dnidir, Dir.nombre 
+from directoradmin Dir
+where Dir.dnidir in (
+	select Ad.dnidir from administracion Ad
+	where Ad.codadmin in (
+		select Ct.codadmin from centrotrabajo Ct
+		where Ct.codcentrotra = (
+			select Em.codcentrotra	
 			from empleado Em
-			group by Em.cod_centro_tra
+			group by Em.codcentrotra
 			having count(*) = (
 				select max(count(*)) from empleado
-				group by cod_centro_tra
+				group by codcentrotra
 			)
 		)
 	)
@@ -55,9 +52,9 @@ where Dir.dni_dir in (
 /* 5. Cambiar el salario a los encargados de los centros de trabajo que no tenga ningún empleado. Añadir 200€. */
 
 update encargado set salario = salario + 200
-where dni_enc in (
-	select encargado.dni_enc from empleado, encargado
-	where empleado.dni_enc (+) = encargado.dni_enc
-	group by encargado.dni_enc
-	having count(encargado.dni_emp) =< 2;
+where dnienc in (
+	select encargado.dnienc from empleado, encargado
+	where empleado.dnienc (+) = encargado.dnienc
+	group by encargado.dnienc
+	having count(encargado.dniemp) =< 2;
 );
