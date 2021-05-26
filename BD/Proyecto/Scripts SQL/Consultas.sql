@@ -32,9 +32,9 @@ where salario >= 630;
 
 select Dir.dnidir, Dir.nombre 
 from directoradmin Dir
-where Dir.dnidir in (
+where Dir.dnidir = (
 	select Ad.dnidir from administracion Ad
-	where Ad.codadmin in (
+	where Ad.codadmin = (
 		select Ct.codadmin from centrotrabajo Ct
 		where Ct.codcentrotra = (
 			select Em.codcentrotra	
@@ -49,12 +49,12 @@ where Dir.dnidir in (
 );
 
 /*---------------------------------------------*/
-/* 5. Cambiar el salario a los encargados de los centros de trabajo que no tenga ningún empleado. Añadir 200€. */
+/* 5. Cambiar el salario al gerente de los centros de trabajo que no tengan ningún empleado. Añadir 200€. */
 
-update encargado set salario = salario + 200
-where dnienc in (
-	select encargado.dnienc from empleado, encargado
-	where empleado.dnienc (+) = encargado.dnienc
-	group by encargado.dnienc
-	having count(encargado.dniemp) =< 2;
+update gerente set salario = salario + 200
+where dniger in (
+	select centrotrabajo.dniger from empleado, centrotrabajo
+	where empleado.codcentrotra (+) = centrotrabajo.codcentrotra
+	group by centrotrabajo.dniger
+	having count(empleado.dniemp) = 0;
 );

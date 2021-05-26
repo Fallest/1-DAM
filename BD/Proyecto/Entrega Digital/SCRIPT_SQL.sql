@@ -156,7 +156,88 @@ insert into compraventa values (783721, '73761928B', 'Limpia cristales');
 
 /*-----------------------------------------------------------*/
 /* Consultas */
+/* 1. Eliminar los empleados de los centros de trabajo donde haya dos o menos trabajadores, sin contar a los encargados. */
+
+delete empleado where exists (
+	select codcentrotra from empleado
+	group by codcentrotra
+	having count(dniemp) <= 2;
+);
+
+/*---------------------------------------------*/
+/* 2. Mostrar los encargados de los centros de trabajo que tengan algún empleado.*/
+
+select * from encargado
+where dnienc in (select dnienc from empleado);
+
+/*---------------------------------------------*/
+/* 3. Mostrar los empleados de los centros de trabajo que estén bajo la administración con código 632521 y que cobren igual o más de 630 euros. */
+
+select dniemp, E.nombre
+from empleado E
+where codcentrotra in (
+	select codcentrotra from centrotrabajo
+	where codadmin = 632521
+)
+intersect
+select dniemp, nombre
+from empleado
+where salario >= 630;
+
+/*---------------------------------------------*/
+/* 4. 	 */
+
+select Dir.dnidir, Dir.nombre 
+from directoradmin Dir
+where Dir.dnidir = (
+	select Ad.dnidir from administracion Ad
+	where Ad.codadmin = (
+		select Ct.codadmin from centrotrabajo Ct
+		where Ct.codcentrotra = (
+			select Em.codcentrotra	
+			from empleado Em
+			group by Em.codcentrotra
+			having count(*) = (
+				select max(count(*)) from empleado
+				group by codcentrotra
+			)
+		)
+	)
+);
+
+/*---------------------------------------------*/
+/* 5. Cambiar el salario al gerente de los centros de trabajo que no tengan ningún empleado. Añadir 200€. */
+
+update gerente set salario = salario + 200
+where dniger in (
+	select centrotrabajo.dniger from empleado, centrotrabajo
+	where empleado.codcentrotra (+) = centrotrabajo.codcentrotra
+	group by centrotrabajo.dniger
+	having count(empleado.dniemp) = 0;
+);
 
 
 /*-----------------------------------------------------------*/
-/* Informe */
+/* Informe de las tablas en SQL 
+Salario para cada empleado, agrupado por centro de trabajo.
+*/
+ttitle "SALARIO PARA CADA EMPLEADO POR CENTRO DE TRABAJO"
+
+column centro heading 'Centro de Trabajo' format 999999
+column nombre heading 'Nombre de Empleado'
+column salario heading 'Salario' format 9G999D99
+
+set linesize 80
+set pagesize 50
+set newpage 1
+
+break on centro skip 2
+compute sum label "-Suma" count label "-Nº Empleados" max label "-Sal Max" of 
+
+salario on centro
+
+select codcentrotra "centro", nombre, salario 
+from empleado
+order by codcentrotra;
+
+ttitle off;
