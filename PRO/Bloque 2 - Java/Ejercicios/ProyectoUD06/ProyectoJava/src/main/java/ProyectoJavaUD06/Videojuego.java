@@ -174,7 +174,7 @@ public final class Videojuego {
 
                 if ((this.cantPlat < 1) || (this.cantPlat > 5))
                     throw error;
-            } 
+            }
             catch (IOException e) {
                 System.out.println("\n\tError en la entrada de datos.");
                 ejec = true;
