@@ -1,0 +1,21 @@
+Idea TFG: 
+-Aplicación multiherramienta para el ordenador. 
+
+-Escrita en Java, usando escritura en archivos.txt para almacenar datos, y Swing o JFrame para la interfaz.
+
+
+Herramientas/utilidades:
+
+-Eliminar duplicados: Fotos, archivos de un tipo concreto (.txt, .bat, .bin, .dat, .png, .jpg, .gif, .webm, los que se me ocurran) usando comandos de msdos, o si se puede comparar la info binaria en java, así.
+
+-Herramientas financieras: cálculo de préstamos; cálculo de nómina; contabilidad (Para llevar el dinero recibido y gastado, con conceptos y razones).
+
+-Autosave: Poner las teclas que se usan (CTRL+S por defecto) y el tiempo que pasa entre cada guardado. Para aplicaciones que usen algún tipo de guardado.
+
+-Cambiar asignaciones de teclas.
+
+-Opción de crear atajos para abrir ciertas aplicaciones (por ejemplo, CTRL + SHIFT + T para crear un nuevo archivo .txt).
+
+-Herramienta para notas (se almacena en un.txt junto con la fecha y hora a la 	que se ha escrito).
+
+-Eliminar los archivos residuales de aplicaciones desinstaladas.
