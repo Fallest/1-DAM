@@ -1,8 +1,14 @@
+*** Se creará un archivo .pdf con ilustraciones para las ideas ***
+
 Idea TFG: 
+
+-Nombre de la aplicación: Multy
+
 -Aplicación multiherramienta para el ordenador. 
 
 -Escrita en Java, usando escritura en archivos.txt para almacenar datos, y Swing o JFrame para la interfaz.
 
+----------------
 
 Herramientas/utilidades:
 
@@ -19,3 +25,61 @@ Herramientas/utilidades:
 -Herramienta para notas (se almacena en un.txt junto con la fecha y hora a la 	que se ha escrito).
 
 -Eliminar los archivos residuales de aplicaciones desinstaladas.
+
+-----------------------------
+
+Características:
+
+	Será una aplicación cuyas dimensiones son variables, puesto que se pueden añadir herramientas durante su desarrollo.
+La idea es que sea una aplicación para hacer más cómodo el uso del ordenador, pudiendo el usuario personalizar las formas en las que se modifican
+las herramientas.
+
+	La estructura de la aplicación será la siguiente: cada herramienta será una ventana diferente (las que usen interfaz gráfica), las cuales
+se abrirán desde una ventana inicial, donde se encuentran los accesos directos a todas las herramientas. 
+Las herramientas como el autoguardado, la reasignación de teclas, o el creador de atajos de teclado abrirán una ventana para pedir al usuario que registre
+las teclas o combinación de teclas a cambiar, pidiendo en el caso de los atajos la ruta de la aplicación a abrir. 
+Las aplicaciones que necesiten guardar datos (como la contabilidad, o los atajos a aplicaciones creados) se guardarán en archivos .txt formateados para
+que sean leídos por los programas.
+
+	-Eliminación de duplicados: Se abrirá una ventana nueva en la que pedirá la ruta a la carpeta donde borrar los duplicados, y también pedirá
+el tipo de archivo a eliminar (la extensión). Buscaré una forma de eliminar los duplicados con Java, pero en todo caso, se podría utilizar algún comando de
+MSDOS y lanzarlo desde Java.
+
+	-Herramientas financieras - Cálculo de nóminas: Se introducen las horas trabajadas, la remuneración por hora y los porcentajes de retención (la suma total 
+de los porcentajes). Al final mostrará la cantidad a percibir a final de mes. Esta idea se puede extender a un calendario, en el que se puedan añadir los turnos;
+el programa calculará las horas trabajadas y hará el cálculo de la nómina automáticamente.
+
+	-Herramientas financieras - Contabilidad: Será una ventana en la que se puedan introducir las cantidades ingresadas y gastadas, pudiendo añadir un concepto
+a dicho gasto o ingreso. Se puede hacer una integración con la herramienta de la nómina, introduciendo el día en el que se recibe el ingreso de la nómina.
+Al realizar un gasto o un ingreso, pedirá el tipo (gasto o ingreso), la cantidad de dinero, y un concepto. Estas tres cosas se escribirán en una ventana emergente
+que pedirá los datos al usuario. Estos datos se almacenarán en un archivo .txt para su uso continuado en la aplicación. La aplicación mostrará totales gastados e
+ingresados, porcentaje de dinero gastado (respecto al recibido al mes) y una lista con los gastos e ingresos hechos y recibidos, junto con el concepto en letra 
+pequeña debajo.
+
+	-Autosave / Autoguardado: Herramienta para aplicaciones en las que se guarden datos (Photoshop, Word, Excel, etc). Se podrá marcar una casilla para activarla 
+o desactivarla. En la ventana emergente para la aplicación se pedirán dos cosas: la combinación de teclas para guardar (CTRL+S por defecto) y el tiempo entre
+guardados en segundos, que por defecto serán 3 minutos (180 segundos).
+
+	-Cambio de teclas: Pedirá dos cosas: la tecla que quiere sustituirse y la tecla que la sustituirá. Es decir, si quiero cambiar la B por la N, primero
+pedirá la B y luego la N, y cada vez que pulse la B, mostrará una N.
+
+	-Creación de atajos de teclado: en una nueva ventana emergente se verá una lista con los atajos ya creados, donde se podrán marcar como activos o inactivos,
+y se podrán añadir más atajos. Primero se pedirá la ruta hacia la aplicación a abrir con el atajo, y luego pedirá la combinación de teclas. 
+Comprobará si la asignación de teclas ya coincide con otra activa, y si ya existe pedirá que se introduzca otra. No se podrán marcar como activas dos asignaciones
+que tengan la misma combinación a la vez.
+
+	-Herramienta para notas: se mostrará una lista con notas, que se podrán crear junto a la hora a la que fueron escritas. Se podrán eliminar, cambiar de orden,
+modificar y asignarles una hora y un día para que emitan una notificación al usuario.
+
+	-Eliminación de archivos residuales: Esta aplicación ayudará a eliminar los archivos residuales (de configuración o de otro tipo) de aplicaciones
+que hayan sido eliminadas del sistema.
+
+-----------------------
+
+Ventana principal: en la ventana principal aparecerán varios resúmenes: 
+
+	-uno sobre la contabilidad (gastos hasta el momento y dinero restante)
+	-otro sobre la nómina (turno de hoy, turno de mañana, horas trabajadas / horas por trabajar, más el dinero a percibir hasta el día / el dinero a percibir total)
+	-últimas notas escritas / notas que se activarán hoy
+
+En una barra menú superior habrá accesos a todas las aplicaciones incorporadas.
