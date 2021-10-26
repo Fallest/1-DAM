@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 
-public final class Videojuego implements Serializable {
+public final class Videojuego<T> implements Serializable {
     // Atributos
     private String titulo;
     private Fecha fecha;
